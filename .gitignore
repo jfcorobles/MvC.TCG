@@ -33,6 +33,11 @@ Thumbs.db
 *.sln
 *.sw?
 
+# Raw extraction source files (already normalized in src/assets/)
+/Primer edición/
+/Primer expansión/
+MASCARAS_VS_CABELLERAS_TCG.md
+
 # Temporary analysis scripts
 scripts/analyze_raw.py
 scripts/test_clean.py

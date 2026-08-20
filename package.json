@@ -6,8 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:gh-pages": "ng build --base-href ./",
-    "deploy": "ng build --base-href ./ && npx -y angular-cli-ghpages --dir=dist/mvc-tcg/browser",
+    "build:gh-pages": "ng build --base-href /MvC.TCG/",
+    "deploy": "ng build --base-href /MvC.TCG/ && npx -y angular-cli-ghpages --dir=dist/mvc-tcg/browser",
     "watch": "ng build --watch --configuration development",
     "sync-data": "python scripts/build_data.py"
   },

@@ -62,8 +62,7 @@ El código está estructurado siguiendo principios de **Clean Architecture**, **
 * **Standalone Components:** Arquitectura modular sin `NgModule`.
 * **Angular Signals:** Manejo de estado reactivo y granular para filtros, paginación y estado del mazo.
 * **Separación de Responsabilidades:** Archivos `.ts`, `.html` y `.css` separados en todos los componentes para máxima legibilidad y mantenibilidad.
-* **Vanilla CSS Design System:** Variables CSS personalizadas con tema oscuro mate minimalista, tipografía de alta gama (`Syne` + `Plus Jakarta Sans`) y diseño responsivo para móviles y escritorio.
-* **Routing HashLocation:** Configurado con `withHashLocation()` y archivo `404.html` para compatibilidad nativa con servidores estáticos como GitHub Pages.
+* **Routing PathLocation (URLs Limpias):** Configurado con URLs limpias estándar (sin `/#/`) y compatible con GitHub Pages mediante script de redirección SPA y `404.html`.
 
 ### Estructura del Código Fuente
 

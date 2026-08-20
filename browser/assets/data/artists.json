@@ -1,0 +1,87 @@
+[
+  {
+    "name": "James Darko",
+    "role": "Ilustrador Principal y Diseñador",
+    "bio": "Creador visual de la mayoría de personajes, contratos, objetos y castigos emblemáticos de Máscaras vs Cabelleras TCG.",
+    "social": {
+      "instagram": "https://www.instagram.com/mascarasvscabelleras_tcg/",
+      "facebook": "https://www.facebook.com/mascarasvscabellerastcg"
+    },
+    "cardCount": 124
+  },
+  {
+    "name": "Araceli Salazar",
+    "role": "Ilustradora Invitada",
+    "bio": "Artista visual e ilustradora de personajes destacados del pancracio.",
+    "social": {
+      "instagram": "https://www.instagram.com/araa_vss"
+    },
+    "cardCount": 1
+  },
+  {
+    "name": "Víctor Chang",
+    "role": "Ilustrador Invitado",
+    "bio": "Ilustrador conceptual y dibujante de gladiadores de alta intensidad.",
+    "social": {
+      "instagram": "https://www.instagram.com/victorchang_21"
+    },
+    "cardCount": 0
+  },
+  {
+    "name": "Neomgon",
+    "role": "Ilustrador Invitado",
+    "bio": "Diseñador de personajes y arte digital estilizado.",
+    "social": {
+      "instagram": "https://www.instagram.com/neomgon"
+    },
+    "cardCount": 1
+  },
+  {
+    "name": "Jack Coatl",
+    "role": "Ilustrador Invitado",
+    "bio": "Creador de escenarios y arenas míticas como el Ring de los Sueños.",
+    "cardCount": 3
+  },
+  {
+    "name": "Sam Purata",
+    "role": "Ilustrador Invitado",
+    "bio": "Ilustrador de cartas de castigo icónicas.",
+    "cardCount": 1
+  },
+  {
+    "name": "Akuro",
+    "role": "Ilustrador Invitado",
+    "bio": "Ilustrador de promotores e impulsores del juego.",
+    "cardCount": 1
+  },
+  {
+    "name": "Izumi Mortem",
+    "role": "Ilustradora Invitada",
+    "bio": "Ilustradora con estilo gótico y fantasía para rudos y gladiadores.",
+    "cardCount": 1
+  },
+  {
+    "name": "Kanio Necroz",
+    "role": "Ilustrador Invitado",
+    "bio": "Artista de personajes místicos del roster.",
+    "cardCount": 1
+  },
+  {
+    "name": "Marii-san",
+    "role": "Ilustradora Invitada",
+    "bio": "Ilustradora con arte anime y vibrante.",
+    "cardCount": 3
+  },
+  {
+    "name": "Pegoztino",
+    "role": "Ilustrador Invitado",
+    "bio": "Creador de arte dinámico para cartas clave.",
+    "cardCount": 2
+  },
+  {
+    "name": "Esty Sempai",
+    "role": "Ilustrador Invitado",
+    "bio": "Ilustrador de luchadores aéreos y técnicos.",
+    "cardCount": 1
+  }
+]

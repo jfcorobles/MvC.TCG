@@ -1,0 +1,304 @@
+<div class="browser-page container">
+  
+  <!-- Header & Search Bar -->
+  <header class="browser-header">
+    <div class="header-titles">
+      <span class="eyebrow">Catálogo Oficial</span>
+      <h1 class="page-title">Buscador de Cartas</h1>
+      <p class="page-desc">Explora los 143 gladiadores, llaves, arenas y promotores de la colección.</p>
+    </div>
+
+    <!-- Clean Search Field -->
+    <div class="search-box">
+      <span class="search-ico">🔍</span>
+      <input 
+        type="text" 
+        [ngModel]="cardService.filters().query" 
+        (ngModelChange)="onSearchChange($event)"
+        placeholder="Buscar por nombre, ilustrador, número o efecto..." 
+        class="clean-search-input" />
+      @if (cardService.filters().query) {
+        <button type="button" class="clear-btn" (click)="clearSearch()" title="Borrar búsqueda">✕</button>
+      }
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="browser-body">
+    
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar clean-panel" [class.mobile-open]="isMobileFiltersOpen()">
+      <div class="sidebar-head">
+        <h3 class="sidebar-heading">Filtros</h3>
+        @if (cardService.activeFilterCount() > 0) {
+          <button type="button" class="reset-link" (click)="resetAllFilters()">
+            Restablecer ({{ cardService.activeFilterCount() }})
+          </button>
+        }
+      </div>
+
+      <!-- Sets -->
+      <div class="filter-section">
+        <span class="filter-label">Edición</span>
+        <div class="filter-chips">
+          <button 
+            type="button"
+            class="filter-chip" 
+            [class.selected]="cardService.filters().sets.includes('Primera Edición')"
+            (click)="cardService.toggleSetFilter('Primera Edición')">
+            1ra Edición (104)
+          </button>
+          <button 
+            type="button"
+            class="filter-chip" 
+            [class.selected]="cardService.filters().sets.includes('Primera Expansión')"
+            (click)="cardService.toggleSetFilter('Primera Expansión')">
+            1ra Expansión (39)
+          </button>
+        </div>
+      </div>
+
+      <!-- Type -->
+      <div class="filter-section">
+        <span class="filter-label">Tipo de Carta</span>
+        <div class="filter-chips">
+          @for (t of availableTypes; track t) {
+            <button 
+              type="button"
+              class="filter-chip" 
+              [class.selected]="cardService.filters().types.includes(t)"
+              (click)="cardService.toggleTypeFilter(t)">
+              {{ t }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Bando -->
+      <div class="filter-section">
+        <span class="filter-label">Bando</span>
+        <div class="filter-chips">
+          <button 
+            type="button"
+            class="filter-chip chip-tec" 
+            [class.selected]="cardService.filters().bandos.includes('Técnico')"
+            (click)="cardService.toggleBandoFilter('Técnico')">
+            Técnico
+          </button>
+          <button 
+            type="button"
+            class="filter-chip chip-rud" 
+            [class.selected]="cardService.filters().bandos.includes('Rudo')"
+            (click)="cardService.toggleBandoFilter('Rudo')">
+            Rudo
+          </button>
+        </div>
+      </div>
+
+      <!-- Rarity -->
+      <div class="filter-section">
+        <span class="filter-label">Rareza</span>
+        <div class="filter-chips">
+          <button 
+            type="button"
+            class="filter-chip" 
+            [class.selected]="cardService.filters().rarities.includes('Leyenda')"
+            (click)="cardService.toggleRarityFilter('Leyenda')">
+            Leyenda
+          </button>
+          <button 
+            type="button"
+            class="filter-chip" 
+            [class.selected]="cardService.filters().rarities.includes('Promesa')"
+            (click)="cardService.toggleRarityFilter('Promesa')">
+            Promesa
+          </button>
+          <button 
+            type="button"
+            class="filter-chip" 
+            [class.selected]="cardService.filters().rarities.includes('Novato')"
+            (click)="cardService.toggleRarityFilter('Novato')">
+            Novato
+          </button>
+        </div>
+      </div>
+
+      <!-- Style -->
+      <div class="filter-section">
+        <span class="filter-label">Estilo</span>
+        <div class="filter-chips">
+          @for (st of availableStyles; track st) {
+            <button 
+              type="button"
+              class="filter-chip" 
+              [class.selected]="cardService.filters().styles.includes(st)"
+              (click)="cardService.toggleStyleFilter(st)">
+              {{ st }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Artists -->
+      <div class="filter-section">
+        <span class="filter-label">Ilustrador</span>
+        <div class="filter-chips scrollable-filter-chips">
+          @for (art of prominentArtists; track art) {
+            <button 
+              type="button"
+              class="filter-chip" 
+              [class.selected]="cardService.filters().artists.includes(art)"
+              (click)="cardService.toggleArtistFilter(art)">
+              {{ art }}
+            </button>
+          }
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Cards Grid & Controls -->
+    <main class="cards-pane">
+      
+      <!-- Controls Topbar -->
+      <div class="cards-topbar clean-panel">
+        <div class="counter-text">
+          <span>Mostrando <strong>{{ cardService.filteredCards().length }}</strong> cartas</span>
+        </div>
+
+        <div class="topbar-actions">
+          <button 
+            type="button" 
+            class="btn btn-outline btn-sm mobile-filter-toggle"
+            (click)="toggleMobileFilters()">
+            Filtros ({{ cardService.activeFilterCount() }})
+          </button>
+
+          <!-- Sorting -->
+          <div class="sort-wrapper">
+            <span class="sort-lbl">Ordenar por:</span>
+            <select 
+              class="clean-select"
+              [ngModel]="cardService.filters().sortBy" 
+              (ngModelChange)="onSortChange($event)">
+              <option value="number">Número (#)</option>
+              <option value="name">Nombre</option>
+              <option value="cost">Costo</option>
+              <option value="strength">Fuerza</option>
+              <option value="rarity">Rareza</option>
+            </select>
+          </div>
+
+          <!-- View Mode -->
+          <div class="mode-toggles">
+            <button 
+              type="button" 
+              class="mode-btn"
+              [class.active]="viewMode() === 'grid'"
+              (click)="viewMode.set('grid')"
+              title="Cuadrícula">
+              ⊞
+            </button>
+            <button 
+              type="button" 
+              class="mode-btn"
+              [class.active]="viewMode() === 'list'"
+              (click)="viewMode.set('list')"
+              title="Lista">
+              ≡
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid View -->
+      @if (viewMode() === 'grid') {
+        @if (cardService.filteredCards().length > 0) {
+          <div class="grid-cards animate-fade-in">
+            @for (card of paginatedCards(); track card.id) {
+              <app-card-item [card]="card"></app-card-item>
+            }
+          </div>
+        } @else {
+          <div class="empty-state clean-panel">
+            <p class="empty-title">No hay cartas que coincidan con estos filtros.</p>
+            <p class="empty-desc">Prueba limpiando la búsqueda o seleccionando otros criterios.</p>
+            <button type="button" class="btn btn-primary btn-sm" (click)="resetAllFilters()">
+              Ver todas las cartas
+            </button>
+          </div>
+        }
+      }
+
+      <!-- List / Table View -->
+      @if (viewMode() === 'list') {
+        @if (cardService.filteredCards().length > 0) {
+          <div class="table-wrapper clean-panel animate-fade-in">
+            <table class="clean-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Carta</th>
+                  <th>Tipo</th>
+                  <th>Bando</th>
+                  <th>Estilo</th>
+                  <th>Costo</th>
+                  <th>Fuerza</th>
+                  <th>Rareza</th>
+                  <th>Ilustrador</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (card of paginatedCards(); track card.id) {
+                  <tr class="table-row">
+                    <td class="cell-num">{{ card.number }}</td>
+                    <td class="cell-name">
+                      <div class="name-thumb-group">
+                        <img [src]="card.image" [alt]="card.name" class="mini-thumb" />
+                        <span class="card-link-title">{{ card.name }}</span>
+                      </div>
+                    </td>
+                    <td>{{ card.type }}</td>
+                    <td>{{ card.bando || '—' }}</td>
+                    <td>{{ card.style || '—' }}</td>
+                    <td>{{ card.cost !== null ? card.cost : '—' }}</td>
+                    <td>{{ card.strength !== null ? card.strength : '—' }}</td>
+                    <td>{{ card.rarity }}</td>
+                    <td>{{ card.artist }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+      }
+
+      <!-- Pagination -->
+      @if (totalPages() > 1) {
+        <div class="pagination-container clean-panel">
+          <button 
+            type="button" 
+            class="btn btn-outline btn-sm" 
+            [disabled]="currentPage() === 1"
+            (click)="setPage(currentPage() - 1)">
+            ← Anterior
+          </button>
+
+          <span class="pagination-info">
+            Página {{ currentPage() }} de {{ totalPages() }}
+          </span>
+
+          <button 
+            type="button" 
+            class="btn btn-outline btn-sm" 
+            [disabled]="currentPage() === totalPages()"
+            (click)="setPage(currentPage() + 1)">
+            Siguiente →
+          </button>
+        </div>
+      }
+
+    </main>
+
+  </div>
+</div>

@@ -1,0 +1,125 @@
+@if (modalService.isOpen() && card) {
+  <div class="modal-overlay" (click)="close()">
+    <div class="modal-sheet clean-panel" (click)="$event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button type="button" class="modal-close-btn" (click)="close()" title="Cerrar">
+        ✕
+      </button>
+
+      <div class="modal-content-grid">
+        
+        <!-- Card Artwork Column -->
+        <div class="modal-art-col">
+          <div class="modal-image-frame">
+            <img 
+              [src]="card.image" 
+              [alt]="card.name" 
+              (error)="handleImageError($event)"
+              class="modal-img" />
+          </div>
+        </div>
+
+        <!-- Card Data & Rules Column -->
+        <div class="modal-info-col">
+          
+          <div class="modal-header-meta">
+            <div class="meta-pills">
+              <span class="meta-pill">{{ card.set }}</span>
+              <span class="meta-pill">#{{ card.number }}</span>
+              <span class="meta-pill" [class]="'pill-' + card.rarity.toLowerCase()">{{ card.rarity }}</span>
+            </div>
+            
+            <h2 class="modal-card-title">{{ card.name }}</h2>
+            
+            <div class="type-summary-row">
+              <span class="card-type-name">{{ card.type }}</span>
+              @if (card.bando) {
+                <span class="sep">•</span>
+                <span [class]="card.bando === 'Técnico' ? 'text-tec' : 'text-rud'">{{ card.bando }}</span>
+              }
+              @if (card.style) {
+                <span class="sep">•</span>
+                <span>Estilo {{ card.style }}</span>
+              }
+            </div>
+          </div>
+
+          <!-- Numbers Grid -->
+          <div class="stats-row">
+            @if (card.cost !== null) {
+              <div class="stat-unit">
+                <span class="stat-unit-lbl">Costo de Contratos</span>
+                <strong class="stat-unit-num text-gold">📜 {{ card.cost }}</strong>
+              </div>
+            }
+            @if (card.strength !== null) {
+              <div class="stat-unit">
+                <span class="stat-unit-lbl">Fuerza de Ataque</span>
+                <strong class="stat-unit-num text-str">⚔ {{ card.strength }}</strong>
+              </div>
+            }
+            <div class="stat-unit">
+              <span class="stat-unit-lbl">Ilustración</span>
+              <span class="stat-unit-artist">{{ card.artist }}</span>
+            </div>
+          </div>
+
+          <!-- Description Box -->
+          <div class="rule-box">
+            <h4 class="rule-box-heading">Texto de la Carta</h4>
+            <p class="rule-box-content">
+              {{ card.rawDescription || 'Carta oficial de la colección Máscaras vs Cabelleras TCG.' }}
+            </p>
+          </div>
+
+          <!-- Deck Management Controls -->
+          <div class="deck-controls-row">
+            <div class="deck-state-text">
+              <span>Copias en tu mazo:</span>
+              <strong class="deck-current-count">{{ deckCount }} / 3</strong>
+            </div>
+
+            <div class="deck-btn-duo">
+              <button 
+                type="button" 
+                class="btn btn-outline btn-sm"
+                [disabled]="deckCount === 0"
+                (click)="removeFromDeck()">
+                - Quitar
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-primary btn-sm"
+                [disabled]="deckCount >= 3"
+                (click)="addToDeck()">
+                + Añadir
+              </button>
+            </div>
+          </div>
+
+          <!-- Social Outbound -->
+          <div class="modal-footer-nav">
+            <a 
+              href="https://www.instagram.com/mascarasvscabelleras_tcg/" 
+              target="_blank" 
+              rel="noopener" 
+              class="footer-social-link">
+              Instagram Oficial (&#64;mascarasvscabelleras_tcg) ↗
+            </a>
+            <a 
+              href="https://www.facebook.com/mascarasvscabellerastcg" 
+              target="_blank" 
+              rel="noopener" 
+              class="footer-social-link">
+              Facebook Oficial ↗
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+}

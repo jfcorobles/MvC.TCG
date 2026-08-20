@@ -1,0 +1,82 @@
+<div 
+  class="card-wrapper" 
+  [class.is-legend]="card.rarity === 'Leyenda'">
+  
+  <div 
+    class="clean-card" 
+    appCardTilt 
+    [maxTilt]="8"
+    [scale]="1.01" 
+    (click)="openModal()">
+    
+    <!-- Card Image Box -->
+    <div class="image-frame">
+      <img 
+        [src]="card.image" 
+        [alt]="card.name" 
+        loading="lazy"
+        (error)="handleImageError($event)"
+        class="card-img" />
+
+      <!-- Minimal Badges Overlay -->
+      <div class="overlay-top">
+        <span class="card-num">#{{ card.number }}</span>
+        @if (card.bando) {
+          <span class="bando-tag" [class.tecnico]="card.bando === 'Técnico'" [class.rudo]="card.bando === 'Rudo'">
+            {{ card.bando }}
+          </span>
+        }
+      </div>
+
+      <div class="overlay-bottom">
+        <span class="type-pill">{{ card.type }}</span>
+        <div class="stats-group">
+          @if (card.cost !== null) {
+            <span class="stat-bubble cost" title="Costo de Contratos">📜{{ card.cost }}</span>
+          }
+          @if (card.strength !== null) {
+            <span class="stat-bubble str" title="Fuerza">⚔{{ card.strength }}</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Metadata Footer -->
+    <div class="card-body">
+      <div class="title-row">
+        <h4 class="card-name" [title]="card.name">{{ card.name }}</h4>
+        @if (card.rarity === 'Leyenda') {
+          <span class="rarity-dot" title="Leyenda">★</span>
+        }
+      </div>
+      
+      <div class="details-row">
+        <span class="artist-label">{{ card.artist }}</span>
+        <span class="rarity-label" [class]="'r-' + card.rarity.toLowerCase()">{{ card.rarity }}</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="card-actions" (click)="$event.stopPropagation()">
+      <button 
+        type="button" 
+        class="deck-action-btn"
+        [class.added]="deckCount > 0"
+        (click)="toggleDeck()">
+        @if (deckCount > 0) {
+          <span>En mazo ({{ deckCount }}/3)</span>
+        } @else {
+          <span>+ Añadir al mazo</span>
+        }
+      </button>
+      <button 
+        type="button" 
+        class="inspect-btn" 
+        (click)="openModal()"
+        title="Ver carta en detalle">
+        Ver
+      </button>
+    </div>
+
+  </div>
+</div>

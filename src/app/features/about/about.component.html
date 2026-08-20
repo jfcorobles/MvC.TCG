@@ -1,0 +1,96 @@
+<div class="about-page container">
+  
+  <!-- Header -->
+  <header class="about-header">
+    <span class="eyebrow">Historia del Proyecto</span>
+    <h1 class="page-title">Máscaras vs Cabelleras TCG</h1>
+    <p class="page-lead">
+      Una iniciativa nacida de la afición mexicana por las cartas coleccionables y el folclore del pancracio, reuniendo el trabajo de ilustradores independientes de diversos estados del país.
+    </p>
+  </header>
+
+  <!-- Narrative Section -->
+  <section class="about-narrative clean-panel">
+    <h2 class="narrative-title">De la arena a las cartas</h2>
+    <p class="narrative-p">
+      El proyecto fue concebido por <strong>James Darko</strong> con el propósito de crear un sistema de juego de mesa accesible, con identidad propia y arraigado en la tradición luchística mexicana: rivalidades de máscara contra cabellera, la eterna pugna entre técnicos y rudos, y la emoción del llaveo a ras de lona.
+    </p>
+    <p class="narrative-p">
+      Con el lanzamiento de la <strong>Primera Edición (104 cartas)</strong> y posteriormente la <strong>Primera Expansión (39 cartas)</strong>, el juego ha construido una comunidad activa de jugadores y coleccionistas que se reúnen en convenciones ("Card Shows") y torneos locales.
+    </p>
+
+    <!-- Social Direct Channels -->
+    <div class="channels-box">
+      <span class="channels-tag">Canales Oficiales del Creador</span>
+      <div class="channels-grid">
+        <a 
+          href="https://www.instagram.com/mascarasvscabelleras_tcg/" 
+          target="_blank" 
+          rel="noopener" 
+          class="channel-item">
+          <div class="item-text">
+            <strong>Instagram</strong>
+            <span>&#64;mascarasvscabelleras_tcg</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+
+        <a 
+          href="https://www.facebook.com/mascarasvscabellerastcg" 
+          target="_blank" 
+          rel="noopener" 
+          class="channel-item">
+          <div class="item-text">
+            <strong>Facebook</strong>
+            <span>Máscaras vs Cabelleras TCG</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Artists Directory -->
+  <section class="artists-section">
+    <div class="section-title-wrap">
+      <span class="eyebrow">Equipo Creativo</span>
+      <h2 class="section-title">Directorio de Ilustradores</h2>
+      <p class="section-desc">Los artistas visuales independientes detrás del arte de las 143 cartas del juego.</p>
+    </div>
+
+    <div class="artists-clean-grid">
+      @for (artist of cardService.allArtists(); track artist.name) {
+        <div class="artist-clean-card clean-panel">
+          <div class="artist-top">
+            <h3 class="artist-clean-name">{{ artist.name }}</h3>
+            <span class="artist-clean-count">{{ artist.cardCount }} cartas</span>
+          </div>
+          
+          <p class="artist-clean-bio">{{ artist.bio }}</p>
+
+          <div class="artist-clean-links">
+            @if (artist.social?.instagram) {
+              <a [href]="artist.social?.instagram" target="_blank" rel="noopener" class="artist-link">
+                Instagram ↗
+              </a>
+            }
+            @if (artist.social?.facebook) {
+              <a [href]="artist.social?.facebook" target="_blank" rel="noopener" class="artist-link">
+                Facebook ↗
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Community Note -->
+  <section class="events-note clean-panel">
+    <h3 class="events-title">Eventos presenciales y comunidad</h3>
+    <p class="events-text">
+      El juego tiene presencia constante en eventos de coleccionistas y bazares de lucha libre en ciudades como Monterrey, Puebla y Ciudad de México. Si tienes fotos de tus cartas o partidas, compártelas con la etiqueta <strong>#mascarasvscabellerastcg</strong>.
+    </p>
+  </section>
+
+</div>

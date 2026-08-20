@@ -1,0 +1,178 @@
+<div class="deck-page container">
+  
+  <!-- Top Bar -->
+  <header class="deck-topbar">
+    <div class="deck-identity">
+      <span class="eyebrow">Armador de Barajas</span>
+      <div class="name-editor-row">
+        <input 
+          type="text" 
+          [ngModel]="deckService.deckName()" 
+          (ngModelChange)="deckService.setDeckName($event)" 
+          class="deck-title-field" 
+          placeholder="Nombre del mazo..." />
+      </div>
+    </div>
+
+    <div class="deck-utility-actions">
+      <button type="button" class="btn btn-outline btn-sm" (click)="copyDeckList()">
+        Copiar lista
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" (click)="exportDeckFile()">
+        Exportar JSON
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" (click)="triggerImport()">
+        Importar JSON
+      </button>
+      <button type="button" class="btn btn-outline btn-sm text-danger" (click)="clearDeck()">
+        Vaciar
+      </button>
+    </div>
+  </header>
+
+  <!-- Workspace Grid -->
+  <div class="deck-workspace">
+    
+    <!-- Left Column: Current Deck & Progress -->
+    <section class="deck-column clean-panel">
+      
+      <!-- Progress Bar -->
+      <div class="deck-progress-bar-area">
+        <div class="progress-info-row">
+          <span class="progress-lbl">Total de cartas</span>
+          <span class="progress-val" [class.ready]="deckService.isDeckValid()">
+            {{ deckService.totalCards() }} / 50
+          </span>
+        </div>
+        
+        <div class="meter-track">
+          <div 
+            class="meter-fill" 
+            [style.width.%]="(deckService.totalCards() / 50) * 100"
+            [class.ready]="deckService.isDeckValid()"
+            [class.over]="deckService.totalCards() > 50">
+          </div>
+        </div>
+
+        @if (deckService.isDeckValid()) {
+          <p class="status-msg success">Mazo completo de 50 cartas listo para jugar.</p>
+        } @else if (deckService.totalCards() < 50) {
+          <p class="status-msg hint">Faltan {{ 50 - deckService.totalCards() }} cartas para alcanzar las 50.</p>
+        } @else {
+          <p class="status-msg warn">Excede el límite reglamentario por {{ deckService.totalCards() - 50 }} cartas.</p>
+        }
+      </div>
+
+      <!-- List of Added Cards -->
+      <div class="deck-cards-list">
+        @if (deckService.deckItems().length > 0) {
+          @for (item of deckService.deckItems(); track item.card.id) {
+            <div class="deck-row-item" (click)="modalService.open(item.card)">
+              <img [src]="item.card.image" [alt]="item.card.name" class="row-thumb" />
+              
+              <div class="row-info">
+                <span class="row-card-name">{{ item.card.name }}</span>
+                <span class="row-meta">{{ item.card.type }} @if (item.card.cost !== null) { • 📜 Costo {{ item.card.cost }} }</span>
+              </div>
+
+              <div class="row-stepper" (click)="$event.stopPropagation()">
+                <button 
+                  type="button" 
+                  class="step-btn" 
+                  (click)="deckService.removeCard(item.card.id)">
+                  -
+                </button>
+                <span class="step-val">{{ item.quantity }}</span>
+                <button 
+                  type="button" 
+                  class="step-btn" 
+                  [disabled]="item.quantity >= 3"
+                  (click)="deckService.addCard(item.card)">
+                  +
+                </button>
+              </div>
+            </div>
+          }
+        } @else {
+          <div class="empty-deck-notice">
+            <p class="empty-txt">Tu mazo está vacío.</p>
+            <p class="empty-sub">Selecciona cartas de la búsqueda rápida a la derecha para agregarlas.</p>
+          </div>
+        }
+      </div>
+
+    </section>
+
+    <!-- Right Column: Analytics & Quick Add -->
+    <section class="side-column">
+      
+      <!-- Stats Summary -->
+      <div class="deck-stats-card clean-panel">
+        <h3 class="panel-title">Composición</h3>
+        
+        <div class="factions-count-row">
+          <span class="count-item text-tec">Técnicos: {{ deckService.bandoBreakdown().tecnicos }}</span>
+          <span class="count-item text-rud">Rudos: {{ deckService.bandoBreakdown().rudos }}</span>
+        </div>
+
+        <div class="types-tag-row">
+          @for (entry of typeEntries(); track entry.key) {
+            @if (entry.value > 0) {
+              <span class="type-metric-badge">
+                {{ entry.key }}: <strong>{{ entry.value }}</strong>
+              </span>
+            }
+          }
+        </div>
+
+        <!-- Minimalist Cost Histogram -->
+        <div class="cost-bar-chart">
+          <span class="chart-title">Curva de Costo de Contratos</span>
+          <div class="chart-bars-wrap">
+            @for (c of [0,1,2,3,4,5,6,7]; track c) {
+              <div class="chart-bar-slot">
+                <div class="bar-pillar-track">
+                  <div class="bar-pillar-fill" [style.height.%]="getCostPercentage(c)"></div>
+                </div>
+                <span class="bar-number-lbl">{{ c === 7 ? '7+' : c }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Add Drawer -->
+      <div class="quick-picker-card clean-panel">
+        <div class="picker-head">
+          <h3 class="panel-title">Añadir cartas</h3>
+          <input 
+            type="text" 
+            [(ngModel)]="quickSearchQuery" 
+            placeholder="Filtrar por nombre..." 
+            class="picker-input" />
+        </div>
+
+        <div class="picker-items-scroll">
+          @for (card of filteredQuickCards(); track card.id) {
+            <div class="picker-item-row">
+              <img [src]="card.image" [alt]="card.name" class="picker-thumb" />
+              <div class="picker-details">
+                <span class="picker-name">{{ card.name }}</span>
+                <span class="picker-meta">{{ card.type }} • Costo: {{ card.cost ?? 0 }}</span>
+              </div>
+              <button 
+                type="button" 
+                class="btn btn-outline btn-sm picker-add-btn" 
+                [disabled]="deckService.getCardQuantity(card.id) >= 3"
+                (click)="deckService.addCard(card)">
+                {{ deckService.getCardQuantity(card.id) > 0 ? '+' + deckService.getCardQuantity(card.id) : '+ Añadir' }}
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</div>

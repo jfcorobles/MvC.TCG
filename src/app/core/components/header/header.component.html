@@ -1,0 +1,84 @@
+<header class="site-header">
+  <div class="container header-inner">
+    
+    <!-- Logo -->
+    <a routerLink="/" class="brand-logo" (click)="closeMobileMenu()">
+      <span class="logo-mark">🤼</span>
+      <span class="brand-title">Máscaras <span class="brand-vs">vs</span> Cabelleras</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="nav-menu" [class.open]="isMobileMenuOpen()">
+      <a 
+        routerLink="/" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+        class="nav-link">
+        Inicio
+      </a>
+      <a 
+        routerLink="/cartas" 
+        routerLinkActive="active" 
+        (click)="closeMobileMenu()"
+        class="nav-link">
+        Cartas
+      </a>
+      <a 
+        routerLink="/reglas" 
+        routerLinkActive="active" 
+        (click)="closeMobileMenu()"
+        class="nav-link">
+        Reglas
+      </a>
+      <a 
+        routerLink="/mazo" 
+        routerLinkActive="active" 
+        (click)="closeMobileMenu()"
+        class="nav-link nav-deck">
+        <span>Mi Mazo</span>
+        <span class="deck-count" [class.ready]="deckService.totalCards() === 50">
+          {{ deckService.totalCards() }}/50
+        </span>
+      </a>
+      <a 
+        routerLink="/acerca" 
+        routerLinkActive="active" 
+        (click)="closeMobileMenu()"
+        class="nav-link">
+        Proyecto & Artistas
+      </a>
+    </nav>
+
+    <!-- Social & Mobile Toggle -->
+    <div class="header-actions">
+      <a 
+        href="https://www.instagram.com/mascarasvscabelleras_tcg/" 
+        target="_blank" 
+        rel="noopener" 
+        class="social-icon-link"
+        title="Instagram @mascarasvscabelleras_tcg">
+        IG
+      </a>
+      <a 
+        href="https://www.facebook.com/mascarasvscabellerastcg" 
+        target="_blank" 
+        rel="noopener" 
+        class="social-icon-link"
+        title="Facebook">
+        FB
+      </a>
+
+      <button 
+        type="button" 
+        class="mobile-toggle" 
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Abrir menú">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </button>
+    </div>
+
+  </div>
+</header>

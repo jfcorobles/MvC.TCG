@@ -1,0 +1,200 @@
+.rules-page {
+  padding: 3.5rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: 960px;
+}
+
+.rules-header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 2rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.page-title {
+  font-size: 2.4rem;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.page-intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-top: 0.5rem;
+  max-width: 680px;
+}
+
+/* Fact Cards */
+.quick-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.fact-card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fact-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.fact-title {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.fact-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Rules Block */
+.rules-block {
+  padding: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .rules-block {
+    padding: 1.5rem;
+  }
+}
+
+.block-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.block-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.block-title {
+  font-size: 1.45rem;
+  color: #ffffff;
+  margin-top: 0.2rem;
+}
+
+/* Steps */
+.turn-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.step-item {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.step-num {
+  width: 2rem;
+  height: 2rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.step-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.step-bullets {
+  margin-top: 0.6rem;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* Types */
+.types-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .types-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.type-entry-title {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.type-entry-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Tutorial Invite */
+.tutorial-invite {
+  padding: 2.25rem;
+}
+
+.invite-heading {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.invite-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+  margin-bottom: 1.5rem;
+}
+
+.invite-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

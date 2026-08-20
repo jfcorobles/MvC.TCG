@@ -1,0 +1,185 @@
+<div class="landing-container">
+  
+  <!-- HERO SECTION: Asymmetric Editorial Split -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      
+      <div class="hero-text-col">
+        <div class="category-tag">Juego de Cartas Coleccionables • Hecho en México</div>
+        
+        <h1 class="hero-headline">
+          El pancracio mexicano ahora se juega sobre la mesa.
+        </h1>
+        
+        <p class="hero-description">
+          Arma tu cartelera con luchadores técnicos y rudos, gestiona contratos para bajarlos al cuadrilátero, desata llaves maestras y disputa duelos donde cada caída cuenta.
+        </p>
+
+        <div class="hero-cta-group">
+          <a routerLink="/cartas" class="btn btn-primary btn-lg">
+            Ver las 143 Cartas
+          </a>
+          <a routerLink="/reglas" class="btn btn-outline btn-lg">
+            Cómo se juega
+          </a>
+        </div>
+
+        <div class="hero-micro-stats">
+          <div class="stat-pill">
+            <strong class="stat-val">104</strong>
+            <span class="stat-lbl">1ra Edición</span>
+          </div>
+          <div class="stat-pill">
+            <strong class="stat-val">39</strong>
+            <span class="stat-lbl">1ra Expansión</span>
+          </div>
+          <div class="stat-pill">
+            <strong class="stat-val">50</strong>
+            <span class="stat-lbl">Cartas por mazo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Showcase -->
+      <div class="hero-visual-col">
+        <div class="hero-card-preview">
+          <div class="featured-card-wrapper">
+            <img src="assets/cards/edicion-1/Charro Rojo.png" alt="Charro Rojo" class="hero-card-img" />
+            <div class="card-caption">
+              <span class="caption-title">Charro Rojo</span>
+              <span class="caption-artist">Arte por James Darko</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TWO WAYS OF FIGHTING: Asymmetric Contrast -->
+  <section class="factions-section">
+    <div class="container">
+      
+      <div class="section-intro">
+        <span class="eyebrow">Dinámica de Juego</span>
+        <h2 class="section-heading">Dos bandos, dos formas de ganar</h2>
+        <p class="section-lead">
+          En Máscaras vs Cabelleras, tu estilo de combate define tu estrategia en el ring.
+        </p>
+      </div>
+
+      <div class="contrast-grid">
+        
+        <!-- Faction Técnico -->
+        <div class="contrast-card tecnico-side clean-panel">
+          <div class="side-tag tecnico-tag">Bando Técnico</div>
+          <h3 class="side-title">Vuelo, llaveo y disciplina</h3>
+          <p class="side-text">
+            Los técnicos dominan el combate limpio aéreo y la sumisión a ras de lona. Aprovechan la ovación del público y encadenan contra-llaves rápidas para revertir los castigos del rival.
+          </p>
+          <div class="side-examples">
+            <span class="example-label">Figuras representativas:</span>
+            <span class="example-names">Charro Blanco, Sakura Claus, Sexy Venus, Meteorix</span>
+          </div>
+          <a routerLink="/cartas" [queryParams]="{ bando: 'Técnico' }" class="btn btn-tecnico btn-sm">
+            Explorar cartas técnicas →
+          </a>
+        </div>
+
+        <!-- Faction Rudo -->
+        <div class="contrast-card rudo-side clean-panel">
+          <div class="side-tag rudo-tag">Bando Rudo</div>
+          <h3 class="side-title">Trampa, agresión y sorpresa</h3>
+          <p class="side-text">
+            Los rudos no esperan al conteo. Usan montoneros para atacar en grupo, esconden tachuelas y botellas, y arriesgan descalificaciones con fauls oportunos cuando el réferi está distraído.
+          </p>
+          <div class="side-examples">
+            <span class="example-label">Figuras representativas:</span>
+            <span class="example-names">Tuskana, Halloween, Los Villanos, Belial</span>
+          </div>
+          <a routerLink="/cartas" [queryParams]="{ bando: 'Rudo' }" class="btn btn-rudo btn-sm">
+            Explorar cartas rudas →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURED CARDS GALLERY -->
+  <section class="gallery-section">
+    <div class="container">
+      
+      <div class="gallery-header">
+        <div>
+          <span class="eyebrow">Muestra del Catálogo</span>
+          <h2 class="section-heading">Cartas estelares</h2>
+        </div>
+        <a routerLink="/cartas" class="link-more">
+          Ver las 143 cartas disponibles →
+        </a>
+      </div>
+
+      <div class="grid-cards">
+        @for (card of cardService.getFeaturedCards(); track card.id) {
+          <app-card-item [card]="card"></app-card-item>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW TO PLAY INTRO: Step by Step Flow -->
+  <section class="rules-teaser-section">
+    <div class="container">
+      <div class="teaser-box clean-panel">
+        <div class="teaser-text">
+          <span class="eyebrow">Aprendizaje Rápido</span>
+          <h2 class="teaser-title">Partidas dinámicas a 2 de 3 caídas</h2>
+          <p class="teaser-desc">
+            Cada jugador inicia con su mazo de 50 cartas. Juega cartas de contrato para acumular el recurso necesario, bajar luchadores a la lona, equipar objetos y desgastar la resistencia del oponente.
+          </p>
+          <div class="teaser-actions">
+            <a routerLink="/reglas" class="btn btn-primary">
+              Leer el manual de reglas
+            </a>
+            <a routerLink="/mazo" class="btn btn-outline">
+              Armar un mazo de prueba
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTS AND COMMUNITY CALLOUT -->
+  <section class="community-spotlight">
+    <div class="container community-grid">
+      <div class="community-text-block">
+        <span class="eyebrow">Hecho por Ilustradores Mexicanos</span>
+        <h2 class="section-heading">El arte detrás de las cartas</h2>
+        <p class="community-paragraph">
+          Cada carta de Máscaras vs Cabelleras es ilustrada por artistas independientes de México. El proyecto comparte periódicamente avances de nuevas cartas, tutoriales en video y fechas de exhibición en eventos locales.
+        </p>
+        <div class="community-links-row">
+          <a 
+            href="https://www.instagram.com/mascarasvscabelleras_tcg/" 
+            target="_blank" 
+            rel="noopener" 
+            class="btn btn-outline btn-sm">
+            Instagram (&#64;mascarasvscabelleras_tcg) ↗
+          </a>
+          <a 
+            href="https://www.facebook.com/mascarasvscabellerastcg" 
+            target="_blank" 
+            rel="noopener" 
+            class="btn btn-outline btn-sm">
+            Facebook Oficial ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

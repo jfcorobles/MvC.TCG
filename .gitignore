@@ -1,0 +1,40 @@
+# Node & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Angular build artifacts
+.angular/
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# Environment and Local Config
+.env
+.env.local
+.env.*.local
+
+# Operating System & IDE Files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary analysis scripts
+scripts/analyze_raw.py
+scripts/test_clean.py
+scripts/find_effects.py
+scripts/validate_clean.py

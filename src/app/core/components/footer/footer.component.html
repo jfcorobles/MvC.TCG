@@ -1,0 +1,66 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    
+    <!-- Brand / Manifesto -->
+    <div class="footer-block brand-block">
+      <div class="brand-line">
+        <span class="logo-mark">🤼</span>
+        <span class="brand-name">Máscaras vs Cabelleras</span>
+      </div>
+      <p class="manifesto-text">
+        Un juego de cartas hecho en México para quienes crecieron viendo la lucha libre desde las gradas o frente a la televisión, y disfrutan reunirse alrededor de una mesa a retar a sus amigos.
+      </p>
+      <div class="direct-links">
+        <a 
+          href="https://www.instagram.com/mascarasvscabelleras_tcg/" 
+          target="_blank" 
+          rel="noopener" 
+          class="channel-link">
+          <span>Instagram Oficial (&#64;mascarasvscabelleras_tcg)</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a 
+          href="https://www.facebook.com/mascarasvscabellerastcg" 
+          target="_blank" 
+          rel="noopener" 
+          class="channel-link">
+          <span>Página de Facebook</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Columns -->
+    <div class="footer-block">
+      <h4 class="block-title">Secciones</h4>
+      <ul class="clean-links-list">
+        <li><a routerLink="/">Inicio</a></li>
+        <li><a routerLink="/cartas">Buscador de Cartas (143)</a></li>
+        <li><a routerLink="/reglas">Manual de Reglas</a></li>
+        <li><a routerLink="/mazo">Armador de Mazos</a></li>
+        <li><a routerLink="/acerca">Historia & Artistas</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-block">
+      <h4 class="block-title">Colección</h4>
+      <ul class="clean-links-list">
+        <li><a routerLink="/cartas" [queryParams]="{ set: 'Primera Edición' }">1ra Edición (104 cartas)</a></li>
+        <li><a routerLink="/cartas" [queryParams]="{ set: 'Primera Expansión' }">1ra Expansión (39 cartas)</a></li>
+        <li><a routerLink="/cartas" [queryParams]="{ bando: 'Técnico' }">Gladiadores Técnicos</a></li>
+        <li><a routerLink="/cartas" [queryParams]="{ bando: 'Rudo' }">Gladiadores Rudos</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="container footer-bottom">
+    <p class="copyright-note">
+      Proyecto independiente creado por James Darko e ilustradores colaboradores en México.
+    </p>
+    <p class="hashtag-note">
+      Comparte tus partidas con <a href="https://www.instagram.com/explore/tags/mascarasvscabellerastcg/" target="_blank" rel="noopener">#mascarasvscabellerastcg</a>
+    </p>
+  </div>
+</footer>

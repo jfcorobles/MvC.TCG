@@ -191,7 +191,7 @@ export class CardService {
         fetch('assets/data/artists.json')
           .then(res => res.json())
           .then(artists => this.allArtists.set(artists))
-          .catch(() => {});
+          .catch(() => { });
       }
     });
   }
@@ -278,6 +278,6 @@ export class CardService {
 
   getFeaturedCards(): Card[] {
     const cards = this.allCards();
-    return cards.filter(c => c.rarity === 'Leyenda' || ['Charro Rojo', 'Meteorix', 'Octagon', 'Carmelo Reyes', 'El Brazo de Oro', 'Halloween'].includes(c.name)).slice(0, 8);
+    return cards.filter(c => c.rarity === 'Leyenda' || ['Charro Blanco', 'Meteorix', 'Octagon', 'Carmelo Reyes', 'El Brazo de Oro', 'Halloween'].includes(c.name)).slice(0, 8);
   }
 }

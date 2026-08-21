@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardService } from '../../application/services/card.service';
 
 @Component({
   selector: 'app-about',
@@ -9,6 +8,5 @@ import { CardService } from '../../application/services/card.service';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent {
-  readonly cardService = inject(CardService);
-}
+export class AboutComponent {}
+

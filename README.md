@@ -50,8 +50,8 @@ Esta aplicación web fue diseñada como una experiencia interactiva para colecci
    * Persistencia automática en `localStorage`.
    * Exportación / Importación en formato JSON y copia de lista al portapapeles.
 
-5. **Directorio de Ilustradores:**
-   * Reconocimiento a los más de 16 artistas mexicanos colaboradores (James Darko, Araceli Salazar, Víctor Chang, Neomgon, etc.) con enlaces a sus perfiles.
+5. **Historia del Proyecto:**
+   * Contexto del origen del juego de cartas, su creador James Darko y la comunidad de jugadores.
 
 ---
 

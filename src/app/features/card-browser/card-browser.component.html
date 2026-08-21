@@ -15,7 +15,7 @@
         type="text" 
         [ngModel]="cardService.filters().query" 
         (ngModelChange)="onSearchChange($event)"
-        placeholder="Buscar por nombre, ilustrador, número o efecto..." 
+        placeholder="Buscar por nombre, número o efecto..." 
         class="clean-search-input" />
       @if (cardService.filters().query) {
         <button type="button" class="clear-btn" (click)="clearSearch()" title="Borrar búsqueda">✕</button>
@@ -134,22 +134,6 @@
               [class.selected]="cardService.filters().styles.includes(st)"
               (click)="cardService.toggleStyleFilter(st)">
               {{ st }}
-            </button>
-          }
-        </div>
-      </div>
-
-      <!-- Artists -->
-      <div class="filter-section">
-        <span class="filter-label">Ilustrador</span>
-        <div class="filter-chips scrollable-filter-chips">
-          @for (art of prominentArtists; track art) {
-            <button 
-              type="button"
-              class="filter-chip" 
-              [class.selected]="cardService.filters().artists.includes(art)"
-              (click)="cardService.toggleArtistFilter(art)">
-              {{ art }}
             </button>
           }
         </div>

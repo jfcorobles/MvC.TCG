@@ -5,7 +5,7 @@
     <span class="eyebrow">Historia del Proyecto</span>
     <h1 class="page-title">Máscaras vs Cabelleras TCG</h1>
     <p class="page-lead">
-      Una iniciativa nacida de la afición mexicana por las cartas coleccionables y el folclore del pancracio, reuniendo el trabajo de ilustradores independientes de diversos estados del país.
+      Una iniciativa nacida de la afición mexicana por las cartas coleccionables y el folclore del pancracio tradicional.
     </p>
   </header>
 
@@ -46,42 +46,19 @@
           </div>
           <span class="item-arrow">↗</span>
         </a>
+
+        <a 
+          href="https://www.youtube.com/@mascarasvscabellerastcg" 
+          target="_blank" 
+          rel="noopener" 
+          class="channel-item">
+          <div class="item-text">
+            <strong>YouTube</strong>
+            <span>&#64;mascarasvscabellerastcg</span>
+          </div>
+          <span class="item-arrow">↗</span>
+        </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Artists Directory -->
-  <section class="artists-section">
-    <div class="section-title-wrap">
-      <span class="eyebrow">Equipo Creativo</span>
-      <h2 class="section-title">Directorio de Ilustradores</h2>
-      <p class="section-desc">Los artistas visuales independientes detrás del arte de las 143 cartas del juego.</p>
-    </div>
-
-    <div class="artists-clean-grid">
-      @for (artist of cardService.allArtists(); track artist.name) {
-        <div class="artist-clean-card clean-panel">
-          <div class="artist-top">
-            <h3 class="artist-clean-name">{{ artist.name }}</h3>
-            <span class="artist-clean-count">{{ artist.cardCount }} cartas</span>
-          </div>
-          
-          <p class="artist-clean-bio">{{ artist.bio }}</p>
-
-          <div class="artist-clean-links">
-            @if (artist.social?.instagram) {
-              <a [href]="artist.social?.instagram" target="_blank" rel="noopener" class="artist-link">
-                Instagram ↗
-              </a>
-            }
-            @if (artist.social?.facebook) {
-              <a [href]="artist.social?.facebook" target="_blank" rel="noopener" class="artist-link">
-                Facebook ↗
-              </a>
-            }
-          </div>
-        </div>
-      }
     </div>
   </section>
 

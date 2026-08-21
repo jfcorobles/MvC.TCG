@@ -24,7 +24,7 @@ export const routes: Routes = [
   {
     path: 'acerca',
     loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent),
-    title: 'Proyecto & Directorio de Artistas | Máscaras vs Cabelleras TCG'
+    title: 'Historia del Proyecto | Máscaras vs Cabelleras TCG'
   },
   {
     path: '**',

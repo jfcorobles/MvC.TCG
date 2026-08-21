@@ -274,24 +274,3 @@
   gap: 1rem;
 }
 
-/* Community Spotlight */
-.community-spotlight {
-  padding: 1rem 0;
-}
-
-.community-text-block {
-  max-width: 720px;
-}
-
-.community-paragraph {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin: 0.85rem 0 1.75rem;
-}
-
-.community-links-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-}

@@ -155,11 +155,6 @@
   gap: 0.4rem;
 }
 
-.scrollable-filter-chips {
-  max-height: 150px;
-  overflow-y: auto;
-}
-
 .filter-chip {
   background: var(--bg-subtle);
   border: 1px solid var(--border-subtle);

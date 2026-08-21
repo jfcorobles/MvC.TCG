@@ -24,7 +24,6 @@ export class CardBrowserComponent implements OnInit {
 
   readonly availableTypes = ['Luchador', 'Castigo', 'Arena', 'Promotor', 'Contrato', 'Objeto'];
   readonly availableStyles = ['Clásico', 'Aéreo', 'Extremo', 'Fantasía', 'Mini'];
-  readonly prominentArtists = ['James Darko', 'Araceli Salazar', 'Víctor Chang', 'Neomgon', 'Jack Coatl', 'Sam Purata', 'Akuro', 'Izumi Mortem'];
 
   ngOnInit(): void {
     // Check route query params (e.g. ?bando=Técnico)

@@ -58,17 +58,30 @@
 
     <!-- Actions -->
     <div class="card-actions" (click)="$event.stopPropagation()">
-      <button 
-        type="button" 
-        class="deck-action-btn"
-        [class.added]="deckCount > 0"
-        (click)="toggleDeck()">
-        @if (deckCount > 0) {
-          <span>En mazo ({{ deckCount }}/3)</span>
-        } @else {
-          <span>+ Añadir al mazo</span>
-        }
-      </button>
+      @if (supabase.isAuthenticated()) {
+        <button 
+          type="button" 
+          class="deck-action-btn"
+          [class.added]="deckCount > 0"
+          (click)="toggleDeck()">
+          @if (deckCount > 0) {
+            <span>En mazo ({{ deckCount }}/3)</span>
+          } @else {
+            <span>+ Añadir al mazo</span>
+          }
+        </button>
+      }
+
+      @if (supabase.isAdmin()) {
+        <button 
+          type="button" 
+          class="admin-edit-btn" 
+          (click)="openEdit($event)"
+          title="Editar carta y efecto (Admin)">
+          ✏️
+        </button>
+      }
+
       <button 
         type="button" 
         class="inspect-btn" 

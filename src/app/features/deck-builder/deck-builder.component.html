@@ -3,7 +3,16 @@
   <!-- Top Bar -->
   <header class="deck-topbar">
     <div class="deck-identity">
-      <span class="eyebrow">Armador de Barajas</span>
+      <div class="identity-badges">
+        <span class="eyebrow">Armador de Barajas</span>
+        @if (deckService.activeDeckId()) {
+          <span class="cloud-badge" title="Mazo sincronizado en la nube">☁️ En Nube</span>
+        }
+        @if (deckService.isPublic()) {
+          <span class="public-badge" title="Visible en la comunidad">🌐 Público</span>
+        }
+      </div>
+      
       <div class="name-editor-row">
         <input 
           type="text" 
@@ -14,165 +23,587 @@
       </div>
     </div>
 
+    <!-- Main Navigation Tabs -->
+    <div class="deck-nav-tabs">
+      <button 
+        type="button" 
+        class="tab-btn" 
+        [class.active]="activeTab() === 'editor'"
+        (click)="setTab('editor')">
+        🛠️ Constructor
+      </button>
+      <button 
+        type="button" 
+        class="tab-btn" 
+        [class.active]="activeTab() === 'stats'"
+        (click)="setTab('stats')">
+        📊 Estadísticas
+      </button>
+      <button 
+        type="button" 
+        class="tab-btn" 
+        [class.active]="activeTab() === 'hub'"
+        (click)="setTab('hub')">
+        🌐 Deck Hub Comunitario
+      </button>
+    </div>
+
+    <!-- Action Buttons -->
     <div class="deck-utility-actions">
-      <button type="button" class="btn btn-outline btn-sm" (click)="copyDeckList()">
-        Copiar lista
+      @if (supabase.isAuthenticated()) {
+        <button type="button" class="btn btn-primary btn-sm btn-cloud-save" (click)="openCloudSaveModal()">
+          💾 Guardar en Nube
+        </button>
+        <button type="button" class="btn btn-outline btn-sm" (click)="openSavedDecksDrawer()">
+          📁 Mis Mazos ({{ deckService.userSavedDecks().length }})
+        </button>
+      }
+      <button type="button" class="btn btn-gold-subtle btn-sm" (click)="openSimulator()" title="Probar mano inicial">
+        🎲 Simular Mano
       </button>
-      <button type="button" class="btn btn-outline btn-sm" (click)="exportDeckFile()">
-        Exportar JSON
+      <button type="button" class="btn btn-gold-subtle btn-sm" (click)="openPosterModal()" title="Generar póster para redes">
+        📸 Póster Redes
       </button>
-      <button type="button" class="btn btn-outline btn-sm" (click)="triggerImport()">
-        Importar JSON
+      <button type="button" class="btn btn-outline btn-sm" (click)="copyDeckList()" title="Copiar lista como texto">
+        Copiar
       </button>
-      <button type="button" class="btn btn-outline btn-sm text-danger" (click)="clearDeck()">
-        Vaciar
+      <button type="button" class="btn btn-outline btn-sm" (click)="exportDeckFile()" title="Exportar archivo JSON">
+        Exportar
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" (click)="triggerImport()" title="Importar archivo JSON">
+        Importar
+      </button>
+      <button type="button" class="btn btn-outline btn-sm" (click)="newDeck()" title="Crear mazo nuevo">
+        + Nuevo
       </button>
     </div>
   </header>
 
-  <!-- Workspace Grid -->
-  <div class="deck-workspace">
-    
-    <!-- Left Column: Current Deck & Progress -->
-    <section class="deck-column clean-panel">
+  <!-- =========================================================
+       TAB 1: EDITOR / CONSTRUCTOR WORKSPACE
+       ========================================================= -->
+  @if (activeTab() === 'editor') {
+    <div class="deck-workspace">
       
-      <!-- Progress Bar -->
-      <div class="deck-progress-bar-area">
-        <div class="progress-info-row">
-          <span class="progress-lbl">Total de cartas</span>
-          <span class="progress-val" [class.ready]="deckService.isDeckValid()">
-            {{ deckService.totalCards() }} / 50
-          </span>
-        </div>
+      <!-- Left Column: Current Deck & Progress -->
+      <section class="deck-column clean-panel">
         
-        <div class="meter-track">
-          <div 
-            class="meter-fill" 
-            [style.width.%]="(deckService.totalCards() / 50) * 100"
-            [class.ready]="deckService.isDeckValid()"
-            [class.over]="deckService.totalCards() > 50">
+        <!-- Progress Bar -->
+        <div class="deck-progress-bar-area">
+          <div class="progress-info-row">
+            <span class="progress-lbl">Total de cartas en el mazo</span>
+            <span class="progress-val" [class.ready]="deckService.isDeckValid()">
+              {{ deckService.totalCards() }} / 50
+            </span>
           </div>
+          
+          <div class="meter-track">
+            <div 
+              class="meter-fill" 
+              [style.width.%]="(deckService.totalCards() / 50) * 100"
+              [class.ready]="deckService.isDeckValid()"
+              [class.over]="deckService.totalCards() > 50">
+            </div>
+          </div>
+
+          @if (deckService.isDeckValid()) {
+            <p class="status-msg success">✨ Mazo reglamentario de 50 cartas completo y listo para combatir.</p>
+          } @else if (deckService.totalCards() < 50) {
+            <p class="status-msg hint">Faltan {{ 50 - deckService.totalCards() }} cartas para alcanzar las 50 reglamentarias.</p>
+          } @else {
+            <p class="status-msg warn">Excede el límite reglamentario por {{ deckService.totalCards() - 50 }} cartas.</p>
+          }
         </div>
 
-        @if (deckService.isDeckValid()) {
-          <p class="status-msg success">Mazo completo de 50 cartas listo para jugar.</p>
-        } @else if (deckService.totalCards() < 50) {
-          <p class="status-msg hint">Faltan {{ 50 - deckService.totalCards() }} cartas para alcanzar las 50.</p>
-        } @else {
-          <p class="status-msg warn">Excede el límite reglamentario por {{ deckService.totalCards() - 50 }} cartas.</p>
-        }
-      </div>
+        <!-- List of Added Cards -->
+        <div class="deck-cards-list">
+          @if (deckService.deckItems().length > 0) {
+            @for (item of deckService.deckItems(); track item.card.id) {
+              <div class="deck-row-item" (click)="modalService.open(item.card)">
+                <img [src]="item.card.image" [alt]="item.card.name" class="row-thumb" />
+                
+                <div class="row-info">
+                  <span class="row-card-name">{{ item.card.name }}</span>
+                  <span class="row-meta">
+                    {{ item.card.type }} 
+                    @if (item.card.bando) { • <span [class]="item.card.bando === 'Técnico' ? 'text-tec' : 'text-rud'">{{ item.card.bando }}</span> }
+                    @if (item.card.cost !== null) { • 📜 Costo {{ item.card.cost }} }
+                  </span>
+                </div>
 
-      <!-- List of Added Cards -->
-      <div class="deck-cards-list">
-        @if (deckService.deckItems().length > 0) {
-          @for (item of deckService.deckItems(); track item.card.id) {
-            <div class="deck-row-item" (click)="modalService.open(item.card)">
-              <img [src]="item.card.image" [alt]="item.card.name" class="row-thumb" />
-              
-              <div class="row-info">
-                <span class="row-card-name">{{ item.card.name }}</span>
-                <span class="row-meta">{{ item.card.type }} @if (item.card.cost !== null) { • 📜 Costo {{ item.card.cost }} }</span>
+                <div class="row-stepper" (click)="$event.stopPropagation()">
+                  <button 
+                    type="button" 
+                    class="step-btn" 
+                    (click)="deckService.removeCard(item.card.id)"
+                    title="Quitar una copia">
+                    −
+                  </button>
+                  <span class="step-val">{{ item.quantity }}</span>
+                  <button 
+                    type="button" 
+                    class="step-btn" 
+                    [disabled]="item.quantity >= 3"
+                    (click)="deckService.addCard(item.card)"
+                    title="Agregar copia (Máx 3)">
+                    +
+                  </button>
+                </div>
+              </div>
+            }
+          } @else {
+            <div class="empty-deck-notice">
+              <span class="empty-icon">🤼</span>
+              <p class="empty-txt">Tu mazo está vacío</p>
+              <p class="empty-sub">Selecciona cartas de la búsqueda rápida a la derecha para armar tu estrategia.</p>
+            </div>
+          }
+        </div>
+      </section>
+
+      <!-- Right Column: Quick Card Search & Add -->
+      <section class="picker-column clean-panel">
+        <div class="picker-header">
+          <h3 class="picker-title">Catálogo Rápido</h3>
+          <a routerLink="/cartas" class="catalog-link">Ver catálogo completo →</a>
+        </div>
+
+        <div class="picker-search-wrap">
+          <input 
+            type="search" 
+            [(ngModel)]="quickSearchQuery" 
+            placeholder="Buscar por nombre, tipo, bando o estilo..." 
+            class="picker-search-input" />
+        </div>
+
+        <div class="picker-cards-grid">
+          @for (card of filteredQuickCards(); track card.id) {
+            <div class="picker-card-card">
+              <div class="picker-img-frame" (click)="modalService.open(card)">
+                <img [src]="card.image" [alt]="card.name" class="picker-card-img" />
+                @if (deckService.getCardQuantity(card.id) > 0) {
+                  <span class="picker-badge-count">{{ deckService.getCardQuantity(card.id) }}/3</span>
+                }
               </div>
 
-              <div class="row-stepper" (click)="$event.stopPropagation()">
+              <div class="picker-card-footer">
+                <div class="picker-card-text">
+                  <span class="picker-card-name" (click)="modalService.open(card)">{{ card.name }}</span>
+                  <span class="picker-card-type">{{ card.type }}</span>
+                </div>
+                
                 <button 
                   type="button" 
-                  class="step-btn" 
-                  (click)="deckService.removeCard(item.card.id)">
-                  -
-                </button>
-                <span class="step-val">{{ item.quantity }}</span>
-                <button 
-                  type="button" 
-                  class="step-btn" 
-                  [disabled]="item.quantity >= 3"
-                  (click)="deckService.addCard(item.card)">
+                  class="picker-add-btn" 
+                  [disabled]="deckService.getCardQuantity(card.id) >= 3"
+                  (click)="deckService.addCard(card)"
+                  title="Añadir al mazo">
                   +
                 </button>
               </div>
             </div>
           }
+        </div>
+      </section>
+    </div>
+  }
+
+  <!-- =========================================================
+       TAB 2: DECK STATS & ANALYTICS
+       ========================================================= -->
+  @if (activeTab() === 'stats') {
+    <div class="stats-workspace clean-panel">
+      <div class="stats-overview-grid">
+        
+        <!-- Metric Cards -->
+        <div class="metric-card">
+          <span class="metric-lbl">Total de Cartas</span>
+          <strong class="metric-val text-gold">{{ deckService.deckStats().totalCards }}/50</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-lbl">Costo Promedio</span>
+          <strong class="metric-val">{{ deckService.deckStats().avgCost }} 📜</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-lbl">Fuerza Promedio</span>
+          <strong class="metric-val text-str">{{ deckService.deckStats().avgStrength }} ⚔</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-lbl">Bando Dominante</span>
+          <strong class="metric-val" [class.text-tec]="deckService.deckStats().tecnicosCount > deckService.deckStats().rudosCount" [class.text-rud]="deckService.deckStats().rudosCount >= deckService.deckStats().tecnicosCount">
+            {{ deckService.deckStats().tecnicosCount >= deckService.deckStats().rudosCount ? 'Técnico' : 'Rudo' }}
+          </strong>
+        </div>
+      </div>
+
+      <!-- Two-Column Breakdown Charts -->
+      <div class="charts-grid">
+        
+        <!-- Cost Curve Chart -->
+        <div class="chart-box">
+          <h4 class="chart-heading">📈 Curva de Costo de Contratos</h4>
+          <div class="cost-bars-container">
+            @for (bar of deckService.deckStats().costCurve; track bar.cost) {
+              <div class="cost-bar-col">
+                <span class="bar-count">{{ bar.count }}</span>
+                <div class="bar-track">
+                  <div 
+                    class="bar-fill" 
+                    [style.height.%]="(bar.count / (deckService.deckStats().totalCards || 1)) * 180">
+                  </div>
+                </div>
+                <span class="bar-cost-lbl">{{ bar.cost === 7 ? '7+' : bar.cost }}⚡</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Bando & Type Breakdown -->
+        <div class="chart-box">
+          <h4 class="chart-heading">⚖️ Proporción de Bando & Tipos</h4>
+          
+          <div class="bando-meter-box">
+            <div class="bando-labels">
+              <span class="text-tec">Técnicos: {{ deckService.deckStats().tecnicosCount }}</span>
+              <span class="text-rud">Rudos: {{ deckService.deckStats().rudosCount }}</span>
+              <span>Neutrales: {{ deckService.deckStats().neutralesCount }}</span>
+            </div>
+            <div class="bando-multi-bar">
+              <div class="bar-tec" [style.width.%]="(deckService.deckStats().tecnicosCount / (deckService.deckStats().totalCards || 1)) * 100"></div>
+              <div class="bar-rud" [style.width.%]="(deckService.deckStats().rudosCount / (deckService.deckStats().totalCards || 1)) * 100"></div>
+              <div class="bar-neu" [style.width.%]="(deckService.deckStats().neutralesCount / (deckService.deckStats().totalCards || 1)) * 100"></div>
+            </div>
+          </div>
+
+          <div class="types-breakdown-list">
+            <div class="type-pill-stat">
+              <span>Luchadores</span>
+              <strong>{{ deckService.deckStats().luchadoresCount }}</strong>
+            </div>
+            <div class="type-pill-stat">
+              <span>Castigos</span>
+              <strong>{{ deckService.deckStats().castigosCount }}</strong>
+            </div>
+            <div class="type-pill-stat">
+              <span>Arenas</span>
+              <strong>{{ deckService.deckStats().arenasCount }}</strong>
+            </div>
+            <div class="type-pill-stat">
+              <span>Promotores</span>
+              <strong>{{ deckService.deckStats().promotoresCount }}</strong>
+            </div>
+            <div class="type-pill-stat">
+              <span>Contratos</span>
+              <strong>{{ deckService.deckStats().contratosCount }}</strong>
+            </div>
+            <div class="type-pill-stat">
+              <span>Objetos</span>
+              <strong>{{ deckService.deckStats().objetosCount }}</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <!-- =========================================================
+       TAB 3: DECK HUB (COMMUNITY DECKS)
+       ========================================================= -->
+  @if (activeTab() === 'hub') {
+    <div class="hub-workspace clean-panel">
+      <div class="hub-header-row">
+        <div>
+          <h3 class="hub-title">🌐 Mazos de la Comunidad</h3>
+          <p class="hub-sub">Explora barajas compartidas por otros luchadores, clónalas a tu cuenta o dales Me Gusta.</p>
+        </div>
+
+        <div class="hub-search-box">
+          <input 
+            type="search" 
+            [(ngModel)]="communitySearchQuery" 
+            (ngModelChange)="onCommunitySearch()"
+            placeholder="Buscar por nombre de mazo..." 
+            class="hub-search-input" />
+        </div>
+      </div>
+
+      @if (deckService.isLoadingDecks()) {
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Cargando mazos de la comunidad...</p>
+        </div>
+      } @else if (deckService.publicDecks().length > 0) {
+        <div class="public-decks-grid">
+          @for (deck of deckService.publicDecks(); track deck.id) {
+            <div class="public-deck-card">
+              <div class="deck-card-top">
+                <div class="deck-author-row">
+                  <span class="author-avatar">🤼</span>
+                  <div class="author-details">
+                    <strong class="author-name">{{ deck.authorName }}</strong>
+                    @if (deck.authorState) {
+                      <span class="author-state">📍 {{ deck.authorState }}</span>
+                    }
+                  </div>
+                </div>
+
+                <button 
+                  type="button" 
+                  class="like-btn" 
+                  [class.liked]="deck.hasLiked"
+                  (click)="toggleLike(deck, $event)"
+                  title="Dar Me Gusta">
+                  {{ deck.hasLiked ? '❤️' : '🤍' }} {{ deck.likesCount }}
+                </button>
+              </div>
+
+              <h4 class="deck-card-title">{{ deck.name }}</h4>
+              <p class="deck-card-desc">{{ deck.description || 'Estrategia de combate Máscaras vs Cabelleras TCG.' }}</p>
+
+              <div class="deck-card-stats-pill">
+                <span>{{ deck.cards.length }} cartas distintas</span>
+                <span>•</span>
+                <span>Actualizado {{ deck.updatedAt | date:'mediumDate' }}</span>
+              </div>
+
+              <div class="deck-card-actions">
+                <button type="button" class="btn btn-primary btn-sm w-100" (click)="cloneDeck(deck)">
+                  📋 Clonar Mazo a mi Cuenta
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-hub-state">
+          <p>No se encontraron mazos públicos en la comunidad.</p>
+          @if (supabase.isAuthenticated()) {
+            <button type="button" class="btn btn-primary btn-sm" (click)="openCloudSaveModal()">
+              ¡Sé el primero en compartir tu mazo!
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+
+</div>
+
+<!-- =========================================================
+     MODAL: GUARDAR EN LA NUBE
+     ========================================================= -->
+@if (isCloudSaveModalOpen()) {
+  <div class="modal-overlay" (click)="closeCloudSaveModal()">
+    <div class="modal-card clean-panel" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">💾 Guardar Mazo en la Nube</h3>
+        <button type="button" class="modal-close" (click)="closeCloudSaveModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        @if (saveToast()) {
+          <div class="alert alert-success">{{ saveToast() }}</div>
+        }
+
+        <div class="form-group">
+          <label class="form-label">Nombre del Mazo *</label>
+          <input 
+            type="text" 
+            [(ngModel)]="saveDeckTitle" 
+            class="form-control" 
+            placeholder="Ej. Rudos de la Arena México" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Descripción o Estrategia</label>
+          <textarea 
+            [(ngModel)]="saveDeckDesc" 
+            class="form-control" 
+            rows="3" 
+            placeholder="Explica cómo se juega tu baraja, combos clave o recomendaciones..."></textarea>
+        </div>
+
+        <div class="form-check-group">
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="saveDeckIsPublic" />
+            <span>Hacer público en el <strong>Deck Hub Comunitario</strong></span>
+          </label>
+          <p class="checkbox-hint">Otros jugadores podrán ver tu lista, clonarla y darle Me Gusta.</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="closeCloudSaveModal()">Cancelar</button>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          [disabled]="deckService.isSavingDeck()" 
+          (click)="confirmSaveToCloud()">
+          {{ deckService.isSavingDeck() ? 'Guardando...' : 'Guardar Mazo' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- =========================================================
+     DRAWER: MIS MAZOS GUARDADOS
+     ========================================================= -->
+@if (isSavedDecksDrawerOpen()) {
+  <div class="modal-overlay" (click)="closeSavedDecksDrawer()">
+    <div class="drawer-card clean-panel" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">📁 Mis Mazos en la Nube</h3>
+        <button type="button" class="modal-close" (click)="closeSavedDecksDrawer()">✕</button>
+      </div>
+
+      <div class="drawer-body">
+        @if (deckService.userSavedDecks().length > 0) {
+          <div class="saved-decks-list">
+            @for (deck of deckService.userSavedDecks(); track deck.id) {
+              <div 
+                class="saved-deck-item" 
+                [class.active]="deckService.activeDeckId() === deck.id"
+                (click)="loadDeck(deck)">
+                
+                <div class="saved-deck-info">
+                  <strong class="saved-deck-name">{{ deck.name }}</strong>
+                  <span class="saved-deck-date">Actualizado: {{ deck.updatedAt | date:'shortDate' }}</span>
+                  <div class="saved-deck-tags">
+                    @if (deck.isPublic) {
+                      <span class="tag-pub">🌐 Público ({{ deck.likesCount }} ❤️)</span>
+                    } @else {
+                      <span class="tag-priv">🔒 Privado</span>
+                    }
+                  </div>
+                </div>
+
+                <div class="saved-deck-actions" (click)="$event.stopPropagation()">
+                  <button 
+                    type="button" 
+                    class="btn btn-outline btn-xs text-danger" 
+                    (click)="deleteSavedDeck(deck, $event)"
+                    title="Eliminar mazo">
+                    🗑️
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
         } @else {
-          <div class="empty-deck-notice">
-            <p class="empty-txt">Tu mazo está vacío.</p>
-            <p class="empty-sub">Selecciona cartas de la búsqueda rápida a la derecha para agregarlas.</p>
+          <div class="empty-drawer">
+            <p>No tienes ningún mazo guardado en la nube todavía.</p>
           </div>
         }
       </div>
 
-    </section>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline w-100" (click)="closeSavedDecksDrawer()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+}
 
-    <!-- Right Column: Analytics & Quick Add -->
-    <section class="side-column">
+<!-- =========================================================
+     MODAL: SIMULADOR DE MANO INICIAL (PLAYTEST)
+     ========================================================= -->
+@if (isSimulatorModalOpen() && simulationState()) {
+  <div class="modal-overlay" (click)="closeSimulator()">
+    <div class="simulator-card clean-panel" (click)="$event.stopPropagation()">
       
-      <!-- Stats Summary -->
-      <div class="deck-stats-card clean-panel">
-        <h3 class="panel-title">Composición</h3>
-        
-        <div class="factions-count-row">
-          <span class="count-item text-tec">Técnicos: {{ deckService.bandoBreakdown().tecnicos }}</span>
-          <span class="count-item text-rud">Rudos: {{ deckService.bandoBreakdown().rudos }}</span>
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">🎲 Simulador de Mano & Playtest</h3>
+          <p class="modal-sub">Prueba la consistencia de robo de tu baraja de 50 cartas.</p>
         </div>
+        <button type="button" class="modal-close" (click)="closeSimulator()">✕</button>
+      </div>
 
-        <div class="types-tag-row">
-          @for (entry of typeEntries(); track entry.key) {
-            @if (entry.value > 0) {
-              <span class="type-metric-badge">
-                {{ entry.key }}: <strong>{{ entry.value }}</strong>
-              </span>
-            }
-          }
+      <!-- Probability Stats Row -->
+      <div class="sim-prob-row">
+        <div class="prob-chip">
+          <span>Turno Actual:</span>
+          <strong>Turno {{ simulationState()!.turn }}</strong>
         </div>
-
-        <!-- Minimalist Cost Histogram -->
-        <div class="cost-bar-chart">
-          <span class="chart-title">Curva de Costo de Contratos</span>
-          <div class="chart-bars-wrap">
-            @for (c of [0,1,2,3,4,5,6,7]; track c) {
-              <div class="chart-bar-slot">
-                <div class="bar-pillar-track">
-                  <div class="bar-pillar-fill" [style.height.%]="getCostPercentage(c)"></div>
-                </div>
-                <span class="bar-number-lbl">{{ c === 7 ? '7+' : c }}</span>
-              </div>
-            }
-          </div>
+        <div class="prob-chip">
+          <span>Contratos en Mano:</span>
+          <strong class="text-gold">{{ simulationState()!.contractProbability }}%</strong>
+        </div>
+        <div class="prob-chip">
+          <span>Luchadores Costo ≤ 2:</span>
+          <strong class="text-tec">{{ simulationState()!.lowCostLuchadorProbability }}%</strong>
+        </div>
+        <div class="prob-chip">
+          <span>Cartas restantes en Baraja:</span>
+          <strong>{{ simulationState()!.deckRemainder.length }}</strong>
         </div>
       </div>
 
-      <!-- Quick Add Drawer -->
-      <div class="quick-picker-card clean-panel">
-        <div class="picker-head">
-          <h3 class="panel-title">Añadir cartas</h3>
-          <input 
-            type="text" 
-            [(ngModel)]="quickSearchQuery" 
-            placeholder="Filtrar por nombre..." 
-            class="picker-input" />
-        </div>
-
-        <div class="picker-items-scroll">
-          @for (card of filteredQuickCards(); track card.id) {
-            <div class="picker-item-row">
-              <img [src]="card.image" [alt]="card.name" class="picker-thumb" />
-              <div class="picker-details">
-                <span class="picker-name">{{ card.name }}</span>
-                <span class="picker-meta">{{ card.type }} • Costo: {{ card.cost ?? 0 }}</span>
-              </div>
-              <button 
-                type="button" 
-                class="btn btn-outline btn-sm picker-add-btn" 
-                [disabled]="deckService.getCardQuantity(card.id) >= 3"
-                (click)="deckService.addCard(card)">
-                {{ deckService.getCardQuantity(card.id) > 0 ? '+' + deckService.getCardQuantity(card.id) : '+ Añadir' }}
-              </button>
+      <!-- Hand Display -->
+      <div class="sim-hand-area">
+        <h4 class="sim-area-heading">Mano de Combate ({{ simulationState()!.hand.length }} cartas):</h4>
+        <div class="sim-cards-grid">
+          @for (c of simulationState()!.hand; track $index) {
+            <div class="sim-card-item" (click)="modalService.open(c)">
+              <img [src]="c.image" [alt]="c.name" class="sim-card-img" />
+              <span class="sim-card-name">{{ c.name }}</span>
             </div>
           }
         </div>
       </div>
 
-    </section>
+      <!-- Simulator Controls -->
+      <div class="sim-controls-row">
+        <button type="button" class="btn btn-outline" (click)="mulligan()">
+          🔄 Mulligan (Rebarajar y robar 6)
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          [disabled]="simulationState()!.deckRemainder.length === 0"
+          (click)="drawTurn()">
+          🃏 Robar Turno {{ simulationState()!.turn + 1 }}
+        </button>
+      </div>
 
+    </div>
   </div>
-</div>
+}
+
+<!-- =========================================================
+     MODAL: PÓSTER PARA REDES SOCIALES (CANVAS)
+     ========================================================= -->
+@if (isPosterModalOpen()) {
+  <div class="modal-overlay" (click)="closePosterModal()">
+    <div class="poster-card clean-panel" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">📸 Póster Oficial para Redes Sociales</h3>
+          <p class="modal-sub">Descarga esta imagen en alta resolución optimizada para historias de Instagram, WhatsApp o Facebook.</p>
+        </div>
+        <button type="button" class="modal-close" (click)="closePosterModal()">✕</button>
+      </div>
+
+      <div class="poster-body">
+        @if (isGeneratingPoster()) {
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Generando póster de alta resolución con Canvas...</p>
+          </div>
+        } @else if (posterDataUrl()) {
+          <div class="poster-preview-frame">
+            <img [src]="posterDataUrl()" alt="Póster del mazo Máscaras vs Cabelleras" class="poster-img-preview" />
+          </div>
+        }
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="closePosterModal()">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="downloadPoster()" [disabled]="!posterDataUrl()">
+          ⬇️ Descargar Imagen PNG
+        </button>
+      </div>
+    </div>
+  </div>
+}

@@ -13,7 +13,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Contrato.jpg",
-    "rawDescription": "Nombre: Contrato\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 000\nRareza: Novato"
+    "rawDescription": "Nombre: Contrato\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 000\nRareza: Novato",
+    "effect": null
   },
   {
     "id": "ed1-000-m-scara-de-midas",
@@ -29,7 +30,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Máscara de Midas.png",
-    "rawDescription": "Nombre: Máscara de Midas\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 000\nRareza: Novato"
+    "rawDescription": "Nombre: Máscara de Midas\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 000\nRareza: Novato",
+    "effect": "-LEGADO-"
   },
   {
     "id": "ed1-001-charro-rojo",
@@ -45,7 +47,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Charro Rojo.png",
-    "rawDescription": "Nombre: Charro Rojo\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 001"
+    "rawDescription": "Nombre: Charro Rojo\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 001",
+    "effect": "Cuando entra al Cuadrilátero, puedes buscar 1\"CHARRONEGRO\" en tu Empresa, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-002-sakura-claus",
@@ -61,7 +64,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Sakura Claus.png",
-    "rawDescription": "Nombre: Sakura Claus\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 002"
+    "rawDescription": "Nombre: Sakura Claus\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 002",
+    "effect": "Cuando entra al Cuadrilátero, ambos jugadores roban 2 cartas de su Empresa."
   },
   {
     "id": "ed1-003-charro-blanco",
@@ -77,7 +81,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Charro Blanco.png",
-    "rawDescription": "Nombre: Charro Blanco\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 003"
+    "rawDescription": "Nombre: Charro Blanco\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 003",
+    "effect": "Cuando entra al Cuadrilátero, puedes buscar 1 \"CHARRO ROJO\" en tu Empresa, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-004-charro-negro",
@@ -93,7 +98,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Charro Negro.png",
-    "rawDescription": "Nombre: Charro Negro\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 004"
+    "rawDescription": "Nombre: Charro Negro\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 2\nFuerza: 2\nIlustrador: James Darko\nCarta: 004",
+    "effect": "Cuando entra al Cuadrilátero, puedes buscar 1 \"CHARRO BLANCO\" en tu Empresa, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa. Mientras\" CHARRONEGRO\",\"CHARRO BLANCO\" y\" CHARRO ROJO\" permanezcan en tu Cuadrilátero, ganan 3 de fuerza."
   },
   {
     "id": "ed1-005-montoneros",
@@ -109,7 +115,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Montoneros.png",
-    "rawDescription": "Nombre: Montoneros\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 005\nRareza: Novato"
+    "rawDescription": "Nombre: Montoneros\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 005\nRareza: Novato",
+    "effect": "Selecciona 1 luchador de tu Cuadrilátero y suma la fuerza de todos los luchadores de tu Cuadrilátero al luchador seleccionado por esta carta. El turno en el que esta carta es jugada, solamente el luchador seleccionado puede atacar y al final del turno es enviadoal Vestidor."
   },
   {
     "id": "ed1-006-tuskana",
@@ -125,7 +132,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Tuskana.png",
-    "rawDescription": "Nombre: Tuskana\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 6\nFuerza: 2\nIlustrador: James Darko\nCarta: 006"
+    "rawDescription": "Nombre: Tuskana\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 6\nFuerza: 2\nIlustrador: James Darko\nCarta: 006",
+    "effect": "Cuando entra al Cuadrilátero, noquea a todos los luchadores del Cuadrilátero de cada jugador."
   },
   {
     "id": "ed1-007-cuenta-de-tres",
@@ -141,7 +149,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Cuenta de Tres.png",
-    "rawDescription": "Nombre: Cuenta de Tres\nTipo de carta: Objeto\nCosto: 9\nIlustrador: James Darko\nCarta: 007\nRareza: Promesa"
+    "rawDescription": "Nombre: Cuenta de Tres\nTipo de carta: Objeto\nCosto: 9\nIlustrador: James Darko\nCarta: 007\nRareza: Promesa",
+    "effect": "-ÍDOLO-\nSi el luchador equipado con esta carta noquea a un luchador adversario, ponle 1 contador. Cuando el luchador equipado con esta carta tenga 3 contadores, ganas la caida."
   },
   {
     "id": "ed1-008-amarrado-de-cuerdas",
@@ -157,7 +166,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Amarrado de Cuerdas.png",
-    "rawDescription": "Nombre: Amarrado de Cuerdas\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 008\nRareza: Novato"
+    "rawDescription": "Nombre: Amarrado de Cuerdas\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 008\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSelecciona 1 luchador del Cuadriláterode cualquier jugador. El luchador seleccionado por esta carta no puede atacar ni defender hasta el final del turno."
   },
   {
     "id": "ed1-009-h-ctor",
@@ -173,7 +183,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Héctor.png",
-    "rawDescription": "Nombre: Héctor\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 009\nRareza: Novato"
+    "rawDescription": "Nombre: Héctor\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 009\nRareza: Novato",
+    "effect": "Solo puedes jugar esta carta durante la fase de batalla del jugador adversario. Descarta 1 luchador para no recibir daño de batalla durante este turno."
   },
   {
     "id": "ed1-010-tirantes",
@@ -189,7 +200,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Tirantes.png",
-    "rawDescription": "Nombre: Tirantes\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 010\nRareza: Novato"
+    "rawDescription": "Nombre: Tirantes\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 010\nRareza: Novato",
+    "effect": "Los luchadores\" RUDOS' ganan 2 de fuerza."
   },
   {
     "id": "ed1-11-noche-del-guitarrazo",
@@ -205,7 +217,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Noche del Guitarrazo.png",
-    "rawDescription": "Nombre: Noche del Guitarrazo\nTipo de carta: Castigo\nCosto: 2\nIlustrador: Sam Purata\nCarta: 11\nRareza: Novato"
+    "rawDescription": "Nombre: Noche del Guitarrazo\nTipo de carta: Castigo\nCosto: 2\nIlustrador: Sam Purata\nCarta: 11\nRareza: Novato",
+    "effect": "Solo puedes jugar esta carta si tienes 1 o mas luchadores\" RUDOs\" en tu Cuadrilátero. Noquea 1 luchador adversario"
   },
   {
     "id": "ed1-012-sexy-venus",
@@ -221,7 +234,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Sexy Venus.png",
-    "rawDescription": "Nombre: Sexy Venus\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 4\nFuerza: 4\nIlustrador: James Darko\nCarta: 012"
+    "rawDescription": "Nombre: Sexy Venus\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 4\nFuerza: 4\nIlustrador: James Darko\nCarta: 012",
+    "effect": "Una vez por turno durante tu fase de preparación, puedes\" despedir\"\"N\" numero de cartas de tu Vestidor para que 1 luchador adversario pierda fuerza igual al numero de cartas \" despedidas\" por la habilidad de este luchador hasta el final del turno."
   },
   {
     "id": "ed1-013-arquero-negro",
@@ -237,7 +251,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Arquero Negro.png",
-    "rawDescription": "Nombre: Arquero Negro\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 1\nFuerza: 2\nIlustrador: James Darko\nCarta: 013"
+    "rawDescription": "Nombre: Arquero Negro\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 1\nFuerza: 2\nIlustrador: James Darko\nCarta: 013",
+    "effect": "-OPORTUNISTA-\nCada vez que este luchador haga daño de batalla, el jugador adversario debe descartar 1 carta al azar y robar 1 carta de su Empresa."
   },
   {
     "id": "ed1-014-cintur-n-del-campe-n",
@@ -253,7 +268,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Cinturón del Campeón.png",
-    "rawDescription": "Nombre: Cinturón del Campeón\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 014\nRareza: Novato"
+    "rawDescription": "Nombre: Cinturón del Campeón\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 014\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta gana 2 de fuerza y adquiere la habilidadIMBATIBLE."
   },
   {
     "id": "ed1-015-los-pelones-del-mal",
@@ -269,7 +285,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Los Pelones del Mal.png",
-    "rawDescription": "Nombre: Los Pelones del Mal\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 4\nFuerza: 4\nIlustrador: James Darko\nCarta: 015"
+    "rawDescription": "Nombre: Los Pelones del Mal\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 4\nFuerza: 4\nIlustrador: James Darko\nCarta: 015",
+    "effect": "Una vez por turno durante tu fase de batalla, puedes pagar 1 contrato para que este luchador haga un segundo ataque."
   },
   {
     "id": "ed1-016-segundo-aire",
@@ -285,7 +302,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Segundo Aire.png",
-    "rawDescription": "Nombre: Segundo Aire\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 016\nRareza: Novato"
+    "rawDescription": "Nombre: Segundo Aire\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 016\nRareza: Novato",
+    "effect": "Selecciona 1 luchador de tu Vestidor de costo 3 o menor y juegalo sin pagar su costo, luego \" despide\" esta carta."
   },
   {
     "id": "ed1-017-rey-espectro",
@@ -301,7 +319,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Rey Espectro.png",
-    "rawDescription": "Nombre: Rey Espectro\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 28\nFuerza: 8\nIlustrador: James Darko\nCarta: 017"
+    "rawDescription": "Nombre: Rey Espectro\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 28\nFuerza: 8\nIlustrador: James Darko\nCarta: 017",
+    "effect": "Si este luchador entra al Cuadrilátero desde tu Mano, Vestidor, Empresa o por alguna habilidad sin pagar su costo; su fuerza se vuelve 2. Si este luchador se juega desde la Mano pagando su costo, adquiere la habilidad OPORTUNISTA."
   },
   {
     "id": "ed1-018-pumara",
@@ -317,7 +336,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Pumara.png",
-    "rawDescription": "Nombre: Pumara\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 4\nFuerza: 5\nIlustrador: James Darko\nCarta: 018"
+    "rawDescription": "Nombre: Pumara\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 4\nFuerza: 5\nIlustrador: James Darko\nCarta: 018",
+    "effect": "Durante tu fase de batalla, si el jugador adversario juega un castigo, puedes pagar el costo de esa carta y \" rechazarla\""
   },
   {
     "id": "ed1-019-arleking",
@@ -333,7 +353,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Arleking.png",
-    "rawDescription": "Nombre: Arleking\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 4\nFuerza: 2\nIlustrador: James Darko\nCarta: 019"
+    "rawDescription": "Nombre: Arleking\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 4\nFuerza: 2\nIlustrador: James Darko\nCarta: 019",
+    "effect": "Cuando entra al Cuadrilátero, busca en tu Empresa 1 castigo u objeto de costo 3 o menor y juegalo sin pagar su costo, luego baraja tu Empresa."
   },
   {
     "id": "ed1-020-arkena",
@@ -349,7 +370,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Arkena.png",
-    "rawDescription": "Nombre: Arkena\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 3\nFuerza: 1\nIlustrador: James Darko\nCarta: 020"
+    "rawDescription": "Nombre: Arkena\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 3\nFuerza: 1\nIlustrador: James Darko\nCarta: 020",
+    "effect": "Mientras este luchador permanezca en tu Cuadrilátero, todas tus cartas cuestan 1 contrato menos."
   },
   {
     "id": "ed1-021-tr-bol-black",
@@ -365,7 +387,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Trébol Black.png",
-    "rawDescription": "Nombre: Trébol Black\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 2\nFuerza: 1\nIlustrador: James Darko\nCarta: 021"
+    "rawDescription": "Nombre: Trébol Black\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 2\nFuerza: 1\nIlustrador: James Darko\nCarta: 021",
+    "effect": "-OPORTUNISTA-\n-HURANO-\nCuando este luchador haga daño de batalla, puedes devolver 1 carta de tu Vestidor a tu Empresa, luego baraja tu Empresa."
   },
   {
     "id": "ed1-022-tr-bol-family",
@@ -381,7 +404,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Trébol Family.png",
-    "rawDescription": "Nombre: Trébol Family\nTipo de carta: Arena\nCosto: 4\nIlustrador: James Darko\nCarta: 022\nRareza: Novato"
+    "rawDescription": "Nombre: Trébol Family\nTipo de carta: Arena\nCosto: 4\nIlustrador: James Darko\nCarta: 022\nRareza: Novato",
+    "effect": "\"Despide\" esta carta si no tienes 1 o mas luchadores con\" TREBOL\" en su nombre en tu Cuadrilátero. Al final de tu turno, puedes buscar 1 contrato en tu Empresa y ponerlo en tu Zona de Contratos Pagados, luego barajatu Empresa."
   },
   {
     "id": "ed1-023-belial",
@@ -397,7 +421,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Belial.png",
-    "rawDescription": "Nombre: Belial\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 5\nFuerza: 3\nIlustrador: James Darko\nCarta: 023"
+    "rawDescription": "Nombre: Belial\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 5\nFuerza: 3\nIlustrador: James Darko\nCarta: 023",
+    "effect": "-IMBATIBLE-\nEste luchador gana 1 de fuerza por cada luchador \"RUDO\" en el Cuadrilátero de cada jugador."
   },
   {
     "id": "ed1-024-mano-a-mano",
@@ -413,7 +438,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Mano a Mano.png",
-    "rawDescription": "Nombre: Mano a Mano\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 024\nRareza: Novato"
+    "rawDescription": "Nombre: Mano a Mano\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 024\nRareza: Novato",
+    "effect": "Cada jugador puede atacar solamente con 1 luchador por turno."
   },
   {
     "id": "ed1-025-don-linkin-park",
@@ -429,7 +455,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Don Linkin Park.png",
-    "rawDescription": "Nombre: Don Linkin Park\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 5\nFuerza: 6\nIlustrador: James Darko\nCarta: 025"
+    "rawDescription": "Nombre: Don Linkin Park\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 5\nFuerza: 6\nIlustrador: James Darko\nCarta: 025",
+    "effect": "-ÍDOLO-\nCuando entra al Cuadrilátero, noquea 1 luchador. Cuando es noqueado, envia 1 carta del Cuadrilátero de cualquier jugador al Vestidor. Si este luchador esta en tu Vestidor, puedes\" despedirlo\" para buscar 1 carta en tu Empresa de costo igual o menor al de este luchador, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-026-llamado-del-charro",
@@ -445,7 +472,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Llamado del Charro.png",
-    "rawDescription": "Nombre: Llamado del Charro\nTipo de carta: Castigo\nCosto: 5\nIlustrador: James Darko\nCarta: 026\nRareza: Promesa"
+    "rawDescription": "Nombre: Llamado del Charro\nTipo de carta: Castigo\nCosto: 5\nIlustrador: James Darko\nCarta: 026\nRareza: Promesa",
+    "effect": "-ÍDOLO-\nSolo puedes jugar esta carta si no tienes luchadores en tu Cuadrilátero. Busca 1 \"CHARRO ROJO\", 1\"CHARRO NEGRO\" y 1 \"CHARRO BLANCO\" en tu Empresa o Vestidor y juégalos sin pagar su costo pero con sus habilidades \" rechazadas\"; luego baraja tu Empresa si buscaste en ella."
   },
   {
     "id": "ed1-026-relevo",
@@ -461,7 +489,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Relevo.png",
-    "rawDescription": "Nombre: Relevo\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 026\nRareza: Novato"
+    "rawDescription": "Nombre: Relevo\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 026\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nCambia el objetivo de 1 ataque o castigo a otro luchador de tu Cuadrilátero."
   },
   {
     "id": "ed1-028-sting-pink",
@@ -477,7 +506,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Sting Pink.png",
-    "rawDescription": "Nombre: Sting Pink\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Extremo\nCosto: 3\nFuerza: 3\nIlustrador: Esty Sempai\nCarta: 028"
+    "rawDescription": "Nombre: Sting Pink\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Extremo\nCosto: 3\nFuerza: 3\nIlustrador: Esty Sempai\nCarta: 028",
+    "effect": "Cuando este luchador es noqueado, puedes buscar 1\"STING PINK\" en tu Mano o Empresa y jugarla sin pagar su costo."
   },
   {
     "id": "ed1-029-manto-del-h-roe",
@@ -493,7 +523,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Manto del Héroe.png",
-    "rawDescription": "Nombre: Manto del Héroe\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 029\nRareza: Novato"
+    "rawDescription": "Nombre: Manto del Héroe\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 029\nRareza: Novato",
+    "effect": "Los luchadores \"TECNICOS\" ganan 2 de fuerza."
   },
   {
     "id": "ed1-030-el-profanador",
@@ -509,7 +540,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/El Profanador.png",
-    "rawDescription": "Nombre: El Profanador\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 5\nFuerza: 4\nIlustrador: Kanio Necroz\nCarta: 030"
+    "rawDescription": "Nombre: El Profanador\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 5\nFuerza: 4\nIlustrador: Kanio Necroz\nCarta: 030",
+    "effect": "-OPORTUNISTA-\n-HURANO-"
   },
   {
     "id": "ed1-031-la-cerrajera",
@@ -525,7 +557,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/La Cerrajera.png",
-    "rawDescription": "Nombre: La Cerrajera\nTipo de carta: Objeto\nCosto: 4\nIlustrador: James Darko\nCarta: 031\nRareza: Promesa"
+    "rawDescription": "Nombre: La Cerrajera\nTipo de carta: Objeto\nCosto: 4\nIlustrador: James Darko\nCarta: 031\nRareza: Promesa",
+    "effect": "El luchador equipado con esta carta gana 1 de fuerza y puede atacar a los luchadores adversarios \"Agresores\". Si esta carta esta en tu Vestidor, puedes \" despedir\" 1 contrato de tu Zona de Contratos para devolver esta carta a tu Mano."
   },
   {
     "id": "ed1-032-obek",
@@ -541,7 +574,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Obek.png",
-    "rawDescription": "Nombre: Obek\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 4\nFuerza: 4\nIlustrador: James Darko\nCarta: 032"
+    "rawDescription": "Nombre: Obek\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 4\nFuerza: 4\nIlustrador: James Darko\nCarta: 032",
+    "effect": "-ÍDOLO-\nPuedes enviar 3 luchadores de tu Cuadrilátero al Vestidor para jugar este luchador sin pagar su costo. En tu fase de preparación, puedes enviar 2 luchadores de tu Cuadrilátero al Vestidor para noquear a todos los luchadores adversarios."
   },
   {
     "id": "ed1-033-lucille",
@@ -557,7 +591,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Lucille.png",
-    "rawDescription": "Nombre: Lucille\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 033\nRareza: Novato"
+    "rawDescription": "Nombre: Lucille\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 033\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta gana 2 de fuerza y puede noquear a los luchadoresconlahabilidadIMBATIBLE"
   },
   {
     "id": "ed1-034-rey-del-beautiful",
@@ -573,7 +608,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Rey del Beautiful.png",
-    "rawDescription": "Nombre: Rey del Beautiful\nTipo de carta: Arena\nCosto: 6\nIlustrador: James Darko\nCarta: 034\nRareza: Novato"
+    "rawDescription": "Nombre: Rey del Beautiful\nTipo de carta: Arena\nCosto: 6\nIlustrador: James Darko\nCarta: 034\nRareza: Novato",
+    "effect": "Una vez por turno durante tu fase de preparación, el jugador adversario envia cartas de su Empresa al Vestidor igual al numero de luchadores en tu Cuadrilátero"
   },
   {
     "id": "ed1-035-jamonazo",
@@ -589,7 +625,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Jamonazo.jpg",
-    "rawDescription": "Nombre: Jamonazo\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 035\nRareza: Promesa"
+    "rawDescription": "Nombre: Jamonazo\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 035\nRareza: Promesa",
+    "effect": "Noquea 1 luchador adversario. Puedes pagar 1 contrato adicional y si lo haces, devuelve esta carta a tu Empresa, luego baraja tu Empresa."
   },
   {
     "id": "ed1-036-mala-copa",
@@ -605,7 +642,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Mala Copa.png",
-    "rawDescription": "Nombre: Mala Copa\nTipo de carta: Luchador\nCosto: 2\nIlustrador: James Darko\nCarta: 036\nRareza: Novato"
+    "rawDescription": "Nombre: Mala Copa\nTipo de carta: Luchador\nCosto: 2\nIlustrador: James Darko\nCarta: 036\nRareza: Novato",
+    "effect": "-ÍDOLO-\nEl luchador equipado con esta carta duplica su fuerza y puede atacar 2 veces en el mismo turno. Al final del turno en el que esta carta fue jugada, \" despide\" esta carta y al luchador equipado con ella."
   },
   {
     "id": "ed1-037-botas-de-luchador",
@@ -621,7 +659,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Botas de Luchador.png",
-    "rawDescription": "Nombre: Botas de Luchador\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 037\nRareza: Novato"
+    "rawDescription": "Nombre: Botas de Luchador\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 037\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta gana 2 de fuerza. Si el luchador equipado es \"AEREO\", también adquiere la habilidad HURANO."
   },
   {
     "id": "ed1-038-mini-mi",
@@ -637,7 +676,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Mini-Mi.png",
-    "rawDescription": "Nombre: Mini-Mi\nTipo de carta: Arena\nCosto: 8\nIlustrador: James Darko\nCarta: 038\nRareza: Promesa"
+    "rawDescription": "Nombre: Mini-Mi\nTipo de carta: Arena\nCosto: 8\nIlustrador: James Darko\nCarta: 038\nRareza: Promesa",
+    "effect": "-ÍDOLO-\n-INMORTAL-\nDurante tu fase de batalla, los luchadores de tu Cuadrilátero pueden dividir su fuerza a la mitad turno (si se obtiene un numero decimal, se ignora la parte decimal)."
   },
   {
     "id": "ed1-039-carmelo-reyes",
@@ -653,7 +693,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Carmelo Reyes.png",
-    "rawDescription": "Nombre: Carmelo Reyes\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 6\nFuerza: 4\nIlustrador: James Darko\nCarta: 039"
+    "rawDescription": "Nombre: Carmelo Reyes\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 6\nFuerza: 4\nIlustrador: James Darko\nCarta: 039",
+    "effect": "-ÍDOLO-\n-OPORTUNISTA-\nSi no tienes luchadores en tu Cuadrilátero, puedes jugar esta carta sin pagar su costo. Una vez por turno durante tu fase de preparación, puedes buscar 1\"NOCHE DEL GUITARRAZO\" en tu Empresa o Vestidor, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-040-faul",
@@ -669,7 +710,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Faul.png",
-    "rawDescription": "Nombre: Faul\nTipo de carta: Castigo\nCosto: 4\nIlustrador: Surprise Party\nCarta: 040\nRareza: Novato"
+    "rawDescription": "Nombre: Faul\nTipo de carta: Castigo\nCosto: 4\nIlustrador: Surprise Party\nCarta: 040\nRareza: Novato",
+    "effect": "\"Despide\" 1 carta del Cuadrilátero de cualquier jugador."
   },
   {
     "id": "ed1-041-abucheo",
@@ -685,7 +727,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Abucheo.png",
-    "rawDescription": "Nombre: Abucheo\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 041\nRareza: Novato"
+    "rawDescription": "Nombre: Abucheo\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 041\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSelecciona 1 luchador del Cuadrilátero de cualquier jugador: TECNlCO: Pierde 2 de fuerza hasta el final del turno. RUDO: Gana 2 de fuerza hasta el final del turno."
   },
   {
     "id": "ed1-042-regreso-del-h-roe",
@@ -701,7 +744,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Regreso del Héroe.png",
-    "rawDescription": "Nombre: Regreso del Héroe\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 042\nRareza: Promesa"
+    "rawDescription": "Nombre: Regreso del Héroe\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 042\nRareza: Promesa",
+    "effect": "Selecciona 1 luchador \"TECNICO\" del Vestidor de cualquier jugador, juegalo sin pagar su costo y equipalo con esta carta. El luchador equipado con esta carta gana 3 de fuerza. Si el luchador equipado con esta carta es noqueado o enviado al Vestidor, \" despide\" esta carta y al luchador equipado."
   },
   {
     "id": "ed1-043-liquidaci-n",
@@ -717,7 +761,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Liquidación.png",
-    "rawDescription": "Nombre: Liquidación\nTipo de carta: Arena\nCosto: 6\nIlustrador: James Darko\nCarta: 043\nRareza: Novato"
+    "rawDescription": "Nombre: Liquidación\nTipo de carta: Arena\nCosto: 6\nIlustrador: James Darko\nCarta: 043\nRareza: Novato",
+    "effect": "Los contratos pagados por el jugador adversario no pueden regresar a su Zona de Contratos. Debes\" despedir\" la carta superior de tu Empresa al final del turno de cada jugador para que esta carta permanezca en tu Cuadrilátero."
   },
   {
     "id": "ed1-044-mucha-crema",
@@ -733,7 +778,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Mucha Crema.png",
-    "rawDescription": "Nombre: Mucha Crema\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 044\nRareza: Leyenda"
+    "rawDescription": "Nombre: Mucha Crema\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 044\nRareza: Leyenda",
+    "effect": "-ÍDOLO-\n-CONTRALLAVE-\nJuega desde tu Mano, Empresa o Vestidor 1 luchador sin pagar su costo. Si esta carta esta en tu Vestidor, puedes \" despedir\" 1 contrato de tu Zona de Contratos para devolver esta carta a tu Mano."
   },
   {
     "id": "ed1-045-bancarrota",
@@ -749,7 +795,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Bancarrota.png",
-    "rawDescription": "Nombre: Bancarrota\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 045\nRareza: Novato"
+    "rawDescription": "Nombre: Bancarrota\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 045\nRareza: Novato",
+    "effect": "\"Despide\" 1 contrato de la Zona de Contratos o Zona de Contratos Pagados de cada jugador."
   },
   {
     "id": "ed1-046-tachuelas",
@@ -765,7 +812,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Tachuelas.png",
-    "rawDescription": "Nombre: Tachuelas\nTipo de carta: Arena\nCosto: 1\nIlustrador: James Darko\nCarta: 046\nRareza: Novato"
+    "rawDescription": "Nombre: Tachuelas\nTipo de carta: Arena\nCosto: 1\nIlustrador: James Darko\nCarta: 046\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nCada vez que un luchador \"Agresor\" declare un ataque, lanza 1 moneda: AGUILA: El luchador\" Agresor\" adquiere la habilidad HURANO hasta el final del turno. SELLO: El luchador\" Agresor\" es noqueado."
   },
   {
     "id": "ed1-047-demolici-n",
@@ -781,7 +829,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Demolición.png",
-    "rawDescription": "Nombre: Demolición\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 047\nRareza: Novato"
+    "rawDescription": "Nombre: Demolición\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 047\nRareza: Novato",
+    "effect": "\"Despide\" todas las arenas del Cuadrilátero de cada jugador"
   },
   {
     "id": "ed1-048-renegociaci-n",
@@ -797,7 +846,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Renegociación.png",
-    "rawDescription": "Nombre: Renegociación\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 048\nRareza: Novato"
+    "rawDescription": "Nombre: Renegociación\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 048\nRareza: Novato",
+    "effect": "-ÍDOLO-\n-INMORTAL-\nBusca 2 contratos en tu Empresa y ponlos en tu Zona de Contratos Pagados, luego \" despide\" esta carta y baraja tu Empresa. Si juegas esta carta desde tu Vestidor, busca 1 contrato en tu Empresa y ponlo en tu Zona de Contratos Pagados, luego \" despide\" esta carta y baraja tu Empresa."
   },
   {
     "id": "ed1-049-clon-stico",
@@ -813,7 +863,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Clonístico.png",
-    "rawDescription": "Nombre: Clonístico\nTipo de carta: Castigo\nCosto: 6\nIlustrador: James Darko\nCarta: 049\nRareza: Novato"
+    "rawDescription": "Nombre: Clonístico\nTipo de carta: Castigo\nCosto: 6\nIlustrador: James Darko\nCarta: 049\nRareza: Novato",
+    "effect": "-ÍDOLO-\n-CONTRALLAVE-\nSelecciona 1 luchador de tu Cuadrilátero y juega desde tu Mano o Empresa todos los luchadores con el mismo nombre que el luchador seleccionado sin pagar su costo, pero con sus habilidades \" rechazadas\"."
   },
   {
     "id": "ed1-050-derechos-de-autor",
@@ -829,7 +880,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Derechos de Autor.png",
-    "rawDescription": "Nombre: Derechos de Autor\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 8\nFuerza: 6\nIlustrador: James Darko\nCarta: 050"
+    "rawDescription": "Nombre: Derechos de Autor\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 8\nFuerza: 6\nIlustrador: James Darko\nCarta: 050",
+    "effect": "-ÍDOLO-\n-INMORTAL-\nCuando entra al Cuadrilátero, los luchadores \"TEcNICOs\" de tu Cuadrilátero ganan 4 de fuerza y la habilidad IMBATIBLE hasta el final del turno. Puedes enviar 1 contrato de tu Zona de Contratos a tu Vestidor para evitar que esta carta sea noqueada. Puedes descartar esta carta para no recibir daño de batalla durante este turno."
   },
   {
     "id": "ed1-051-halc-n-suriano-jr",
@@ -845,7 +897,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Halcón Suriano Jr.png",
-    "rawDescription": "Nombre: Halcón Suriano Jr.\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 6\nFuerza: 3\nIlustrador: James Darko\nCarta: 051"
+    "rawDescription": "Nombre: Halcón Suriano Jr.\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 6\nFuerza: 3\nIlustrador: James Darko\nCarta: 051",
+    "effect": "-ÍDOLO-\n-IMBATIBLE-\nCada vez que un luchador \"TEcNICO\" entre a tu Cuadrilátero, el jugador adversario enviara la carta superior de su Empresa a su Vestidor."
   },
   {
     "id": "ed1-052-abundancia",
@@ -861,7 +914,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Abundancia.png",
-    "rawDescription": "Nombre: Abundancia\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 052\nRareza: Novato"
+    "rawDescription": "Nombre: Abundancia\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 052\nRareza: Novato",
+    "effect": "Durante tu fase inicial, puedes poner hasta 2 contratos en tu Zona de Contratos."
   },
   {
     "id": "ed1-053-ofrecimiento-de-ayuda",
@@ -877,7 +931,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Ofrecimiento de Ayuda.png",
-    "rawDescription": "Nombre: Ofrecimiento de Ayuda\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 053\nRareza: Novato"
+    "rawDescription": "Nombre: Ofrecimiento de Ayuda\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 053\nRareza: Novato",
+    "effect": "Cada turno durante tu fase de preparación, la primer carta que juegues cuesta 1 contrato menos."
   },
   {
     "id": "ed1-054-promotor-iracundo",
@@ -893,7 +948,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Promotor Iracundo.png",
-    "rawDescription": "Nombre: Promotor Iracundo\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 054\nRareza: Novato"
+    "rawDescription": "Nombre: Promotor Iracundo\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 054\nRareza: Novato",
+    "effect": "Durante tu fase de preparación, si tienes 5 o mas contratos en tu Zona de Contratos, puedes 'despedir\" 1 contrato de tu Zona de Contratos para noquear a todos los luchadores adversarios."
   },
   {
     "id": "ed1-055-fuerza-bruta",
@@ -909,7 +965,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Fuerza Bruta.png",
-    "rawDescription": "Nombre: Fuerza Bruta\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 055\nRareza: Novato"
+    "rawDescription": "Nombre: Fuerza Bruta\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 055\nRareza: Novato",
+    "effect": "Los luchadores de tu Cuadrilátero ganan 1 de fuerza. Una vez por turno durante tu fase de preparación, puedes descartar 1 carta para que un luchador de tu Cuadrilátero gane 2 de fuerza hasta el final del turno."
   },
   {
     "id": "ed1-050-golden-boy",
@@ -925,7 +982,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Golden Boy.png",
-    "rawDescription": "Nombre: Golden Boy\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 1\nFuerza: 5\nIlustrador: James Darko\nCarta: 050"
+    "rawDescription": "Nombre: Golden Boy\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 1\nFuerza: 5\nIlustrador: James Darko\nCarta: 050",
+    "effect": "Solo puede entrar al Cuadrilátero si tienes 2 o mas luchadores en tu Cuadrilátero."
   },
   {
     "id": "ed1-057-luchadores-de-juguete",
@@ -941,7 +999,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Luchadores de Juguete.png",
-    "rawDescription": "Nombre: Luchadores de Juguete\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 057\nRareza: Novato"
+    "rawDescription": "Nombre: Luchadores de Juguete\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 057\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSelecciona 1 luchador adversario y reduce su fuerza a 0 hasta el final del turno en el que se jugo esta carta."
   },
   {
     "id": "ed1-058-power-sombrero",
@@ -957,7 +1016,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Power Sombrero.png",
-    "rawDescription": "Nombre: Power Sombrero\nTipo de carta: Arena\nCosto: 4\nIlustrador: Snap\nCarta: 058\nRareza: Novato"
+    "rawDescription": "Nombre: Power Sombrero\nTipo de carta: Arena\nCosto: 4\nIlustrador: Snap\nCarta: 058\nRareza: Novato",
+    "effect": "Los luchadores con\" CHARRO\" en su nombre ganan 2 de fuerza."
   },
   {
     "id": "ed1-059-shin-garra",
@@ -973,7 +1033,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Shin Garra.png",
-    "rawDescription": "Nombre: Shin Garra\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 5\nFuerza: 5\nIlustrador: James Darko\nCarta: 059"
+    "rawDescription": "Nombre: Shin Garra\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 5\nFuerza: 5\nIlustrador: James Darko\nCarta: 059",
+    "effect": "-ÍDOLO-\nUna vez por turno durante tu fase de preparación, puedes buscar 1 castigo en tu Empresa de costo 5 o menor y jugarlo sin pagar su costo, luego baraja tu Empresa. Este luchador no puede atacar el turno en el que uso esta habilidad."
   },
   {
     "id": "ed1-060-c-smico",
@@ -989,7 +1050,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Cósmico.png",
-    "rawDescription": "Nombre: Cósmico\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 2\nFuerza: 2\nIlustrador: Neomgon\nCarta: 060"
+    "rawDescription": "Nombre: Cósmico\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 2\nFuerza: 2\nIlustrador: Neomgon\nCarta: 060",
+    "effect": "Una vez por turno durante tu fase de preparación, puedes nombrar 1 tipo de carta, el jugador adversario toma la carta superior de su Empresa y la muestra, si aciertas con el tipo de carta que nombraste es \" despedida\"; pero si fallas, el jugador adversario agrega esa carta a su Mano."
   },
   {
     "id": "ed1-061-mosko-extreme",
@@ -1005,7 +1067,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Mosko Extreme.png",
-    "rawDescription": "Nombre: Mosko Extreme\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 1\nFuerza: 2\nIlustrador: James Darko\nCarta: 061"
+    "rawDescription": "Nombre: Mosko Extreme\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 1\nFuerza: 2\nIlustrador: James Darko\nCarta: 061",
+    "effect": "-OPORTUNISTA-\nCuando entra al Cuadrilátero, todos los luchadores adversarios pierden 2 de fuerza hasta el final del turno. Si esta carta esta en tu Mano, puedes descartarla para que 1 luchador de tu Cuadrilátero gane 3 de fuerza hasta el final del turno."
   },
   {
     "id": "ed1-062-botellazo",
@@ -1021,7 +1084,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Botellazo.png",
-    "rawDescription": "Nombre: Botellazo\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 062\nRareza: Novato"
+    "rawDescription": "Nombre: Botellazo\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 062\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nNoguea al luchador adversario con menor fuerza en el Cuadrilátero (si hay mas de 1 luchador con la misma fuerza, tu seleccionas el objetivo),"
   },
   {
     "id": "ed1-063-beso-de-la-muerte",
@@ -1037,7 +1101,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Beso de la Muerte.png",
-    "rawDescription": "Nombre: Beso de la Muerte\nTipo de carta: Objeto\nCosto: 5\nIlustrador: James Darko\nCarta: 063\nRareza: Novato"
+    "rawDescription": "Nombre: Beso de la Muerte\nTipo de carta: Objeto\nCosto: 5\nIlustrador: James Darko\nCarta: 063\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSelecciona 1 luchador adversario, este pierde 2 de fuerza hasta el final del turno. Si tienes 1 o mas luchadores \"EXOTICOs\" en tu Cuadrilátero juega esta carta sin pagar su costo y duplica la fuerza de los luchadores\" EXOTICOs\" de tu Cuadrilátero hasta el final del turno. Solo puedes jugar \"BESO DE LA MUERTE\" una vez por turno."
   },
   {
     "id": "ed1-064-dulce-paola",
@@ -1053,7 +1118,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Dulce Paola.png",
-    "rawDescription": "Nombre: Dulce Paola\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 1\nFuerza: 1\nIlustrador: James Darko\nCarta: 064"
+    "rawDescription": "Nombre: Dulce Paola\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 1\nFuerza: 1\nIlustrador: James Darko\nCarta: 064",
+    "effect": "-OPORTUNISTA-\nCuando entra al Cuadrilátero, toma el control de 1 luchador adversario hasta el final del turno."
   },
   {
     "id": "ed1-065-monedas-de-la-gratitud",
@@ -1069,7 +1135,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Monedas de la Gratitud.png",
-    "rawDescription": "Nombre: Monedas de la Gratitud\nTipo de carta: Arena\nCosto: 7\nIlustrador: James Darko\nCarta: 065\nRareza: Novato"
+    "rawDescription": "Nombre: Monedas de la Gratitud\nTipo de carta: Arena\nCosto: 7\nIlustrador: James Darko\nCarta: 065\nRareza: Novato",
+    "effect": "-ÍDOLO-\n-OPORTUNISTA-\nCada vez que noquees a un luchador adversario, puedes usar 1 de las siguientes habilidades: 1. Buscar 1 contrato en tu Empresa, mostrar la carta y agregarla a tu Mano, luego baraja tu Empresa. 2. Seleccionar 1 carta de tu Vestidor y devolverla a tu Empresa, luego baraja tu Empresa."
   },
   {
     "id": "ed1-066-halloween",
@@ -1085,7 +1152,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Halloween.png",
-    "rawDescription": "Nombre: Halloween\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 6\nFuerza: 6\nIlustrador: James Darko\nCarta: 066"
+    "rawDescription": "Nombre: Halloween\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Extremo\nCosto: 6\nFuerza: 6\nIlustrador: James Darko\nCarta: 066",
+    "effect": "-ÍDOLO-\n-OPORTUNISTA-\nPuedes descartar este luchador para buscar 1 carta de objeto en tu Empresa, muestra la carta y agréegala a tu Mano. Cuando entra al Cuadrilátero, juega 1 carta de objeto desde tu Mano o Empresa sin pagar su costo. Mientras este luchador permanezca en tu Cuadrilátero todos los luchadores \"EXTREMOs\" ganan 1 de fuerza."
   },
   {
     "id": "ed1-067-d-a-de-muertos",
@@ -1101,7 +1169,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Día de Muertos.png",
-    "rawDescription": "Nombre: Día de Muertos\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 067\nRareza: Novato"
+    "rawDescription": "Nombre: Día de Muertos\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 067\nRareza: Novato",
+    "effect": "Durante tu fase de preparación, si no tienes luchadores en tu Cuadrilátero, puedes jugar 1 luchador desde tu Vestidor sin pagar su costo, de costo igual o menor al numero de cartas en tu Mano."
   },
   {
     "id": "ed1-068-boleto-de-entrada",
@@ -1117,7 +1186,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Boleto de Entrada.png",
-    "rawDescription": "Nombre: Boleto de Entrada\nTipo de carta: Castigo\nCosto: 4\nIlustrador: James Darko\nCarta: 068\nRareza: Novato"
+    "rawDescription": "Nombre: Boleto de Entrada\nTipo de carta: Castigo\nCosto: 4\nIlustrador: James Darko\nCarta: 068\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nPuedes jugar 1 o mas luchadores desde tu Empresa o Vestidor cuya suma de costos sea igual o menor a esta carta."
   },
   {
     "id": "ed1-069-luna-celestial",
@@ -1133,7 +1203,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Luna Celestial.png",
-    "rawDescription": "Nombre: Luna Celestial\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 3\nFuerza: 1\nIlustrador: James Darko\nCarta: 069"
+    "rawDescription": "Nombre: Luna Celestial\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 3\nFuerza: 1\nIlustrador: James Darko\nCarta: 069",
+    "effect": "-INMORTAL-\nCuando entra al Cuadrilátero, puedes seleccionar 1 luchador de tu Vestidor de costo igual o menor a esta carta y jugarlo sin pagar su costo."
   },
   {
     "id": "ed1-070-nuevo-personaje",
@@ -1149,7 +1220,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Nuevo Personaje.png",
-    "rawDescription": "Nombre: Nuevo Personaje\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 070\nRareza: Novato"
+    "rawDescription": "Nombre: Nuevo Personaje\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 070\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSelecciona 1 luchador de tu Cuadrilátero y devuélvelo a tu Empresa, busca en tu Empresa 1 luchador de fuerza igual o menor al luchador seleccionado por esta carta y juégalo sin pagar su costo, luego baraja tu Empresa."
   },
   {
     "id": "ed1-071-doble-impacto",
@@ -1165,7 +1237,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Doble Impacto.png",
-    "rawDescription": "Nombre: Doble Impacto\nTipo de carta: Luchador\nCosto: 2\nIlustrador: James Darko\nCarta: 071\nRareza: Novato"
+    "rawDescription": "Nombre: Doble Impacto\nTipo de carta: Luchador\nCosto: 2\nIlustrador: James Darko\nCarta: 071\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSelecciona 1 luchador de tu Cuadrilátero y 1 luchador adversario. Envia a ambos luchadores al Vestidor."
   },
   {
     "id": "ed1-072-darius",
@@ -1181,7 +1254,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Darius.png",
-    "rawDescription": "Nombre: Darius\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 5\nFuerza: 2\nIlustrador: James Darko\nCarta: 072"
+    "rawDescription": "Nombre: Darius\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 5\nFuerza: 2\nIlustrador: James Darko\nCarta: 072",
+    "effect": "-IMBATIBLE-\nEste luchador gana 1 de fuerza cada vez que noquee un luchador adversario."
   },
   {
     "id": "ed1-073-cartel-estelar",
@@ -1197,7 +1271,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Cartel Estelar.png",
-    "rawDescription": "Nombre: Cartel Estelar\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 073\nRareza: Novato"
+    "rawDescription": "Nombre: Cartel Estelar\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 073\nRareza: Novato",
+    "effect": "-INMORTAL-"
   },
   {
     "id": "ed1-074-tr-bol-de-4-hojas",
@@ -1213,7 +1288,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Trébol de 4 hojas.png",
-    "rawDescription": "Nombre: Trébol de 4 hojas\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 074\nRareza: Novato"
+    "rawDescription": "Nombre: Trébol de 4 hojas\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 074\nRareza: Novato",
+    "effect": "-ÍDOLO-\nBusca en tu Empresa 1 carta que tenga \"TREBOL\" en su nombre, muestra la carta y agréegala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-075-ngel-zelta",
@@ -1229,7 +1305,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Ángel Zelta.png",
-    "rawDescription": "Nombre: Ángel Zelta\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 1\nFuerza: 3\nIlustrador: James Darko\nCarta: 075"
+    "rawDescription": "Nombre: Ángel Zelta\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 1\nFuerza: 3\nIlustrador: James Darko\nCarta: 075",
+    "effect": "-INMORTAL-\nPuedes descartar este luchador para seleccionar 1 carta de tu Vestidor y agregarla a tu Mano."
   },
   {
     "id": "ed1-076-a-ras-de-lona",
@@ -1245,7 +1322,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/A Ras de Lona.png",
-    "rawDescription": "Nombre: A Ras de Lona\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 076\nRareza: Promesa"
+    "rawDescription": "Nombre: A Ras de Lona\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 076\nRareza: Promesa",
+    "effect": "Solo puedes equipar esta carta a luchadores \"CLASiCOs\". Si el luchador equipado con esta carta esta como \"Agresor\", puedes cambiarlo a \"Defensor\" al final de tu turno. Si el luchador equipado con esta carta fuera a ser noqueado, puedes enviar esta carta al Vestidor en su lugar."
   },
   {
     "id": "ed1-077-bebida-energizante",
@@ -1261,7 +1339,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Bebida Energizante.png",
-    "rawDescription": "Nombre: Bebida Energizante\nTipo de carta: Luchador\nCosto: 4\nIlustrador: James Darko\nCarta: 077\nRareza: Novato"
+    "rawDescription": "Nombre: Bebida Energizante\nTipo de carta: Luchador\nCosto: 4\nIlustrador: James Darko\nCarta: 077\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta duplica su fuerza durante tu turno, pero divide su fuerza a la mitad durante el turno del jugador adversario (si se obtiene un numero decimal, se ignora la parte decimal)."
   },
   {
     "id": "ed1-078-masoquismo",
@@ -1277,7 +1356,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Masoquismo.png",
-    "rawDescription": "Nombre: Masoquismo\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 078\nRareza: Novato"
+    "rawDescription": "Nombre: Masoquismo\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 078\nRareza: Novato",
+    "effect": "Los luchadores\" EXTREMOS\" de tu Cuadrilátero no son afectados por las cartas de castigo y objeto del jugador adversario."
   },
   {
     "id": "ed1-079-fractura",
@@ -1293,7 +1373,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Fractura.png",
-    "rawDescription": "Nombre: Fractura\nTipo de carta: Luchador\nCosto: 1\nIlustrador: James Darko\nCarta: 079\nRareza: Novato"
+    "rawDescription": "Nombre: Fractura\nTipo de carta: Luchador\nCosto: 1\nIlustrador: James Darko\nCarta: 079\nRareza: Novato",
+    "effect": "Solo puedes jugar esta carta durante la fase de batalla del jugador adversario. Selecciona 1 luchador adversario para que pierda 1 de fuerza por cada luchador en tu Cuadrilátero hasta el final del turno. Solo puedes jugar \"FRACTURA\" una vez por turno."
   },
   {
     "id": "ed1-080-los-villanos",
@@ -1309,7 +1390,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Los Villanos.png",
-    "rawDescription": "Nombre: Los Villanos\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 080\nRareza: Leyenda"
+    "rawDescription": "Nombre: Los Villanos\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 080\nRareza: Leyenda",
+    "effect": "-ÍDOLO-\nSolo puedes jugar esta carta si tienes 1 luchador \"RUDO\" en tu Cuadrilátero. Juega hasta 2 luchadores \"RUDOs\" desde tu Mano sin pagar su costo pero con sus habilidades \" rechazadas\". Los luchadores jugados por esta carta adquieren la habilidad OPORTUNiSTA, pero al final del turno son devueltos a la Mano."
   },
   {
     "id": "ed1-081-frijolito-charro",
@@ -1325,7 +1407,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Frijolito Charro.png",
-    "rawDescription": "Nombre: Frijolito Charro\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Mini\nCosto: 0\nFuerza: 2\nIlustrador: James Darko\nCarta: 081"
+    "rawDescription": "Nombre: Frijolito Charro\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Mini\nCosto: 0\nFuerza: 2\nIlustrador: James Darko\nCarta: 081",
+    "effect": "Mientras permanezca en tu Cuadrilátero como \"Defensor\", los luchadores adversarios solamente pueden atacar a este luchador. Puedes descartar esta carta para buscar 1 \"LLAMADO DEL CHARRO' en tu Empresa, muestra la carta y agrégla a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-082-infarto",
@@ -1341,7 +1424,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Infarto.png",
-    "rawDescription": "Nombre: Infarto\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 3\nFuerza: 3\nIlustrador: James Darko\nCarta: 082"
+    "rawDescription": "Nombre: Infarto\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 3\nFuerza: 3\nIlustrador: James Darko\nCarta: 082",
+    "effect": "-OPORTUNISTA-\nCuando es noqueado, noquea 1 luchador adversario."
   },
   {
     "id": "ed1-083-oferta-de-2x1",
@@ -1357,7 +1441,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Oferta de 2x1.png",
-    "rawDescription": "Nombre: Oferta de 2x1\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 083\nRareza: Novato"
+    "rawDescription": "Nombre: Oferta de 2x1\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 083\nRareza: Novato",
+    "effect": "-ÍDOLO-\nSolo puedes jugar esta carta si tienes 3 o mas contratos en tu Zona de Contratos. Una vez por turno durante tu fase inicial, puedes devolver 2 cartas de tu Mano a tu Empresa, buscar 1 carta en tu Empresa y agregarla a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-084-de-vuelta-a-casa",
@@ -1373,7 +1458,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/De Vuelta a Casa.png",
-    "rawDescription": "Nombre: De Vuelta a Casa\nTipo de carta: Castigo\nCosto: 1\nIlustrador: Luis Roberto\nCarta: 084\nRareza: Novato"
+    "rawDescription": "Nombre: De Vuelta a Casa\nTipo de carta: Castigo\nCosto: 1\nIlustrador: Luis Roberto\nCarta: 084\nRareza: Novato",
+    "effect": "Selecciona 1 carta del Cuadrilátero adversario y devuélvela a su Mano."
   },
   {
     "id": "ed1-85-charro-de-jalisco-jr",
@@ -1389,7 +1475,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Charro de Jalisco Jr.png",
-    "rawDescription": "Nombre: Charro de Jalisco Jr\nTipo de carta: Luchador\nCosto: 6\nIlustrador: James Darko\nCarta: 85\nRareza: Novato"
+    "rawDescription": "Nombre: Charro de Jalisco Jr\nTipo de carta: Luchador\nCosto: 6\nIlustrador: James Darko\nCarta: 85\nRareza: Novato",
+    "effect": "Este luchador cuesta 1 contrato menos por cada luchadorcon\" CHARRO\" ensunombreentu Cuadrilátero. Cuando entra al Cuadrilátero, puedes jugar 1\"POWER SOMBRERO\" desde tu Mano sin pagar su costo."
   },
   {
     "id": "ed1-86-amuleto",
@@ -1405,7 +1492,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Amuleto.png",
-    "rawDescription": "Nombre: Amuleto\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 86\nRareza: Novato"
+    "rawDescription": "Nombre: Amuleto\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 86\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta gana 1 de fuerza y adquiere la habilidad IMBATIBLE. Cuando el luchador equipado con esta carta haga daño de batalla, busca 1 contrato en tu Empresa, muestra la carta y agregala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-87-traicion",
@@ -1421,7 +1509,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Traicion.png",
-    "rawDescription": "Nombre: Traicion\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 87\nRareza: Novato"
+    "rawDescription": "Nombre: Traicion\nTipo de carta: Objeto\nCosto: 3\nIlustrador: James Darko\nCarta: 87\nRareza: Novato",
+    "effect": "Solo puedes equipar esta carta a luchadores adversarios. Toma el control del luchador equipado con esta carta. Si el luchador equipado con esta carta es noqueado, \" despidelo\""
   },
   {
     "id": "ed1-88-sin-trampas",
@@ -1437,7 +1526,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Sin Trampas.png",
-    "rawDescription": "Nombre: Sin Trampas\nTipo de carta: Arena\nCosto: 2\nIlustrador: James Darko\nCarta: 88\nRareza: Novato"
+    "rawDescription": "Nombre: Sin Trampas\nTipo de carta: Arena\nCosto: 2\nIlustrador: James Darko\nCarta: 88\nRareza: Novato",
+    "effect": "\"Despide\" a todos los luchadores equipados con carta de objeto. Mientras esta carta permanezca en tu Cuadrilátero, ningun jugador puede jugar cartas de objeto."
   },
   {
     "id": "ed1-089-brickmasters",
@@ -1453,7 +1543,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Brickmasters.png",
-    "rawDescription": "Nombre: Brickmasters\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 089\nRareza: Novato"
+    "rawDescription": "Nombre: Brickmasters\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 089\nRareza: Novato",
+    "effect": "-ÍDOLO-\nAmbos jugadores devuelven las cartas de su Mano a su Empresa, barajan su Empresa y roban 6 cartas, luego \" despide\" esta carta."
   },
   {
     "id": "ed1-090-cuetla",
@@ -1469,7 +1560,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Cuetla.png",
-    "rawDescription": "Nombre: Cuetla\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 4\nFuerza: 2\nIlustrador: Jack Coatl\nCarta: 090"
+    "rawDescription": "Nombre: Cuetla\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 4\nFuerza: 2\nIlustrador: Jack Coatl\nCarta: 090",
+    "effect": "Este luchador gana 1 de fuerza por cada carta en tu Zona de Despido. Si este luchador esta en tu Mano, puedes \" despedirlo\" para \" despedir\" 1 luchador adversario; solo puedes usar esta habilidad una vez por turno."
   },
   {
     "id": "ed1-091-azteca-de-plata",
@@ -1485,7 +1577,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Azteca de Plata.png",
-    "rawDescription": "Nombre: Azteca de Plata\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Aéreo\nCosto: 3\nFuerza: 6\nIlustrador: James Darko\nCarta: 091"
+    "rawDescription": "Nombre: Azteca de Plata\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Aéreo\nCosto: 3\nFuerza: 6\nIlustrador: James Darko\nCarta: 091",
+    "effect": "-INMORTAL-\nEste luchador solo puede atacar si descartas 1 luchador"
   },
   {
     "id": "ed1-092-amo-del-micr-fono",
@@ -1501,7 +1594,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Amo del Micrófono.png",
-    "rawDescription": "Nombre: Amo del Micrófono\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 092\nRareza: Novato"
+    "rawDescription": "Nombre: Amo del Micrófono\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 092\nRareza: Novato",
+    "effect": "Todos los luchadores de tu Cuadrilátero ganan 3 de fuerza hasta el final del turno. Solo puedes usar\" AMO DEL MICROFONO' una vez por turno."
   },
   {
     "id": "ed1-093-triple-b",
@@ -1517,7 +1611,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Triple B.png",
-    "rawDescription": "Nombre: Triple B\nTipo de carta: Arena\nCosto: 2\nIlustrador: James Darko\nCarta: 093\nRareza: Novato"
+    "rawDescription": "Nombre: Triple B\nTipo de carta: Arena\nCosto: 2\nIlustrador: James Darko\nCarta: 093\nRareza: Novato",
+    "effect": "Una vez por turno durante tu fase de preparación, puedes jugar 1 carta de tu Mano o Empresa de costo igual o menor a esta carta sin pagar su costo Si la juegas desde tu Empresa, debes barajar tu Empresa."
   },
   {
     "id": "ed1-094-kikyo-aoyama",
@@ -1533,7 +1628,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Kikyo Aoyama.png",
-    "rawDescription": "Nombre: Kikyo Aoyama\nTipo de carta: Luchador\nBando: Ténico\nEstilo: Fantasía\nCosto: 6\nFuerza: 2\nIlustrador: James Darko\nCarta: 094"
+    "rawDescription": "Nombre: Kikyo Aoyama\nTipo de carta: Luchador\nBando: Ténico\nEstilo: Fantasía\nCosto: 6\nFuerza: 2\nIlustrador: James Darko\nCarta: 094",
+    "effect": "-OPORTUNISTA-\n-HURANO-\nMientras este luchador permanezca en tu Cuadrilátero, ningun luchador de costo menor a este luchador puede atacar."
   },
   {
     "id": "ed1-095-mantenimiento",
@@ -1549,7 +1645,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Mantenimiento.png",
-    "rawDescription": "Nombre: Mantenimiento\nTipo de carta: Castigo\nCosto: 4\nIlustrador: James Darko\nCarta: 095\nRareza: Novato"
+    "rawDescription": "Nombre: Mantenimiento\nTipo de carta: Castigo\nCosto: 4\nIlustrador: James Darko\nCarta: 095\nRareza: Novato",
+    "effect": "Juega 1 arena desde tu Vestidor de costo igual o menor a esta carta."
   },
   {
     "id": "ed1-096-doctora-yusei",
@@ -1565,7 +1662,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Doctora Yusei.png",
-    "rawDescription": "Nombre: Doctora Yusei\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 096\nRareza: Novato"
+    "rawDescription": "Nombre: Doctora Yusei\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 096\nRareza: Novato",
+    "effect": "Durante tu fase inicial, puedes \" despedir\" 1 contrato de tu Zona de Contratos para seleccionar hasta 5 cartas de tu Vestidor y devolverlas a tu Empresa, luego baraja tu Empresa."
   },
   {
     "id": "ed1-097-princesa-sortilegio",
@@ -1581,7 +1679,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Princesa Sortilegio.png",
-    "rawDescription": "Nombre: Princesa Sortilegio\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 1\nFuerza: 3\nIlustrador: Jack Coatl\nCarta: 097"
+    "rawDescription": "Nombre: Princesa Sortilegio\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 1\nFuerza: 3\nIlustrador: Jack Coatl\nCarta: 097",
+    "effect": "Una vez por turno durante tu fase de preparación, puedes buscar 1 luchador \"FANTASiA\" en tu Empresa, muestra la carta y agregala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-098-ring-de-los-sue-os",
@@ -1597,7 +1696,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Ring de los Sueños.png",
-    "rawDescription": "Nombre: Ring de los Sueños\nTipo de carta: Arena\nCosto: 4\nIlustrador: Jack Coatl\nCarta: 098\nRareza: Novato"
+    "rawDescription": "Nombre: Ring de los Sueños\nTipo de carta: Arena\nCosto: 4\nIlustrador: Jack Coatl\nCarta: 098\nRareza: Novato",
+    "effect": "Los luchadores\" FANTASiA\" adquieren la habilidad IMBATIBLE"
   },
   {
     "id": "ed1-099-tr-bol-blanco",
@@ -1613,7 +1713,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Trébol Blanco.png",
-    "rawDescription": "Nombre: Trébol Blanco\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 2\nFuerza: 1\nIlustrador: James Darko\nCarta: 099"
+    "rawDescription": "Nombre: Trébol Blanco\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 2\nFuerza: 1\nIlustrador: James Darko\nCarta: 099",
+    "effect": "-OPORTUNISTA-\n-HURANO-\nCuando este luchador haga daño de batalla, puedes buscar 1 contrato en tu Empresa, mostrar la carta y agregarla a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "ed1-100-yufer-duelista-dex",
@@ -1629,7 +1730,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Yufer-Duelista Dex.png",
-    "rawDescription": "Nombre: Yufer-Duelista Dex\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 100\nRareza: Novato"
+    "rawDescription": "Nombre: Yufer-Duelista Dex\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 100\nRareza: Novato",
+    "effect": "Cuando un luchador de tu Cuadrilátero noquee a un luchador adversario, puedes \" despedir\" 2 contratos de tu Zona de Contratos para que ese luchador pueda realizar un segundo ataque. Los luchadores que usen esta habilidad no pueden atacar directamente a la Empresa adversaria."
   },
   {
     "id": "ed1-101-lu-chi-oh",
@@ -1645,7 +1747,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Lu-Chi-Oh!.png",
-    "rawDescription": "Nombre: Lu-Chi-Oh!\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 101\nRareza: Novato"
+    "rawDescription": "Nombre: Lu-Chi-Oh!\nTipo de carta: Promotor\nIlustrador: James Darko\nCarta: 101\nRareza: Novato",
+    "effect": "Una vez por turno durante tu fase de preparación, puedes enviar 1 luchador de tu Cuadrilátero al Vestidor para jugar 1 luchador de tu Mano reduciendo su costo en el mismo costo que el luchador enviado al Vestidor por esta habilidad. El luchador jugado por esta habilidad no hace daño de batalla durante este turno."
   },
   {
     "id": "ed1-102-meteorix",
@@ -1661,7 +1764,8 @@
     "set": "Primera Edición",
     "setId": "ed1",
     "image": "assets/cards/edicion-1/Meteorix.png",
-    "rawDescription": "Nombre: Meteorix\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasia\nCosto: 7\nFuerza: 5\nIlustrador: James Darko\nCarta: 102"
+    "rawDescription": "Nombre: Meteorix\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasia\nCosto: 7\nFuerza: 5\nIlustrador: James Darko\nCarta: 102",
+    "effect": "-ÍDOLO-\n-INMORTAL-\nPuedes \" despedir\" 1 contrato de tu Zona de Contratos para jugar esta carta sin pagar su costo. Cuando entra al Cuadrilátero, noquea 1 luchador adversario de fuerza menor a esta carta. Una vez por turno durante tu fase de preparación, puedes\" despedir\"\"N\" numero de cartas de tu Empresa para que esta carta gane fuerza igual al numero de cartas\" despedidas\" por esta habilidad hasta el final del turno."
   },
   {
     "id": "exp1-103-fuerza-especiales-charras",
@@ -1677,7 +1781,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Fuerza Especiales Charras.png",
-    "rawDescription": "Nombre: Fuerza Especiales Charras\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 103\nRareza: Novato"
+    "rawDescription": "Nombre: Fuerza Especiales Charras\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 103\nRareza: Novato",
+    "effect": "Solo puedes jugar esta carta si tienes 3 o mas luchadorescon\" CHARRO\" ensunombre entu Cuadrilátero. Todos los luchadores con \"CHARRO\" en su nombre ganan 1 de fuerza y adquieren la habilidad IMBATIBLE."
   },
   {
     "id": "exp1-104-kain-t",
@@ -1693,7 +1798,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Kain T.png",
-    "rawDescription": "Nombre: Kain T.\nTipo de carta: Promotor\nIlustrador: Akuro\nCarta: 104\nRareza: Novato"
+    "rawDescription": "Nombre: Kain T.\nTipo de carta: Promotor\nIlustrador: Akuro\nCarta: 104\nRareza: Novato",
+    "effect": "Una vez por turno durante tu fase de preparación, puedes pagar el costo de 1 luchador adversario que esté en su Vestidor y jugarlo en tu Cuadrilátero."
   },
   {
     "id": "exp1-105-luchador-sorpresa",
@@ -1709,7 +1815,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Luchador Sorpresa.png",
-    "rawDescription": "Nombre: Luchador Sorpresa\nTipo de carta: Luchador\nCosto: 5\nIlustrador: James Darko\nCarta: 105\nRareza: Novato"
+    "rawDescription": "Nombre: Luchador Sorpresa\nTipo de carta: Luchador\nCosto: 5\nIlustrador: James Darko\nCarta: 105\nRareza: Novato",
+    "effect": "Cuando entra al Cuadrilátero, selecciona 1 luchador de cualquier Cuadrilátero. Esta carta gana fuerza igual al luchador seleccionado por esta habilidad."
   },
   {
     "id": "exp1-106-primer-sueldo",
@@ -1725,7 +1832,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Primer Sueldo.png",
-    "rawDescription": "Nombre: Primer Sueldo\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 106\nRareza: Novato"
+    "rawDescription": "Nombre: Primer Sueldo\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 106\nRareza: Novato",
+    "effect": "Puedes jugar desde tu Mano o Empresa 1 luchador de costo 1 o menor sin pagar su costo; luego baraja tu Empresa si buscasteenella."
   },
   {
     "id": "exp1-107-tres-en-el-hoyo",
@@ -1741,7 +1849,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Tres en el Hoyo.png",
-    "rawDescription": "Nombre: Tres en el Hoyo\nTipo de carta: Objeto\nCosto: 5\nIlustrador: James Darko\nCarta: 107\nRareza: Promesa"
+    "rawDescription": "Nombre: Tres en el Hoyo\nTipo de carta: Objeto\nCosto: 5\nIlustrador: James Darko\nCarta: 107\nRareza: Promesa",
+    "effect": "-ÍDOLO-\nEl luchador equipado con esta carta gana 2 de fuerza y adquiere la habilidad HURANO. Si \"DON LINKIN PARK\" esta en tu Cuadrilátero, puedes equiparlo con esta carta sin pagar su costo."
   },
   {
     "id": "exp1-108-octagon",
@@ -1757,7 +1866,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Octagon.png",
-    "rawDescription": "Nombre: Octagon\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 108\nRareza: Leyenda"
+    "rawDescription": "Nombre: Octagon\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 108\nRareza: Leyenda",
+    "effect": "-ÍDOLO-\nSolo puedes jugar esta carta durante el turno del jugador adversario. Cuando el jugador adversario juegue una carta de arena u objeto, toma el control de esa carta. Puedes jugar esta carta desde tu Vestidor pero si lo haces, \" despidela\"."
   },
   {
     "id": "exp1-109-gira-luch-stica",
@@ -1773,7 +1883,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Gira Luchística.png",
-    "rawDescription": "Nombre: Gira Luchística\nTipo de carta: Arena\nCosto: 5\nIlustrador: James Darko\nCarta: 109\nRareza: Novato"
+    "rawDescription": "Nombre: Gira Luchística\nTipo de carta: Arena\nCosto: 5\nIlustrador: James Darko\nCarta: 109\nRareza: Novato",
+    "effect": "Cada vez que juegues un luchador, paga 1 contrato adicional. Todos los luchadores de tu Cuadrilátero ganan 3 de fuerza."
   },
   {
     "id": "exp1-110-primeros-auxilios",
@@ -1789,7 +1900,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Primeros Auxilios.png",
-    "rawDescription": "Nombre: Primeros Auxilios\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 110\nRareza: Novato"
+    "rawDescription": "Nombre: Primeros Auxilios\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 110\nRareza: Novato",
+    "effect": "Una vez por turno durante tu fase inicial puedes seleccionar 1 luchador de tu Vestidor y agregarlo a tu Mano."
   },
   {
     "id": "exp1-111-huevos-de-aguila",
@@ -1805,7 +1917,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Huevos de Aguila.png",
-    "rawDescription": "Nombre: Huevos de Aguila\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 111\nRareza: Novato"
+    "rawDescription": "Nombre: Huevos de Aguila\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 111\nRareza: Novato",
+    "effect": "-ÍDOLO-\nSolo puedes equipar esta carta a luchadores \"TECNlCOs\" con fuerza 3 o menor. El luchador equipado con esta carta gana 3 de fuerza y adquiere la habilidad IMBATIBLE."
   },
   {
     "id": "exp1-112-herradura-de-la-suerte",
@@ -1821,7 +1934,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Herradura de la Suerte.png",
-    "rawDescription": "Nombre: Herradura de la Suerte\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 112\nRareza: Novato"
+    "rawDescription": "Nombre: Herradura de la Suerte\nTipo de carta: Castigo\nCosto: 1\nIlustrador: James Darko\nCarta: 112\nRareza: Novato",
+    "effect": "-ÍDOLO-\nSolo puedes jugar esta carta si durante el turno del jugador adversario tienes 2 o mas luchadores con \"TREBOL\" en su nombre en tu Cuadrilátero. El jugador adversario termina su turno, luego \" despide' esta carta."
   },
   {
     "id": "exp1-113-dios-pakal",
@@ -1837,7 +1951,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Dios Pakal.png",
-    "rawDescription": "Nombre: Dios Pakal\nTipo de carta: Luchador\nCosto: 3\nIlustrador: James Darko\nCarta: 113\nRareza: Novato"
+    "rawDescription": "Nombre: Dios Pakal\nTipo de carta: Luchador\nCosto: 3\nIlustrador: James Darko\nCarta: 113\nRareza: Novato",
+    "effect": "-OPORTUNISTA-\nCuando entra al Cuadrilátero, los luchadores adversarios pierden 2 de fuerza hasta el final del turno."
   },
   {
     "id": "exp1-114-chanclazo",
@@ -1853,7 +1968,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Chanclazo.png",
-    "rawDescription": "Nombre: Chanclazo\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 114\nRareza: Novato"
+    "rawDescription": "Nombre: Chanclazo\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 114\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nEnvia la carta superior de tu Empresa al Vestidor y noquea 1 luchador adversario."
   },
   {
     "id": "exp1-115-ludark",
@@ -1869,7 +1985,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Ludark.png",
-    "rawDescription": "Nombre: Ludark\nTipo de carta: Luchador\nCosto: 5\nIlustrador: James Darko\nCarta: 115\nRareza: Novato"
+    "rawDescription": "Nombre: Ludark\nTipo de carta: Luchador\nCosto: 5\nIlustrador: James Darko\nCarta: 115\nRareza: Novato",
+    "effect": "Cuando entra al Cuadrilátero, puedes buscar 1 \"CORONA DEL DOLOR\" en tu Empresa, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa. Cuando este luchador ataca o es atacado, todo el daño de batalla que fuera a recibir tu Empresa lo recibe la Empresa del jugador adversario en su lugar."
   },
   {
     "id": "exp1-116-corona-del-dolor",
@@ -1885,7 +2002,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Corona del Dolor.png",
-    "rawDescription": "Nombre: Corona del Dolor\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 116\nRareza: Novato"
+    "rawDescription": "Nombre: Corona del Dolor\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 116\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta pierde 2 de fuerza y adquiere la habilidad IMBATIBLE."
   },
   {
     "id": "exp1-117-hollow-king",
@@ -1901,7 +2019,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Hollow King.png",
-    "rawDescription": "Nombre: Hollow King\nTipo de carta: Luchador\nCosto: 4\nIlustrador: James Darko\nCarta: 117\nRareza: Novato"
+    "rawDescription": "Nombre: Hollow King\nTipo de carta: Luchador\nCosto: 4\nIlustrador: James Darko\nCarta: 117\nRareza: Novato",
+    "effect": "-OPORTUNISTA-\nCuando entra al Cuadrilátero, puedes devolver a la Mano 1 luchador adversario de fuerza menor a este luchador. Los luchadores noqueados por este luchador son\" despedidos\"."
   },
   {
     "id": "exp1-118-espada-de-bamb",
@@ -1917,7 +2036,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Espada de Bambú.png",
-    "rawDescription": "Nombre: Espada de Bambú\nTipo de carta: Objeto\nCosto: 4\nIlustrador: James Darko\nCarta: 118\nRareza: Novato"
+    "rawDescription": "Nombre: Espada de Bambú\nTipo de carta: Objeto\nCosto: 4\nIlustrador: James Darko\nCarta: 118\nRareza: Novato",
+    "effect": "El luchador equipado con esta carta puede hacer tantos ataques como luchadores adversarios haya en el Cuadrilátero adversario. El luchador equipado con esta carta no puede realizar ataques directos a la Empresa adversaria."
   },
   {
     "id": "exp1-119-santana-jackson",
@@ -1933,7 +2053,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Santana Jackson.png",
-    "rawDescription": "Nombre: Santana Jackson\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 1\nFuerza: 2\nIlustrador: James Darko\nCarta: 119"
+    "rawDescription": "Nombre: Santana Jackson\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 1\nFuerza: 2\nIlustrador: James Darko\nCarta: 119",
+    "effect": "Cuando entra al Cuadrilátero, busca 1 luchador \"TECNICO\" en tu Empresa y agrégalo a tu Mano, luego baraja tu Empresa. Si este luchador es atacado, puedes pagar 1 contrato para cambiar el objetivo de ese ataque a otro luchador de tu Cuadrilátero."
   },
   {
     "id": "exp1-120-alcancistico",
@@ -1949,7 +2070,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Alcancistico.png",
-    "rawDescription": "Nombre: Alcancistico\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 120\nRareza: Novato"
+    "rawDescription": "Nombre: Alcancistico\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 120\nRareza: Novato",
+    "effect": "Al final de tu turno, si este contrato esta en tu Zona de Contratos, devuelve hasta 2 contratos de tu Zona de Contratos Pagados a tu Zona de Contratos."
   },
   {
     "id": "exp1-121-sarah-la-nueva-estrella",
@@ -1965,7 +2087,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Sarah, la nueva estrella.png",
-    "rawDescription": "Nombre: Sarah, la nueva estrella\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 3\nFuerza: 2\nIlustrador: Marii-san\nCarta: 121"
+    "rawDescription": "Nombre: Sarah, la nueva estrella\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Fantasía\nCosto: 3\nFuerza: 2\nIlustrador: Marii-san\nCarta: 121",
+    "effect": "Cada vez que el jugador adversario envie 1 o mas cartas de su Empresa al Vestidor (excepto por daño de batalla), puedes seleccionar 1 luchador adversario; el luchador seleccionado pierde 1 de fuerza y si su fuerza llega a O, noquéalo."
   },
   {
     "id": "exp1-122-el-brazo-de-oro",
@@ -1981,7 +2104,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/El Brazo de Oro.png",
-    "rawDescription": "Nombre: El Brazo de Oro\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 122\nRareza: Novato"
+    "rawDescription": "Nombre: El Brazo de Oro\nTipo de carta: Arena\nCosto: 3\nIlustrador: James Darko\nCarta: 122\nRareza: Novato",
+    "effect": "Los luchadores \"TECNICOs\" que juegues desde tu Mano cuestan 2 contratos menos. Debes pagar 1 contrato al final de tu turno para que esta carta permanezca en tu Cuadrilátero."
   },
   {
     "id": "exp1-123-el-brazo-de-plata",
@@ -1997,7 +2121,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/El Brazo de Plata.png",
-    "rawDescription": "Nombre: El Brazo de Plata\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 123\nRareza: Novato"
+    "rawDescription": "Nombre: El Brazo de Plata\nTipo de carta: Castigo\nCosto: 3\nIlustrador: James Darko\nCarta: 123\nRareza: Novato",
+    "effect": "Los luchadores \"TECNICOs\" de tu Cuadrilátero ganan 2 de fuerza. Debes pagar 1 contrato al final de tu turno para que esta carta permanezca en tu Cuadrilátero."
   },
   {
     "id": "exp1-124-dinast-a-de-los-brazos",
@@ -2013,7 +2138,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Dinastía de los Brazos.png",
-    "rawDescription": "Nombre: Dinastía de los Brazos\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 124\nRareza: Promesa"
+    "rawDescription": "Nombre: Dinastía de los Brazos\nTipo de carta: Castigo\nCosto: 0\nIlustrador: James Darko\nCarta: 124\nRareza: Promesa",
+    "effect": "Busca en tu Empresa 1 carta que tenga \"BRAZO\" o\" BRAZOS\" en su nombre, muestra la carta y agrégala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "exp1-125-los-brazos",
@@ -2029,7 +2155,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Los Brazos.jpg",
-    "rawDescription": "Nombre: Los Brazos\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 6\nFuerza: 6\nIlustrador: James Darko\nCarta: 125"
+    "rawDescription": "Nombre: Los Brazos\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 6\nFuerza: 6\nIlustrador: James Darko\nCarta: 125",
+    "effect": "-ÍDOLO-\n-OPORTUNISTA-\nPuedes jugar este luchador sin pagar su costo si \"EL BRAZO DE ORO\" y \"EL BRAZO DE PLATA\" estan en tu Cuadrilátero. Una vez por turno durante tu fase de preparación, puedes pagar 1 contratopara que este luchador adquiera la habilidad HURANO hasta el final del turno."
   },
   {
     "id": "exp1-126-la-plancha",
@@ -2045,7 +2172,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/La Plancha.png",
-    "rawDescription": "Nombre: La Plancha\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 126\nRareza: Novato"
+    "rawDescription": "Nombre: La Plancha\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 126\nRareza: Novato",
+    "effect": "Descarta 1 carta de tu Mano y envia 1 luchador adversario al Vestidor."
   },
   {
     "id": "exp1-127-cibearn-tico",
@@ -2061,7 +2189,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Cibearnético.png",
-    "rawDescription": "Nombre: Cibearnético\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 127\nRareza: Novato"
+    "rawDescription": "Nombre: Cibearnético\nTipo de carta: Castigo\nCosto: 2\nIlustrador: James Darko\nCarta: 127\nRareza: Novato",
+    "effect": "Busca 1 contrato en tu Empresa, muestra la carta y agregala a tu Mano, luego baraja tu Empresa."
   },
   {
     "id": "exp1-128-lobo-lobito",
@@ -2077,7 +2206,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Lobo Lobito.png",
-    "rawDescription": "Nombre: Lobo Lobito\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Mini\nCosto: 2\nFuerza: 1\nIlustrador: James Darko\nCarta: 128"
+    "rawDescription": "Nombre: Lobo Lobito\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Mini\nCosto: 2\nFuerza: 1\nIlustrador: James Darko\nCarta: 128",
+    "effect": "-LEGADO-\n-OPORTUNISTA-\nCuando entra al Cuadrilátero, puedes jugar 1 \"LOBO LOBITO\" desde tu Mano pagando 1 contrato menos (no es acumulable). Cuando es noqueado, puedes buscar 1 \"LOBO LOBITO\" en tu Empresa, muestra la carta y agregala a tu Mano."
   },
   {
     "id": "exp1-129-s-per-hongo",
@@ -2093,7 +2223,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Súper Hongo.png",
-    "rawDescription": "Nombre: Súper Hongo\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 129\nRareza: Novato"
+    "rawDescription": "Nombre: Súper Hongo\nTipo de carta: Objeto\nCosto: 2\nIlustrador: James Darko\nCarta: 129\nRareza: Novato",
+    "effect": "Solo puedes equipar esta carta a luchadores \"MiNl\". El luchador equipado con esta carta gana 3 de fuerza. Si el iuchador equipado con esta carta fuera a ser noqueado o enviado al Vestidor, puedes enviar esta carta al Vestidor en su lugar."
   },
   {
     "id": "exp1-130-mono-de-alambre",
@@ -2109,7 +2240,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Mono de Alambre.png",
-    "rawDescription": "Nombre: Mono de Alambre\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 1\nFuerza: 1\nIlustrador: James Darko\nCarta: 130"
+    "rawDescription": "Nombre: Mono de Alambre\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 1\nFuerza: 1\nIlustrador: James Darko\nCarta: 130",
+    "effect": "-ÍDOLO-\n-OPORTUNISTA-\nCuando entra al Cuadrilátero, selecciona 1 luchador adversario y devuélvelo a su Mano. Puedes descartar este luchador para finalizar la fase de batalla del jugador adversario."
   },
   {
     "id": "exp1-131-playera-ruda",
@@ -2125,7 +2257,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Playera Ruda.png",
-    "rawDescription": "Nombre: Playera Ruda\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 131\nRareza: Novato"
+    "rawDescription": "Nombre: Playera Ruda\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 131\nRareza: Novato",
+    "effect": "Mientras este contrato permanezca en tu Zona de Contratos, los luchadores\" RUDOS\" de tu Cuadrilátero ganan 1 de fuerza."
   },
   {
     "id": "exp1-132-playera-t-cnica",
@@ -2141,7 +2274,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Playera Técnica.png",
-    "rawDescription": "Nombre: Playera Técnica\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 132\nRareza: Novato"
+    "rawDescription": "Nombre: Playera Técnica\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 132\nRareza: Novato",
+    "effect": "Mientras este contrato permanezca en tu Zona de Contratos, los luchadores\" TECNICOS de tu Cuadrilátero ganan 1 de fuerza."
   },
   {
     "id": "exp1-133-sarah-super-estrella",
@@ -2157,7 +2291,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Sarah, Super Estrella.png",
-    "rawDescription": "Nombre: Sarah, Super Estrella\nTipo de carta: Luchador\nCosto: 6\nIlustrador: James Darko\nCarta: 133\nRareza: Promesa"
+    "rawDescription": "Nombre: Sarah, Super Estrella\nTipo de carta: Luchador\nCosto: 6\nIlustrador: James Darko\nCarta: 133\nRareza: Promesa",
+    "effect": "-ÍDOLO-\n-INMORTAL-\nEste luchador solo puede entrar al Cuadrilátero pagando su costo. Cada vez que el jugador adversario envia cartas de su Empresa al Vestidor (excepto por daño de batalla), las cartas enviadas son \" despedidas\"."
   },
   {
     "id": "exp1-135-ambici-n-del-drag-n",
@@ -2173,7 +2308,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Ambición del Dragón.png",
-    "rawDescription": "Nombre: Ambición del Dragón\nTipo de carta: Promotor\nIlustrador: Marii-San\nCarta: 135\nRareza: Novato"
+    "rawDescription": "Nombre: Ambición del Dragón\nTipo de carta: Promotor\nIlustrador: Marii-San\nCarta: 135\nRareza: Novato",
+    "effect": "Cuando un luchador con\" Sarah\" en su nombre entre a tu Cuadrilátero, envia al Vestidor las 2 cartas superiores de la Empresa adversaria."
   },
   {
     "id": "exp1-135-el-estr-s-de-katty",
@@ -2189,7 +2325,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/El Estrés de Katty.png",
-    "rawDescription": "Nombre: El Estrés de Katty\nTipo de carta: Castigo\nCosto: 4\nIlustrador: Marii-San\nCarta: 135\nRareza: Novato"
+    "rawDescription": "Nombre: El Estrés de Katty\nTipo de carta: Castigo\nCosto: 4\nIlustrador: Marii-San\nCarta: 135\nRareza: Novato",
+    "effect": "-CONTRALLAVE-\nSolo puedes jugar esta carta si no tienes luchadores en tu Cuadrilátero. Juega 1 luchador que tenga \"Sarah\" en su nombre desde tu Mano o Vestidor sin pagar su costo y envia al Vestidor la carta superior de la Empresa adversaria."
   },
   {
     "id": "exp1-136-tr-bol-pink",
@@ -2205,7 +2342,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Trébol Pink.png",
-    "rawDescription": "Nombre: Trébol Pink\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 2\nFuerza: 1\nIlustrador: Izumi Mortem\nCarta: 136"
+    "rawDescription": "Nombre: Trébol Pink\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 2\nFuerza: 1\nIlustrador: Izumi Mortem\nCarta: 136",
+    "effect": "-OPORTUNISTA-\n-HURANO-\nCuando este luchador hace daño de batalla, roba 1 carta de tu Empresa y si es un luchador decosto igual o menor a este luchador, puedes jugarlo de inmediato sin pagar su costo."
   },
   {
     "id": "exp1-137-el-hombre-del-casco",
@@ -2221,7 +2359,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/El Hombre del Casco.png",
-    "rawDescription": "Nombre: El Hombre del Casco\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 0\nFuerza: 0\nIlustrador: Pegoztino\nCarta: 137"
+    "rawDescription": "Nombre: El Hombre del Casco\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Fantasía\nCosto: 0\nFuerza: 0\nIlustrador: Pegoztino\nCarta: 137",
+    "effect": "-OPORTUNISTA-\nEste luchador gana fuerza igual al numero de contratos pagados para jugarlo."
   },
   {
     "id": "exp1-138-luchadoreggs",
@@ -2237,7 +2376,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Luchadoreggs.png",
-    "rawDescription": "Nombre: Luchadoreggs\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 138\nRareza: Novato"
+    "rawDescription": "Nombre: Luchadoreggs\nTipo de carta: Contrato\nIlustrador: James Darko\nCarta: 138\nRareza: Novato",
+    "effect": "Cuando un luchador de tu Cuadrilátero sea noqueado por batalla, puedes descartar este contrato para reducir a 0 el daño de esa batalla."
   },
   {
     "id": "exp1-139-night",
@@ -2253,7 +2393,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Night.png",
-    "rawDescription": "Nombre: Night\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 2\nFuerza: 2\nIlustrador: Levanart's\nCarta: 139"
+    "rawDescription": "Nombre: Night\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Aéreo\nCosto: 2\nFuerza: 2\nIlustrador: Levanart's\nCarta: 139",
+    "effect": "-OPORTUNISTA-\nCuando entra al Cuadrilátero, devuelve 1 carta al azar de la Mano del jugador adversario a su Empresa, luego el jugador adversario baraja su Empresa."
   },
   {
     "id": "exp1-140-cris-skin",
@@ -2269,7 +2410,8 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Cris Skin.png",
-    "rawDescription": "Nombre: Cris Skin\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 4\nFuerza: 5\nIlustrador: Araceli Salazar\nCarta: 140"
+    "rawDescription": "Nombre: Cris Skin\nTipo de carta: Luchador\nBando: Rudo\nEstilo: Clásico\nCosto: 4\nFuerza: 5\nIlustrador: Araceli Salazar\nCarta: 140",
+    "effect": "-OPORTUNISTA-\n-INMORTAL-"
   },
   {
     "id": "exp1-142-eva",
@@ -2285,6 +2427,7 @@
     "set": "Primera Expansión",
     "setId": "exp1",
     "image": "assets/cards/expansion-1/Eva.png",
-    "rawDescription": "Nombre: Eva\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 4\nFuerza: 3\nIlustrador: Pegoztino\nCarta: 142"
+    "rawDescription": "Nombre: Eva\nTipo de carta: Luchador\nBando: Técnico\nEstilo: Clásico\nCosto: 4\nFuerza: 3\nIlustrador: Pegoztino\nCarta: 142",
+    "effect": "-OPORTUNISTA-\nCuando entra al Cuadrilátero, envia al Vestidor 1 luchador adversario con fuerza igual o menor a este luchador."
   }
 ]

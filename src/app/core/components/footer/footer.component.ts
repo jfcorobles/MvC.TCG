@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SupabaseService } from '../../services/supabase.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,4 +10,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
-export class FooterComponent {}
+export class FooterComponent {
+  readonly supabase = inject(SupabaseService);
+}

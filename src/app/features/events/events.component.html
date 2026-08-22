@@ -1,0 +1,138 @@
+<div class="events-page container">
+  
+  <!-- Premium Hero Header -->
+  <header class="events-hero-section">
+    <div class="hero-glow-backdrop"></div>
+    <div class="hero-content">
+      <div class="hero-top-badge">
+        <span class="pulse-dot"></span>
+        <span>Circuito Oficial de Torneos MvC</span>
+      </div>
+
+      <h1 class="hero-title">
+        El Cuadrilátero <span class="highlight-gold">Competitivo</span>
+      </h1>
+      
+      <p class="hero-description">
+        Descubre torneos presenciales, copas estatales y duelos amistosos en tiendas oficiales y arenas de todo México. Pon a prueba tu baraja de 50 cartas y lucha por la gloria.
+      </p>
+
+      @if (supabase.userProfile()?.state_location) {
+        <div class="user-location-pill">
+          <span class="pin-icon">📍</span>
+          <span>Mostrando torneos cerca de: <strong>{{ supabase.userProfile()?.state_location }}</strong></span>
+        </div>
+      }
+    </div>
+  </header>
+
+  <!-- Interactive States Filter Hub -->
+  <section class="states-filter-container clean-panel">
+    <div class="filter-header">
+      <span class="filter-title">Selecciona tu Región:</span>
+      <span class="filter-count">{{ communityService.events().length }} evento(s) disponible(s)</span>
+    </div>
+
+    <div class="states-scroll-track">
+      @for (state of mexicanStates; track state) {
+        <button 
+          type="button" 
+          class="state-pill-btn" 
+          [class.active]="selectedState() === state"
+          (click)="filterByState(state)">
+          {{ state === 'Todos' ? '🇲🇽 Todo México' : state }}
+        </button>
+      }
+    </div>
+  </section>
+
+  <!-- Events Showcase Grid -->
+  @if (communityService.isLoadingEvents()) {
+    <div class="events-loading-panel clean-panel">
+      <div class="spinner-lucha"></div>
+      <p>Buscando torneos en la arena...</p>
+    </div>
+  } @else if (communityService.events().length > 0) {
+    <div class="events-showcase-grid">
+      @for (event of communityService.events(); track event.id) {
+        <article class="event-card-premium">
+          <div class="card-border-glow"></div>
+          
+          <!-- Top Row: Date Block + Badges -->
+          <div class="event-card-top-row">
+            <div class="date-punch-block">
+              <span class="punch-month">{{ event.eventDate | date:'MMM' | uppercase }}</span>
+              <span class="punch-day">{{ event.eventDate | date:'dd' }}</span>
+            </div>
+
+            <div class="card-badges-col">
+              <span class="state-location-badge">📍 {{ event.stateLocation }}</span>
+              @if (event.isOfficial) {
+                <span class="official-gold-badge">⭐ Oficial MvC</span>
+              }
+            </div>
+          </div>
+
+          <!-- Title & Time -->
+          <div class="event-main-info">
+            <h2 class="event-card-title">{{ event.title }}</h2>
+            <div class="event-time-row">
+              <span class="time-clock">⏰ {{ event.eventDate | date:'EEEE, d MMMM • h:mm a' }}</span>
+            </div>
+          </div>
+
+          <!-- Details Box -->
+          <div class="event-details-box">
+            <div class="detail-line">
+              <span class="detail-icon">🏟️</span>
+              <div class="detail-content">
+                <strong class="venue-title">{{ event.venueName || 'Sede oficial' }}</strong>
+                <span class="venue-address">{{ event.address || 'Dirección por confirmar' }}</span>
+              </div>
+            </div>
+
+            <div class="detail-line fee-line">
+              <span class="detail-icon">🎟️</span>
+              <div class="detail-content">
+                <span class="fee-lbl">Cuota de entrada:</span>
+                <strong class="fee-val">{{ event.entryFee }}</strong>
+              </div>
+            </div>
+          </div>
+
+          @if (event.description) {
+            <p class="event-synopsis">{{ event.description }}</p>
+          }
+
+          <!-- Action Footer -->
+          <div class="event-card-footer">
+            @if (event.registrationUrl) {
+              <a 
+                [href]="event.registrationUrl" 
+                target="_blank" 
+                rel="noopener" 
+                class="btn-register-action">
+                <span>Inscribirme al Torneo</span>
+                <span class="arrow-ext">↗</span>
+              </a>
+            } @else {
+              <div class="walk-in-box">
+                <span>Registro directo en mostrador</span>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  } @else {
+    <div class="no-events-panel clean-panel">
+      <div class="empty-ring-icon">🥊</div>
+      <h3>Sin torneos programados en {{ selectedState() }}</h3>
+      <p>Actualmente no hay fechas registradas en esta región. ¡Explora eventos en otros estados o revisa periódicamente!</p>
+      <button type="button" class="btn btn-outline" (click)="filterByState('Todos')">
+        Ver eventos en todo México
+      </button>
+    </div>
+  }
+
+</div>

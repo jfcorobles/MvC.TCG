@@ -1,0 +1,235 @@
+<div class="auth-page">
+  <div class="container auth-container">
+    
+    <div class="auth-card clean-panel">
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-badge">Únete al Ring</div>
+        <h1 class="auth-title">Crear Cuenta</h1>
+        <p class="auth-subtitle">
+          Regístrate como aficionado o luchador para enviar reportes de partidas, sugerencias y erratas de cartas.
+        </p>
+      </div>
+
+      <!-- Success Alert -->
+      @if (successMessage()) {
+        <div class="auth-alert success-alert" role="alert">
+          <svg class="alert-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <div>
+            <strong>¡Registro exitoso!</strong>
+            <p class="alert-desc">{{ successMessage() }}</p>
+          </div>
+        </div>
+      }
+
+      <!-- Error Alert -->
+      @if (errorMessage()) {
+        <div class="auth-alert error-alert" role="alert">
+          <svg class="alert-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <!-- Form -->
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form" novalidate>
+        
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName" class="form-label">Nombre o Alias de Luchador *</label>
+          <div class="input-wrapper" [class.has-error]="isFieldInvalid('fullName')">
+            <input 
+              id="fullName" 
+              type="text" 
+              formControlName="fullName" 
+              class="form-input"
+              placeholder="Ej: James Darko / El Rudo Mayor"
+              autocomplete="name"
+            />
+          </div>
+          @if (isFieldInvalid('fullName')) {
+            <span class="field-error">
+              El nombre o alias es obligatorio (mínimo 2 caracteres).
+            </span>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="reg-email" class="form-label">Correo Electrónico *</label>
+          <div class="input-wrapper" [class.has-error]="isFieldInvalid('email')">
+            <input 
+              id="reg-email" 
+              type="email" 
+              formControlName="email" 
+              class="form-input"
+              placeholder="tu-correo@ejemplo.com"
+              autocomplete="email"
+            />
+          </div>
+          @if (isFieldInvalid('email')) {
+            <span class="field-error">
+              @if (registerForm.get('email')?.hasError('required')) { El correo es obligatorio. }
+              @if (registerForm.get('email')?.hasError('email')) { Ingresa un correo válido. }
+            </span>
+          }
+        </div>
+
+        <!-- Searchable State Dropdown -->
+        <div class="form-group">
+          <label class="form-label">Estado / Región de Residencia *</label>
+          <div class="searchable-dropdown" [class.is-open]="isStateDropdownOpen()" [class.has-error]="isFieldInvalid('stateLocation')">
+            
+            <!-- Trigger Button / Display Box -->
+            <button 
+              type="button" 
+              class="dropdown-trigger" 
+              (click)="toggleStateDropdown()"
+              [attr.aria-expanded]="isStateDropdownOpen()"
+              aria-haspopup="listbox">
+              <span class="selected-text" [class.placeholder]="!registerForm.get('stateLocation')?.value">
+                {{ registerForm.get('stateLocation')?.value || 'Selecciona o busca tu estado...' }}
+              </span>
+              <div class="trigger-actions">
+                @if (registerForm.get('stateLocation')?.value) {
+                  <span class="btn-clear-state" (click)="clearSelectedState($event)" title="Limpiar">✕</span>
+                }
+                <svg class="chevron-icon" [class.rotated]="isStateDropdownOpen()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </div>
+            </button>
+
+            <!-- Dropdown Menu -->
+            @if (isStateDropdownOpen()) {
+              <div class="dropdown-menu clean-panel" role="listbox">
+                
+                <!-- Search Input inside dropdown -->
+                <div class="dropdown-search-box" (click)="$event.stopPropagation()">
+                  <svg class="search-mini-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                  <input 
+                    type="text" 
+                    class="dropdown-search-input" 
+                    [ngModel]="stateSearchText()" 
+                    (ngModelChange)="stateSearchText.set($event)"
+                    [ngModelOptions]="{standalone: true}"
+                    placeholder="Filtrar estado (ej: Jalisco, CDMX, Puebla...)"
+                    autofocus
+                  />
+                  @if (stateSearchText()) {
+                    <button type="button" class="btn-clear-search" (click)="stateSearchText.set('')">✕</button>
+                  }
+                </div>
+
+                <!-- States Options List -->
+                <ul class="dropdown-list">
+                  @for (state of filteredStates(); track state) {
+                    <li 
+                      class="dropdown-item" 
+                      [class.selected]="registerForm.get('stateLocation')?.value === state"
+                      (click)="selectState(state)"
+                      role="option"
+                      [attr.aria-selected]="registerForm.get('stateLocation')?.value === state">
+                      <span class="item-name">{{ state }}</span>
+                      @if (registerForm.get('stateLocation')?.value === state) {
+                        <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                      }
+                    </li>
+                  } @empty {
+                    <li class="dropdown-empty">
+                      No se encontraron estados para "{{ stateSearchText() }}"
+                    </li>
+                  }
+                </ul>
+
+              </div>
+            }
+
+          </div>
+          @if (isFieldInvalid('stateLocation')) {
+            <span class="field-error">
+              Por favor selecciona el estado donde resides.
+            </span>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="reg-password" class="form-label">Contraseña *</label>
+          <div class="input-wrapper" [class.has-error]="isFieldInvalid('password')">
+            <input 
+              id="reg-password" 
+              type="password" 
+              formControlName="password" 
+              class="form-input"
+              placeholder="Mínimo 6 caracteres"
+              autocomplete="new-password"
+            />
+          </div>
+          @if (isFieldInvalid('password')) {
+            <span class="field-error">
+              @if (registerForm.get('password')?.hasError('required')) { La contraseña es obligatoria. }
+              @if (registerForm.get('password')?.hasError('minlength')) { Mínimo 6 caracteres. }
+            </span>
+          }
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Confirmar Contraseña *</label>
+          <div class="input-wrapper" [class.has-error]="isFieldInvalid('confirmPassword') || registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+            <input 
+              id="confirmPassword" 
+              type="password" 
+              formControlName="confirmPassword" 
+              class="form-input"
+              placeholder="Repite la contraseña"
+              autocomplete="new-password"
+            />
+          </div>
+          @if (registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.hasError('passwordMismatch') || registerForm.hasError('passwordMismatch'))) {
+            <span class="field-error">
+              Las contraseñas no coinciden.
+            </span>
+          }
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-block" 
+          [disabled]="isLoading() || registerForm.invalid">
+          @if (isLoading()) {
+            <span class="spinner"></span>
+            <span>Registrando tu cuenta...</span>
+          } @else {
+            <span>Crear mi Cuenta</span>
+            <span class="btn-arrow">→</span>
+          }
+        </button>
+
+      </form>
+
+      <!-- Footer Link -->
+      <div class="auth-footer">
+        <p>
+          ¿Ya tienes cuenta? 
+          <a routerLink="/auth/login" class="auth-link">Inicia sesión aquí</a>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>

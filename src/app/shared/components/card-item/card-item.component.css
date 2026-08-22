@@ -206,6 +206,22 @@
   color: #34d399;
 }
 
+.admin-edit-btn {
+  background: rgba(245, 158, 11, 0.12);
+  border: none;
+  border-left: 1px solid var(--border-subtle);
+  color: var(--accent-gold);
+  padding: 0.5rem 0.65rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.admin-edit-btn:hover {
+  background: var(--accent-gold);
+  color: #0c0d12;
+}
+
 .inspect-btn {
   background: none;
   border: none;

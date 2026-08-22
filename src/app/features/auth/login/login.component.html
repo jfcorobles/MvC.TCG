@@ -1,0 +1,98 @@
+<div class="auth-page">
+  <div class="container auth-container">
+    
+    <div class="auth-card clean-panel">
+      <!-- Card Header -->
+      <div class="auth-header">
+        <div class="auth-badge">Cuadrilátero MvC</div>
+        <h1 class="auth-title">Iniciar Sesión</h1>
+        <p class="auth-subtitle">
+          Accede a tu cuenta para registrar reportes de partidas, erratas de cartas y gestionar tus incidencias.
+        </p>
+      </div>
+
+      <!-- Error Alert -->
+      @if (errorMessage()) {
+        <div class="auth-alert error-alert" role="alert">
+          <svg class="alert-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <!-- Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form" novalidate>
+        
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <div class="input-wrapper" [class.has-error]="isFieldInvalid('email')">
+            <input 
+              id="email" 
+              type="email" 
+              formControlName="email" 
+              class="form-input"
+              placeholder="tu-correo@ejemplo.com"
+              autocomplete="email"
+            />
+          </div>
+          @if (isFieldInvalid('email')) {
+            <span class="field-error">
+              @if (loginForm.get('email')?.hasError('required')) { El correo es obligatorio. }
+              @if (loginForm.get('email')?.hasError('email')) { Ingresa un correo electrónico válido. }
+            </span>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-wrapper" [class.has-error]="isFieldInvalid('password')">
+            <input 
+              id="password" 
+              type="password" 
+              formControlName="password" 
+              class="form-input"
+              placeholder="••••••••"
+              autocomplete="current-password"
+            />
+          </div>
+          @if (isFieldInvalid('password')) {
+            <span class="field-error">
+              @if (loginForm.get('password')?.hasError('required')) { La contraseña es obligatoria. }
+              @if (loginForm.get('password')?.hasError('minlength')) { Mínimo 6 caracteres. }
+            </span>
+          }
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-block" 
+          [disabled]="isLoading() || loginForm.invalid">
+          @if (isLoading()) {
+            <span class="spinner"></span>
+            <span>Verificando credenciales...</span>
+          } @else {
+            <span>Entrar al Ring</span>
+            <span class="btn-arrow">→</span>
+          }
+        </button>
+
+      </form>
+
+      <!-- Footer Link -->
+      <div class="auth-footer">
+        <p>
+          ¿No tienes una cuenta? 
+          <a routerLink="/auth/registro" class="auth-link">Regístrate gratis aquí</a>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>

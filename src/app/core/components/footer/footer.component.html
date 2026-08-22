@@ -45,7 +45,11 @@
         <li><a routerLink="/">Inicio</a></li>
         <li><a routerLink="/cartas">Buscador de Cartas (143)</a></li>
         <li><a routerLink="/reglas">Manual de Reglas</a></li>
-        <li><a routerLink="/mazo">Armador de Mazos</a></li>
+        @if (supabase.isAuthenticated()) {
+          <li><a routerLink="/mazo">Armador de Mazos</a></li>
+        }
+        <li><a routerLink="/eventos">Torneos & Eventos</a></li>
+        <li><a routerLink="/comunidad">El Ring & Rulings</a></li>
         <li><a routerLink="/acerca">Historia del Proyecto</a></li>
       </ul>
     </div>

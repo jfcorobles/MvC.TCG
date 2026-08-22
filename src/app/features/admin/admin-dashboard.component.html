@@ -1,0 +1,633 @@
+<div class="admin-wrapper">
+  
+  <!-- Toast Feedback -->
+  @if (toastMessage()) {
+    <div class="admin-toast" role="status">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span>{{ toastMessage() }}</span>
+    </div>
+  }
+
+  <!-- ADMIN SIDEBAR -->
+  <aside class="admin-sidebar">
+    
+    <!-- Brand / Header -->
+    <div class="sidebar-brand">
+      <div class="brand-badge">
+        <span class="bolt-icon">⚡</span>
+        <span class="brand-sub">Panel de Control</span>
+      </div>
+      <h2 class="sidebar-title">MvC Admin</h2>
+    </div>
+
+    <!-- Admin Profile Card -->
+    <div class="admin-user-card">
+      <div class="avatar-ring">
+        <span>{{ (supabase.userDisplayName() || 'A').charAt(0).toUpperCase() }}</span>
+      </div>
+      <div class="user-meta">
+        <strong class="user-name">{{ supabase.userDisplayName() }}</strong>
+        <span class="role-tag">⚡ Administrador</span>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav">
+      
+      <span class="sidebar-category-lbl">PANEL & CONTROL</span>
+
+      <button 
+        type="button" 
+        class="nav-item" 
+        [class.active]="activeSection() === 'resumen'"
+        (click)="setSection('resumen')">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">Panel General</span>
+      </button>
+
+      <button 
+        type="button" 
+        class="nav-item" 
+        [class.active]="activeSection() === 'usuarios'"
+        (click)="setSection('usuarios')">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">Usuarios & Roles</span>
+        <span class="nav-count">{{ usersList().length }}</span>
+      </button>
+
+      <button 
+        type="button" 
+        class="nav-item" 
+        [class.active]="activeSection() === 'reportes'"
+        (click)="setSection('reportes')">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">Reportes Globales</span>
+        @if (pendingReportsCount() > 0) {
+          <span class="nav-count alert-count">{{ pendingReportsCount() }}</span>
+        }
+      </button>
+
+      <span class="sidebar-category-lbl">CREACIÓN & COMUNIDAD</span>
+
+      <button 
+        type="button" 
+        class="nav-item" 
+        [class.active]="activeSection() === 'eventos'"
+        (click)="setSection('eventos')">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">Torneos & Eventos</span>
+        <span class="nav-count">{{ communityService.events().length }}</span>
+      </button>
+
+      <button 
+        type="button" 
+        class="nav-item" 
+        [class.active]="activeSection() === 'rulings'"
+        (click)="setSection('rulings')">
+        <span class="nav-icon">📜</span>
+        <span class="nav-text">Erratas & Rulings</span>
+        <span class="nav-count">{{ communityService.cardRulings().length }}</span>
+      </button>
+
+      <button 
+        type="button" 
+        class="nav-item" 
+        [class.active]="activeSection() === 'encuestas'"
+        (click)="setSection('encuestas')">
+        <span class="nav-icon">🗳️</span>
+        <span class="nav-text">Encuestas (Ring)</span>
+        <span class="nav-count">{{ communityService.activePolls().length }}</span>
+      </button>
+
+      <div class="sidebar-divider"></div>
+
+      <span class="sidebar-category-lbl">ACCESOS DIRECTOS</span>
+
+      <!-- Outbound to Visual Card Browser -->
+      <a routerLink="/cartas" class="nav-item nav-cards-link" title="Ir al Catálogo para editar cartas visualmente">
+        <span class="nav-icon">🃏</span>
+        <span class="nav-text">Buscador de Cartas</span>
+        <span class="nav-ext">↗</span>
+      </a>
+
+      <a routerLink="/mazo" class="nav-item" title="Constructor de Mazos">
+        <span class="nav-icon">🎴</span>
+        <span class="nav-text">Constructor de Mazos</span>
+      </a>
+
+      <a routerLink="/" class="nav-item" title="Ir al Inicio">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-text">Volver al Sitio</span>
+      </a>
+
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <button type="button" class="btn-sidebar-logout" (click)="logout()">
+        <span>Cerrar Sesión</span>
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN ADMIN CONTENT AREA -->
+  <main class="admin-main">
+    
+    <!-- =========================================================
+         SECTION 1: RESUMEN / METRICAS
+         ========================================================= -->
+    @if (activeSection() === 'resumen') {
+      <div class="admin-content-section">
+        
+        <header class="section-topbar">
+          <div>
+            <h1 class="page-title">Panel General del Administrador</h1>
+            <p class="page-sub">Bienvenido a la consola de administración de Máscaras vs Cabelleras TCG.</p>
+          </div>
+        </header>
+
+        <!-- KPI Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card clean-panel" (click)="setSection('usuarios')" style="cursor: pointer;">
+            <div class="kpi-header">
+              <span class="kpi-icon">👥</span>
+              <span class="kpi-trend">Ver lista</span>
+            </div>
+            <strong class="kpi-val">{{ usersList().length }}</strong>
+            <span class="kpi-lbl">Usuarios Registrados</span>
+          </div>
+
+          <div class="kpi-card clean-panel" (click)="goToCardBrowser()" style="cursor: pointer;">
+            <div class="kpi-header">
+              <span class="kpi-icon">🃏</span>
+              <span class="kpi-trend success">100%</span>
+            </div>
+            <strong class="kpi-val">{{ cardService.allCards().length }}</strong>
+            <span class="kpi-lbl">Cartas en Catálogo</span>
+          </div>
+
+          <div class="kpi-card clean-panel" (click)="setSection('eventos')" style="cursor: pointer;">
+            <div class="kpi-header">
+              <span class="kpi-icon">🏆</span>
+              <span class="kpi-trend">Gestionar</span>
+            </div>
+            <strong class="kpi-val">{{ communityService.events().length }}</strong>
+            <span class="kpi-lbl">Torneos Publicados</span>
+          </div>
+
+          <div class="kpi-card clean-panel" (click)="setSection('reportes')" style="cursor: pointer;" [class.alert-card]="pendingReportsCount() > 0">
+            <div class="kpi-header">
+              <span class="kpi-icon">⚠️</span>
+              @if (pendingReportsCount() > 0) {
+                <span class="kpi-trend alert">Atención</span>
+              }
+            </div>
+            <strong class="kpi-val">{{ pendingReportsCount() }}</strong>
+            <span class="kpi-lbl">Reportes Pendientes</span>
+          </div>
+        </div>
+
+        <!-- Quick Creation Hub (Acciones Rápidas) -->
+        <div class="admin-quick-hub">
+          <h3 class="quick-hub-title">⚡ Acciones de Creación Rápida</h3>
+          
+          <div class="quick-actions-grid">
+            
+            <div class="quick-action-card clean-panel" (click)="setSection('eventos')">
+              <span class="qa-icon">🏆</span>
+              <div class="qa-info">
+                <strong>Publicar Nuevo Torneo</strong>
+                <span>Crea fechas de torneo con sede, Estado y link de registro</span>
+              </div>
+              <button type="button" class="btn btn-outline btn-xs qa-btn">+ Crear Torneo</button>
+            </div>
+
+            <div class="quick-action-card clean-panel" (click)="setSection('rulings')">
+              <span class="qa-icon">📜</span>
+              <div class="qa-info">
+                <strong>Registrar Ruling / Errata</strong>
+                <span>Asocia aclaraciones de reglas oficiales a cualquier carta</span>
+              </div>
+              <button type="button" class="btn btn-outline btn-xs qa-btn">+ Nuevo Ruling</button>
+            </div>
+
+            <div class="quick-action-card clean-panel" (click)="setSection('encuestas')">
+              <span class="qa-icon">🗳️</span>
+              <div class="qa-info">
+                <strong>Lanzar Nueva Encuesta</strong>
+                <span>Crea votaciones comunitarias para El Ring con opciones</span>
+              </div>
+              <button type="button" class="btn btn-outline btn-xs qa-btn">+ Nueva Encuesta</button>
+            </div>
+
+            <div class="quick-action-card clean-panel" (click)="goToCardBrowser()">
+              <span class="qa-icon">✏️</span>
+              <div class="qa-info">
+                <strong>Editar Cartas del Catálogo</strong>
+                <span>Modifica nombres, efectos OCR, costes y atributos visualmente</span>
+              </div>
+              <button type="button" class="btn btn-outline btn-xs qa-btn">Abrir Catálogo ↗</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Quick Access Banners -->
+        <div class="quick-access-banner clean-panel">
+          <div class="banner-text">
+            <span class="banner-badge">Edición Visual en Vivo</span>
+            <h3>Edita cartas y efectos directamente desde el Catálogo</h3>
+            <p>
+              Busca cualquier carta en el buscador interactivo y haz clic en el botón <strong>✏️</strong> para corregir efectos, costes, fuerza o atributos en tiempo real.
+            </p>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg" (click)="goToCardBrowser()">
+            Ir al Buscador de Cartas ↗
+          </button>
+        </div>
+
+      </div>
+    }
+
+    <!-- =========================================================
+         SECTION 2: GESTIÓN DE USUARIOS & ROLES
+         ========================================================= -->
+    @if (activeSection() === 'usuarios') {
+      <div class="admin-content-section">
+        
+        <header class="section-topbar">
+          <div>
+            <h1 class="page-title">Gestión de Usuarios & Roles</h1>
+            <p class="page-sub">Asigna permisos de Administrador o Jugador a las cuentas de la plataforma.</p>
+          </div>
+
+          <div class="search-box">
+            <input 
+              type="search" 
+              [ngModel]="usersSearch()" 
+              (ngModelChange)="usersSearch.set($event)"
+              placeholder="Buscar por nombre, correo o estado..." 
+              class="admin-search-input" />
+          </div>
+        </header>
+
+        <div class="table-container clean-panel">
+          @if (isUsersLoading()) {
+            <div class="loading-state">
+              <div class="spinner"></div>
+              <p>Cargando perfiles de usuario...</p>
+            </div>
+          } @else if (filteredUsers().length > 0) {
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Luchador / Nombre</th>
+                  <th>Correo Electrónico</th>
+                  <th>Estado / Ubicación</th>
+                  <th>Rol Actual</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (user of filteredUsers(); track user.id) {
+                  <tr>
+                    <td>
+                      <div class="user-row-name">
+                        <span class="user-avatar-sm">{{ (user.full_name || user.email).charAt(0).toUpperCase() }}</span>
+                        <strong>{{ user.full_name || 'Sin nombre registrado' }}</strong>
+                      </div>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.state_location || 'No especificado' }}</td>
+                    <td>
+                      <span class="role-pill" [class.admin-pill]="user.role === 'admin'">
+                        {{ user.role === 'admin' ? '⚡ Administrador' : '🤼 Jugador' }}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="action-btn-group">
+                        @if (user.role === 'jugador') {
+                          <button 
+                            type="button" 
+                            class="btn btn-outline btn-xs"
+                            (click)="changeUserRole(user, 'admin')">
+                            Ascender a Admin
+                          </button>
+                        } @else {
+                          <button 
+                            type="button" 
+                            class="btn btn-outline btn-xs text-danger"
+                            (click)="changeUserRole(user, 'jugador')">
+                            Degradar a Jugador
+                          </button>
+                        }
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          } @else {
+            <div class="empty-state">
+              <p>No se encontraron usuarios que coincidan con la búsqueda.</p>
+            </div>
+          }
+        </div>
+
+      </div>
+    }
+
+    <!-- =========================================================
+         SECTION 3: REPORTES GLOBALES
+         ========================================================= -->
+    @if (activeSection() === 'reportes') {
+      <div class="admin-content-section">
+        
+        <header class="section-topbar">
+          <div>
+            <h1 class="page-title">Gestión de Reportes & Erratas</h1>
+            <p class="page-sub">Revisa dudas de reglas, reportes de balance y sugerencias de los jugadores.</p>
+          </div>
+        </header>
+
+        <div class="reports-admin-list">
+          @for (report of reportsService.reports(); track report.id) {
+            <div class="report-card clean-panel">
+              <div class="report-card-top">
+                <div class="report-tags">
+                  <span class="category-tag">{{ report.category }}</span>
+                  <span class="status-tag" [class]="'st-' + report.status">{{ report.status }}</span>
+                  @if (report.card_related) {
+                    <span class="card-ref-tag">🃏 {{ report.card_related }}</span>
+                  }
+                </div>
+                <span class="report-date">{{ report.created_at | date:'mediumDate' }}</span>
+              </div>
+
+              <h3 class="report-title">{{ report.title }}</h3>
+              <p class="report-desc">{{ report.description }}</p>
+
+              <div class="report-actions-row">
+                <div class="status-change-group">
+                  <label class="status-lbl">Cambiar Estado:</label>
+                  <select 
+                    [ngModel]="report.status" 
+                    (ngModelChange)="updateReportStatus(report, $event)"
+                    class="status-select">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="en_revision">En Revisión</option>
+                    <option value="resuelto">Resuelto</option>
+                    <option value="descartado">Descartado</option>
+                  </select>
+                </div>
+
+                <button 
+                  type="button" 
+                  class="btn btn-outline btn-xs text-danger"
+                  (click)="deleteReport(report)">
+                  Eliminar Reporte
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+
+      </div>
+    }
+
+    <!-- =========================================================
+         SECTION 4: GESTIÓN DE TORNEOS & EVENTOS
+         ========================================================= -->
+    @if (activeSection() === 'eventos') {
+      <div class="admin-content-section">
+        <header class="section-topbar">
+          <div>
+            <h1 class="page-title">Gestión de Torneos & Eventos</h1>
+            <p class="page-sub">Publica torneos oficiales, ligas y eventos clasificados por Estado de la República.</p>
+          </div>
+        </header>
+
+        <div class="admin-two-cols">
+          <!-- Form: Nuevo Evento -->
+          <div class="admin-form-panel clean-panel">
+            <h3 class="form-title">🏆 Publicar Nuevo Torneo / Evento</h3>
+            
+            <div class="form-group">
+              <label class="form-label">Título del Torneo *</label>
+              <input type="text" [(ngModel)]="eventTitle" placeholder="Ej. Torneo Nacional MvC - CDMX" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Estado de la República *</label>
+              <select [(ngModel)]="eventState" class="form-control">
+                @for (state of mexicanStates; track state) {
+                  <option [value]="state">{{ state }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Sede / Tienda</label>
+              <input type="text" [(ngModel)]="eventVenue" placeholder="Ej. Arena Cómic TCG" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Dirección</label>
+              <input type="text" [(ngModel)]="eventAddress" placeholder="Ej. Av. Cuauhtémoc #120, Col. Roma" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Fecha y Hora *</label>
+              <input type="datetime-local" [(ngModel)]="eventDate" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Costo de Inscripción</label>
+              <input type="text" [(ngModel)]="eventFee" placeholder="Ej. Gratuito / $50 MXN" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Link de Registro o Información</label>
+              <input type="url" [(ngModel)]="eventUrl" placeholder="https://..." class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Descripción o Reglas del Torneo</label>
+              <textarea [(ngModel)]="eventDesc" rows="3" class="form-control" placeholder="Formato de juego, premios, cupo máximo..."></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary w-100" [disabled]="isSavingEvent()" (click)="saveEvent()">
+              {{ isSavingEvent() ? 'Publicando...' : 'Publicar Evento' }}
+            </button>
+          </div>
+
+          <!-- List: Eventos Existentes -->
+          <div class="admin-items-list">
+            <h3 class="list-title">Eventos Publicados ({{ communityService.events().length }})</h3>
+            @for (event of communityService.events(); track event.id) {
+              <div class="admin-list-item clean-panel">
+                <div class="item-header">
+                  <span class="badge-state">📍 {{ event.stateLocation }}</span>
+                  <span class="badge-date">{{ event.eventDate | date:'mediumDate' }}</span>
+                </div>
+                <h4 class="item-title">{{ event.title }}</h4>
+                <p class="item-venue">🏟️ {{ event.venueName }} - {{ event.address }}</p>
+                <div class="item-actions">
+                  <button type="button" class="btn btn-outline btn-xs text-danger" (click)="deleteEvent(event)">
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- =========================================================
+         SECTION 5: GESTIÓN DE ERRATAS & RULINGS
+         ========================================================= -->
+    @if (activeSection() === 'rulings') {
+      <div class="admin-content-section">
+        <header class="section-topbar">
+          <div>
+            <h1 class="page-title">Gestión de Erratas & Rulings Oficiales</h1>
+            <p class="page-sub">Asocia aclaraciones oficiales a cualquier carta del catálogo para resolver dudas de combate.</p>
+          </div>
+        </header>
+
+        <div class="admin-two-cols">
+          <!-- Form: Nuevo Ruling -->
+          <div class="admin-form-panel clean-panel">
+            <h3 class="form-title">📜 Registrar Aclaración Oficial</h3>
+
+            <div class="form-group">
+              <label class="form-label">Seleccionar Carta *</label>
+              <select [(ngModel)]="rulingCardId" class="form-control">
+                <option value="">-- Elige una carta --</option>
+                @for (c of cardService.allCards(); track c.id) {
+                  <option [value]="c.id">#{{ c.number }} - {{ c.name }} ({{ c.type }})</option>
+                }
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Texto de la Aclaración Oficial *</label>
+              <textarea 
+                [(ngModel)]="rulingText" 
+                rows="5" 
+                class="form-control" 
+                placeholder="Explica detalladamente la interacción de combate, cuándo se activa o cómo se resuelve..."></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary w-100" [disabled]="isSavingRuling()" (click)="saveRuling()">
+              {{ isSavingRuling() ? 'Guardando...' : 'Registrar Ruling' }}
+            </button>
+          </div>
+
+          <!-- List: Rulings Existentes -->
+          <div class="admin-items-list">
+            <h3 class="list-title">Rulings Registrados ({{ communityService.cardRulings().length }})</h3>
+            @for (ruling of communityService.cardRulings(); track ruling.id) {
+              <div class="admin-list-item clean-panel">
+                <div class="item-header">
+                  <strong class="item-card-name">🃏 {{ ruling.cardName || ruling.cardId }}</strong>
+                  <span class="badge-date">{{ ruling.createdAt | date:'shortDate' }}</span>
+                </div>
+                <p class="item-ruling-text">{{ ruling.rulingText }}</p>
+                <div class="item-actions">
+                  <button type="button" class="btn btn-outline btn-xs text-danger" (click)="deleteRuling(ruling)">
+                    Eliminar Ruling
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- =========================================================
+         SECTION 6: GESTIÓN DE ENCUESTAS (EL RING)
+         ========================================================= -->
+    @if (activeSection() === 'encuestas') {
+      <div class="admin-content-section">
+        <header class="section-topbar">
+          <div>
+            <h1 class="page-title">Gestión de Encuestas (El Ring)</h1>
+            <p class="page-sub">Crea votaciones comunitarias para medir la opinión de los jugadores.</p>
+          </div>
+        </header>
+
+        <div class="admin-two-cols">
+          <!-- Form: Nueva Encuesta -->
+          <div class="admin-form-panel clean-panel">
+            <h3 class="form-title">🗳️ Crear Nueva Encuesta</h3>
+
+            <div class="form-group">
+              <label class="form-label">Pregunta de la Encuesta *</label>
+              <input type="text" [(ngModel)]="pollQuestion" placeholder="Ej. ¿Qué estilo de lucha usas más?" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Descripción o Contexto</label>
+              <textarea [(ngModel)]="pollDesc" rows="2" placeholder="Opcional..." class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Opción 1 *</label>
+              <input type="text" [(ngModel)]="pollOption1" placeholder="Opción A" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Opción 2 *</label>
+              <input type="text" [(ngModel)]="pollOption2" placeholder="Opción B" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Opción 3 (Opcional)</label>
+              <input type="text" [(ngModel)]="pollOption3" placeholder="Opción C" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Opción 4 (Opcional)</label>
+              <input type="text" [(ngModel)]="pollOption4" placeholder="Opción D" class="form-control" />
+            </div>
+
+            <button type="button" class="btn btn-primary w-100" [disabled]="isSavingPoll()" (click)="savePoll()">
+              {{ isSavingPoll() ? 'Publicando...' : 'Publicar Encuesta' }}
+            </button>
+          </div>
+
+          <!-- List: Encuestas Existentes -->
+          <div class="admin-items-list">
+            <h3 class="list-title">Encuestas Existentes ({{ communityService.activePolls().length }})</h3>
+            @for (poll of communityService.activePolls(); track poll.id) {
+              <div class="admin-list-item clean-panel">
+                <div class="item-header">
+                  <span class="badge-state" [class.closed]="!poll.isActive">
+                    {{ poll.isActive ? '🔥 Activa' : 'Cerrada' }}
+                  </span>
+                  <span class="badge-date">{{ poll.totalVotes }} votos</span>
+                </div>
+                <h4 class="item-title">{{ poll.question }}</h4>
+                <div class="item-actions">
+                  <button type="button" class="btn btn-outline btn-xs" (click)="togglePoll(poll)">
+                    {{ poll.isActive ? 'Cerrar Encuesta' : 'Reabrir Encuesta' }}
+                  </button>
+                  <button type="button" class="btn btn-outline btn-xs text-danger" (click)="deletePoll(poll)">
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+  </main>
+</div>

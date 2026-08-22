@@ -1,0 +1,166 @@
+@if (cardEditService.isOpen() && card) {
+  <div class="modal-backdrop" (click)="close()">
+    <div class="modal-dialog clean-panel" (click)="$event.stopPropagation()" role="dialog" aria-labelledby="modal-edit-title">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="header-titles">
+          <div class="admin-badge">
+            <span class="star-icon">⚡</span>
+            <span>Editor Oficial de Cartas (Modo Administrador)</span>
+          </div>
+          <h2 id="modal-edit-title" class="modal-title">
+            Editar: <span class="card-highlight-name">{{ card.name }}</span> <span class="card-num-tag">#{{ card.number }}</span>
+          </h2>
+        </div>
+        <button type="button" class="btn-close-modal" (click)="close()" aria-label="Cerrar modal">✕</button>
+      </div>
+
+      <!-- Toast -->
+      @if (toastSuccess()) {
+        <div class="inline-toast">
+          <span>{{ toastSuccess() }}</span>
+        </div>
+      }
+
+      <form [formGroup]="cardForm" (ngSubmit)="save()" class="edit-modal-form" novalidate>
+        
+        <div class="modal-body-layout">
+          
+          <!-- Left Column: Card Artwork & Info -->
+          <div class="artwork-preview-col">
+            <div class="image-frame-wrap">
+              <img [src]="cardForm.get('image')?.value" [alt]="cardForm.get('name')?.value" class="preview-card-img" />
+              <div class="preview-badge-overlay">
+                <span class="pill-set">{{ cardForm.get('set')?.value }}</span>
+                <span class="pill-rarity">{{ cardForm.get('rarity')?.value }}</span>
+              </div>
+            </div>
+            <p class="preview-tip">Los cambios se guardan directamente en la tabla <code>cards</code> de Supabase.</p>
+          </div>
+
+          <!-- Right Column: Form Fields -->
+          <div class="form-fields-col">
+            
+            <!-- Row 1: Name & Type -->
+            <div class="form-grid-2">
+              <div class="field-item">
+                <label class="field-lbl">Nombre de la Carta *</label>
+                <input type="text" formControlName="name" class="modal-input" placeholder="Nombre de la carta" />
+              </div>
+
+              <div class="field-item">
+                <label class="field-lbl">Tipo de Carta *</label>
+                <select formControlName="type" class="modal-input modal-select">
+                  <option value="Luchador">Luchador</option>
+                  <option value="Castigo">Castigo</option>
+                  <option value="Objeto">Objeto</option>
+                  <option value="Arena">Arena</option>
+                  <option value="Contrato">Contrato</option>
+                  <option value="Promotor">Promotor</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 2: Stats (Cost, Strength, Rarity) -->
+            <div class="form-grid-3">
+              <div class="field-item">
+                <label class="field-lbl">Costo (Contratos)</label>
+                <input type="number" formControlName="cost" class="modal-input" placeholder="Ej: 3 (o vacío)" />
+              </div>
+
+              <div class="field-item">
+                <label class="field-lbl">Fuerza</label>
+                <input type="number" formControlName="strength" class="modal-input" placeholder="Ej: 5 (o vacío)" />
+              </div>
+
+              <div class="field-item">
+                <label class="field-lbl">Rareza *</label>
+                <select formControlName="rarity" class="modal-input modal-select">
+                  <option value="Novato">Novato</option>
+                  <option value="Promesa">Promesa</option>
+                  <option value="Leyenda">Leyenda</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Bando & Style -->
+            <div class="form-grid-2">
+              <div class="field-item">
+                <label class="field-lbl">Bando</label>
+                <select formControlName="bando" class="modal-input modal-select">
+                  <option value="">(Sin bando / Neutral)</option>
+                  <option value="Técnico">Técnico</option>
+                  <option value="Rudo">Rudo</option>
+                </select>
+              </div>
+
+              <div class="field-item">
+                <label class="field-lbl">Estilo</label>
+                <select formControlName="style" class="modal-input modal-select">
+                  <option value="">(Sin estilo)</option>
+                  <option value="Aéreo">Aéreo</option>
+                  <option value="Clásico">Clásico</option>
+                  <option value="Fantasía">Fantasía</option>
+                  <option value="Extremo">Extremo</option>
+                  <option value="Mini">Mini</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 4: SPECIAL EFFECT TEXTAREA -->
+            <div class="field-item effect-container">
+              <div class="effect-lbl-bar">
+                <label for="effect-area" class="field-lbl highlight-gold">
+                  ⚡ Efecto Especial de Combate (Regla / Habilidad)
+                </label>
+                <span class="char-badge">{{ (cardForm.get('effect')?.value || '').length }} caracteres</span>
+              </div>
+              <textarea 
+                id="effect-area"
+                formControlName="effect" 
+                rows="3" 
+                class="modal-input effect-text-input"
+                placeholder="Escribe el efecto o mecánica especial de la carta. Ej: Al entrar al ring, roba 1 carta si controlas un Luchador Técnico.">
+              </textarea>
+              <span class="hint-text">Este texto aparecerá en un recuadro dorado destacado para jugadores y jueces.</span>
+            </div>
+
+            <!-- Row 5: Artist & Description -->
+            <div class="form-grid-2">
+              <div class="field-item">
+                <label class="field-lbl">Ilustrador / Artista</label>
+                <input type="text" formControlName="artist" class="modal-input" placeholder="Nombre del ilustrador" />
+              </div>
+
+              <div class="field-item">
+                <label class="field-lbl">Set / Colección</label>
+                <select formControlName="set" class="modal-input modal-select">
+                  <option value="Primera Edición">Primera Edición</option>
+                  <option value="Primera Expansión">Primera Expansión</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="modal-actions-bar">
+          <button type="button" class="btn btn-secondary" (click)="close()">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-save" [disabled]="isSaving() || cardForm.invalid">
+            @if (isSaving()) {
+              <span class="btn-spinner"></span>
+              <span>Guardando...</span>
+            } @else {
+              <span>Guardar</span>
+            }
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+}

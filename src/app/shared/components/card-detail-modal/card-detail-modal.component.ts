@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from '../../../application/services/modal.service';
 import { DeckService } from '../../../application/services/deck.service';
+import { CardEditService } from '../../../application/services/card-edit.service';
+import { CommunityService } from '../../../application/services/community.service';
+import { SupabaseService } from '../../../core/services/supabase.service';
+import { CardRuling } from '../../../domain/models';
 
 @Component({
   selector: 'app-card-detail-modal',
@@ -12,10 +16,27 @@ import { DeckService } from '../../../application/services/deck.service';
 })
 export class CardDetailModalComponent {
   readonly modalService = inject(ModalService);
+  readonly supabase = inject(SupabaseService);
+  readonly communityService = inject(CommunityService);
   private readonly deckService = inject(DeckService);
+  private readonly cardEditService = inject(CardEditService);
 
   get card() {
     return this.modalService.selectedCard();
+  }
+
+  get cardRulings(): CardRuling[] {
+    const c = this.card;
+    if (!c) return [];
+    return this.communityService.cardRulings().filter(r => r.cardId === c.id);
+  }
+
+  openEdit(): void {
+    const c = this.card;
+    if (c) {
+      this.close();
+      this.cardEditService.open(c);
+    }
   }
 
   get deckCount(): number {

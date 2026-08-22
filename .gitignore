@@ -1,45 +1,153 @@
-# Node & Package Managers
+# ==============================================================================
+# 🛡️ Máscaras vs Cabelleras TCG - Comprehensive .gitignore
+# Prevents sensitive data leakage, unnecessary binary bloat, caches and temp files.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. 🔐 Security, Secrets & Environment Variables (CRITICAL)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Private keys, certificates and credentials
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*.pkcs12
+id_rsa
+id_dsa
+id_ed25519
+*secret*
+*credential*
+*token*
+service-account*.json
+firebase-adminsdk*.json
+supabase_service_role*.key
+
+# ------------------------------------------------------------------------------
+# 2. 📦 Node.js & Package Managers
+# ------------------------------------------------------------------------------
 node_modules/
+.npm/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnpm-store/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+*.log
+logs/
 
-# Angular build artifacts
+# ------------------------------------------------------------------------------
+# 3. 🅰️ Angular & Frontend Build Artifacts
+# ------------------------------------------------------------------------------
 .angular/
 dist/
 tmp/
+temp/
 out-tsc/
 bazel-out/
+.cache/
+.rollup.cache/
+.parcel-cache/
+coverage/
+.nyc_output/
 
-# Environment and Local Config
-.env
-.env.local
-.env.*.local
+# ------------------------------------------------------------------------------
+# 4. 🐍 Python, Virtual Environments & OCR Utilities
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Operating System & IDE Files
+# ------------------------------------------------------------------------------
+# 5. 💻 Operating System Files
+# ------------------------------------------------------------------------------
+# macOS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
 Thumbs.db
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+
+# ------------------------------------------------------------------------------
+# 6. 🛠️ IDEs, Editors & Tooling
+# ------------------------------------------------------------------------------
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.bak
+*.tmp
+*.temp
+*.sublime-project
+*.sublime-workspace
 
-# Raw extraction source files (already normalized in src/assets/)
+# VS Code (preserve team configuration, ignore local user workspace data)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+.gemini/
+.agents/
+
+# ------------------------------------------------------------------------------
+# 7. 🗄️ Heavy Raw Extraction Assets & Temp Test Scripts
+# ------------------------------------------------------------------------------
 /Primer edición/
 /Primer expansión/
 MASCARAS_VS_CABELLERAS_TCG.md
 
-# Temporary analysis scripts
+# Temporary test scripts
+scripts/scratch/
 scripts/analyze_raw.py
 scripts/test_clean.py
 scripts/find_effects.py
 scripts/validate_clean.py
+scripts/test_ocr.py
+scripts/test_supabase.py

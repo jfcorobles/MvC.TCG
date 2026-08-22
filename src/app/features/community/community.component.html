@@ -1,0 +1,244 @@
+<div class="community-page container">
+  
+  <!-- Hero Header -->
+  <header class="community-hero-section">
+    <div class="hero-glow-ring"></div>
+    <div class="hero-content">
+      <div class="hero-chip">
+        <span class="pulse-spark">⚡</span>
+        <span>Comunidad & Reglamento Oficial</span>
+      </div>
+
+      <h1 class="hero-main-title">
+        El Ring de la <span class="highlight-fire">Comunidad</span>
+      </h1>
+      
+      <p class="hero-lead">
+        Tu voz como gladiador define el rumbo de <strong>Máscaras vs Cabelleras TCG</strong>. Vota en las encuestas de diseño de cartas y consulta las aclaraciones oficiales de reglas (Rulings) de los creadores del juego.
+      </p>
+
+      <!-- Segmented Navigation Filter -->
+      <div class="community-tab-switcher">
+        <button 
+          type="button" 
+          class="tab-switch-btn" 
+          [class.active]="activeSection() === 'all'"
+          (click)="setSection('all')">
+          🌟 Todo
+        </button>
+        <button 
+          type="button" 
+          class="tab-switch-btn" 
+          [class.active]="activeSection() === 'polls'"
+          (click)="setSection('polls')">
+          🗳️ Encuestas ({{ communityService.activePolls().length }})
+        </button>
+        <button 
+          type="button" 
+          class="tab-switch-btn" 
+          [class.active]="activeSection() === 'rulings'"
+          (click)="setSection('rulings')">
+          📜 Erratas & Rulings ({{ communityService.cardRulings().length }})
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       SECTION 1: EL RING DE VOTACIONES (ENCUESTAS)
+       ========================================================= -->
+  @if (activeSection() === 'all' || activeSection() === 'polls') {
+    <section class="ring-section">
+      <div class="section-title-bar">
+        <div class="title-with-badge">
+          <span class="badge-icon">🗳️</span>
+          <div>
+            <h2 class="section-title">Encuestas del Cuadrilátero</h2>
+            <p class="section-subtitle">1 voto único por cuenta de jugador registrada. Los resultados se actualizan en tiempo real.</p>
+          </div>
+        </div>
+      </div>
+
+      @if (communityService.isLoadingPolls()) {
+        <div class="loading-state-panel clean-panel">
+          <div class="spinner-lucha"></div>
+          <p>Cargando encuestas de la comunidad...</p>
+        </div>
+      } @else if (communityService.activePolls().length > 0) {
+        <div class="polls-masonry-grid">
+          @for (poll of communityService.activePolls(); track poll.id) {
+            <article class="poll-card-modern">
+              <!-- Top Row: Status & Total Votes -->
+              <div class="poll-header-row">
+                <span class="poll-badge-status" [class.closed]="!poll.isActive">
+                  {{ poll.isActive ? '🔥 Votación Abierta' : '🔒 Cerrada' }}
+                </span>
+                <span class="poll-votes-counter">
+                  👥 <strong>{{ poll.totalVotes }}</strong> votos registrados
+                </span>
+              </div>
+
+              <!-- Question & Description -->
+              <div class="poll-question-block">
+                <h3 class="poll-headline">{{ poll.question }}</h3>
+                @if (poll.description) {
+                  <p class="poll-subtext">{{ poll.description }}</p>
+                }
+              </div>
+
+              <!-- Options List with Glowing Bars -->
+              <div class="poll-options-container">
+                @for (option of poll.options; track $index) {
+                  <div 
+                    class="poll-option-row"
+                    [class.is-selected]="selectedOptions()[poll.id] === $index"
+                    [class.is-voted]="poll.userVotedOption === $index"
+                    [class.disabled-select]="!poll.isActive || poll.userVotedOption !== null"
+                    (click)="poll.isActive && poll.userVotedOption === null && selectOption(poll.id, $index)">
+                    
+                    <div class="option-content-flex">
+                      <div class="option-label-wrap">
+                        @if (poll.isActive && poll.userVotedOption === null) {
+                          <div class="custom-radio-mark" [class.checked]="selectedOptions()[poll.id] === $index">
+                            <div class="radio-inner-dot"></div>
+                          </div>
+                        }
+                        <span class="option-title-txt">{{ option }}</span>
+                        @if (poll.userVotedOption === $index) {
+                          <span class="my-vote-tag">✓ Tu Voto</span>
+                        }
+                      </div>
+
+                      <!-- Percentage & Votes count -->
+                      @if (poll.userVotedOption !== null || !poll.isActive) {
+                        <div class="option-metrics">
+                          <strong class="metric-percent">{{ getOptionPercentage(poll, $index) }}%</strong>
+                          <span class="metric-count">{{ getOptionVotes(poll, $index) }}</span>
+                        </div>
+                      }
+                    </div>
+
+                    <!-- Progress Bar Track -->
+                    @if (poll.userVotedOption !== null || !poll.isActive) {
+                      <div class="progress-bar-rail">
+                        <div 
+                          class="progress-bar-glow"
+                          [style.width.%]="getOptionPercentage(poll, $index)"
+                          [class.user-fill-bar]="poll.userVotedOption === $index">
+                        </div>
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+
+              <!-- Errors or Actions -->
+              @if (voteErrors()[poll.id]) {
+                <div class="poll-alert-error">⚠️ {{ voteErrors()[poll.id] }}</div>
+              }
+
+              @if (poll.isActive && poll.userVotedOption === null) {
+                <div class="poll-action-footer">
+                  @if (supabase.isAuthenticated()) {
+                    <button 
+                      type="button" 
+                      class="btn-vote-submit"
+                      [disabled]="isVoting()[poll.id] || selectedOptions()[poll.id] === undefined"
+                      (click)="submitVote(poll)">
+                      <span>{{ isVoting()[poll.id] ? 'Registrando voto...' : '🗳️ Emitir mi Voto' }}</span>
+                    </button>
+                  } @else {
+                    <a routerLink="/auth/login" class="btn-login-prompt">
+                      🔒 Inicia sesión con tu cuenta para votar
+                    </a>
+                  }
+                </div>
+              }
+            </article>
+          }
+        </div>
+      } @else {
+        <div class="empty-section-panel clean-panel">
+          <p>No hay encuestas activas en este momento.</p>
+        </div>
+      }
+    </section>
+  }
+
+  <!-- =========================================================
+       SECTION 2: TABLÓN DE ERRATAS & RULINGS OFICIALES
+       ========================================================= -->
+  @if (activeSection() === 'all' || activeSection() === 'rulings') {
+    <section class="rulings-section">
+      <div class="section-title-bar">
+        <div class="title-with-badge">
+          <span class="badge-icon">📜</span>
+          <div>
+            <h2 class="section-title">Tablón de Erratas & Rulings Oficiales</h2>
+            <p class="section-subtitle">Aclaraciones sobre mecánicas de combate, habilidades e interacciones de cartas oficiales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Field -->
+      <div class="rulings-search-container clean-panel">
+        <span class="search-lens-icon">🔍</span>
+        <input 
+          type="search" 
+          [(ngModel)]="rulingSearchQuery" 
+          placeholder="Buscar ruling por nombre de carta, efecto o palabra clave..." 
+          class="rulings-search-input-field" />
+      </div>
+
+      @if (communityService.isLoadingRulings()) {
+        <div class="loading-state-panel clean-panel">
+          <div class="spinner-lucha"></div>
+          <p>Consultando el manual de rulings oficiales...</p>
+        </div>
+      } @else if (filteredRulings().length > 0) {
+        <div class="rulings-cards-list">
+          @for (ruling of filteredRulings(); track ruling.id) {
+            <article class="ruling-card-premium">
+              
+              <!-- Left: Card Artwork Thumbnail -->
+              <div class="ruling-thumb-col" (click)="openCardDetail(ruling.cardId)">
+                <img 
+                  [src]="getCardImage(ruling.cardId)" 
+                  [alt]="ruling.cardName || ruling.cardId" 
+                  class="ruling-card-thumb" />
+                <span class="thumb-hint">Ver carta ↗</span>
+              </div>
+
+              <!-- Right: Ruling Content -->
+              <div class="ruling-content-col">
+                <div class="ruling-top-meta">
+                  <div class="ruling-title-group">
+                    <span class="ruling-official-seal">⚖️ Dictamen Oficial</span>
+                    <h3 class="ruling-target-card" (click)="openCardDetail(ruling.cardId)">
+                      {{ ruling.cardName || ruling.cardId }}
+                    </h3>
+                  </div>
+
+                  <span class="ruling-date-badge">
+                    {{ ruling.createdAt | date:'d MMMM, y' }}
+                  </span>
+                </div>
+
+                <!-- Ruling Text Bubble -->
+                <div class="ruling-bubble-box">
+                  <p class="ruling-main-text">{{ ruling.rulingText }}</p>
+                </div>
+              </div>
+
+            </article>
+          }
+        </div>
+      } @else {
+        <div class="empty-section-panel clean-panel">
+          <p>No se encontraron aclaraciones oficiales para "{{ rulingSearchQuery }}".</p>
+        </div>
+      }
+    </section>
+  }
+
+</div>

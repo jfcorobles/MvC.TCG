@@ -1,0 +1,209 @@
+<div class="profile-page container">
+  
+  <!-- Profile Hero Header -->
+  <header class="profile-hero-card clean-panel">
+    <div class="hero-glow-bg"></div>
+    <div class="profile-hero-content">
+      
+      <!-- Avatar with Ring -->
+      <div class="profile-avatar-large" [class.admin-ring]="supabase.isAdmin()">
+        <span>{{ supabase.isAdmin() ? '⚡' : (supabase.userDisplayName() || 'L').charAt(0).toUpperCase() }}</span>
+      </div>
+
+      <!-- User Metadata -->
+      <div class="profile-main-meta">
+        <div class="name-badge-row">
+          <h1 class="profile-name">{{ supabase.userDisplayName() }}</h1>
+          <span class="role-badge" [class.admin-badge]="supabase.isAdmin()">
+            {{ supabase.isAdmin() ? '⚡ Administrador' : '🤼 Jugador Oficial' }}
+          </span>
+        </div>
+        <p class="profile-email">{{ supabase.userEmail() }}</p>
+        
+        <div class="meta-chips-row">
+          <span class="meta-chip">
+            📍 Región: <strong>{{ supabase.userProfile()?.state_location || 'No especificada' }}</strong>
+          </span>
+          <span class="meta-chip">
+            🎴 Baraja activa: <strong>{{ deckService.totalCards() }}/50 cartas</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- Fast Action Shortcut -->
+      <div class="hero-shortcut-btn">
+        @if (supabase.isAdmin()) {
+          <a routerLink="/admin" class="btn btn-primary btn-sm">
+            Ir a Consola Admin ↗
+          </a>
+        } @else {
+          <a routerLink="/mazo" class="btn btn-primary btn-sm">
+            Editar Mi Mazo ↗
+          </a>
+        }
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Profile Settings Two-Column Grid -->
+  <div class="profile-grid">
+    
+    <!-- LEFT: Personal Info Form -->
+    <section class="settings-panel clean-panel">
+      <div class="panel-header">
+        <span class="panel-icon">👤</span>
+        <div>
+          <h2 class="panel-title">Información de la Cuenta</h2>
+          <p class="panel-sub">Actualiza tu nombre de luchador y el Estado donde juegas torneos.</p>
+        </div>
+      </div>
+
+      @if (profileSuccess()) {
+        <div class="alert-box success">
+          <span>✓ {{ profileSuccess() }}</span>
+        </div>
+      }
+
+      @if (profileError()) {
+        <div class="alert-box error">
+          <span>⚠️ {{ profileError() }}</span>
+        </div>
+      }
+
+      <form [formGroup]="profileForm" (ngSubmit)="onSaveProfile()" class="profile-form">
+        
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="fullName">Nombre Completo o Alias de Luchador *</label>
+          <input 
+            id="fullName"
+            type="text" 
+            formControlName="fullName"
+            placeholder="Ej. Atlantis Negro / Carlos Santana" 
+            class="form-control"
+            [class.is-invalid]="isProfileInvalid('fullName')" />
+          @if (isProfileInvalid('fullName')) {
+            <span class="field-error">Ingresa tu nombre o alias (mínimo 2 letras).</span>
+          }
+        </div>
+
+        <!-- Email (Readonly) -->
+        <div class="form-group">
+          <label class="form-label" for="profileEmail">Correo Electrónico (Identificador de acceso)</label>
+          <input 
+            id="profileEmail"
+            type="email" 
+            [value]="supabase.userEmail()"
+            disabled
+            class="form-control disabled-input" />
+          <span class="field-hint">El correo electrónico está vinculado a tu cuenta de Supabase.</span>
+        </div>
+
+        <!-- State Location -->
+        <div class="form-group">
+          <label class="form-label" for="stateLocation">Estado / Región de México *</label>
+          <select 
+            id="stateLocation"
+            formControlName="stateLocation"
+            class="form-control"
+            [class.is-invalid]="isProfileInvalid('stateLocation')">
+            <option value="" disabled>Selecciona tu Estado</option>
+            @for (state of statesList; track state) {
+              <option [value]="state">{{ state }}</option>
+            }
+          </select>
+          <span class="field-hint">Nos permite mostrarte torneos locales y comunidades en tu región.</span>
+          @if (isProfileInvalid('stateLocation')) {
+            <span class="field-error">Selecciona tu estado de residencia.</span>
+          }
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn-save-action"
+          [disabled]="isSavingProfile() || profileForm.invalid">
+          <span>{{ isSavingProfile() ? 'Guardando cambios...' : 'Guardar Información de Perfil' }}</span>
+        </button>
+
+      </form>
+    </section>
+
+    <!-- RIGHT: Security & Password Form -->
+    <section class="settings-panel clean-panel">
+      <div class="panel-header">
+        <span class="panel-icon">🔒</span>
+        <div>
+          <h2 class="panel-title">Seguridad & Contraseña</h2>
+          <p class="panel-sub">Cambia tu contraseña para mantener protegida tu cuenta.</p>
+        </div>
+      </div>
+
+      @if (passwordSuccess()) {
+        <div class="alert-box success">
+          <span>✓ {{ passwordSuccess() }}</span>
+        </div>
+      }
+
+      @if (passwordError()) {
+        <div class="alert-box error">
+          <span>⚠️ {{ passwordError() }}</span>
+        </div>
+      }
+
+      <form [formGroup]="passwordForm" (ngSubmit)="onSavePassword()" class="profile-form">
+        
+        <!-- New Password -->
+        <div class="form-group">
+          <label class="form-label" for="newPassword">Nueva Contraseña *</label>
+          <input 
+            id="newPassword"
+            type="password" 
+            formControlName="newPassword"
+            placeholder="Mínimo 6 caracteres" 
+            class="form-control"
+            [class.is-invalid]="isPasswordInvalid('newPassword')" />
+          @if (isPasswordInvalid('newPassword')) {
+            <span class="field-error">La contraseña debe tener al menos 6 caracteres.</span>
+          }
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirmar Nueva Contraseña *</label>
+          <input 
+            id="confirmPassword"
+            type="password" 
+            formControlName="confirmPassword"
+            placeholder="Repite la nueva contraseña" 
+            class="form-control"
+            [class.is-invalid]="isPasswordInvalid('confirmPassword')" />
+          @if (isPasswordInvalid('confirmPassword')) {
+            <span class="field-error">Confirma tu contraseña para continuar.</span>
+          }
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn-save-action btn-security"
+          [disabled]="isSavingPassword() || passwordForm.invalid">
+          <span>{{ isSavingPassword() ? 'Actualizando contraseña...' : 'Actualizar Contraseña' }}</span>
+        </button>
+
+      </form>
+
+      <!-- Useful Links Box -->
+      <div class="profile-quick-links">
+        <span class="quick-links-lbl">Enlaces directos:</span>
+        <div class="links-row">
+          <a routerLink="/eventos" class="quick-link-tag">🏆 Ver Torneos Locales</a>
+          <a routerLink="/comunidad" class="quick-link-tag">🗳️ El Ring de Votaciones</a>
+          <a routerLink="/reportes" class="quick-link-tag">📋 Mis Reportes</a>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

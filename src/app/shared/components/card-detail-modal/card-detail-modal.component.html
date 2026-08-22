@@ -28,6 +28,11 @@
               <span class="meta-pill">{{ card.set }}</span>
               <span class="meta-pill">#{{ card.number }}</span>
               <span class="meta-pill" [class]="'pill-' + card.rarity.toLowerCase()">{{ card.rarity }}</span>
+              @if (supabase.isAdmin()) {
+                <button type="button" class="btn-admin-modal-edit" (click)="openEdit()">
+                  ✏️ Editar Carta & Efecto (Admin)
+                </button>
+              }
             </div>
             
             <h2 class="modal-card-title">{{ card.name }}</h2>
@@ -65,6 +70,26 @@
             </div>
           </div>
 
+          <!-- Effect Box if present -->
+          @if (card.effect) {
+            <div class="effect-box">
+              <h4 class="effect-box-heading">⚡ Efecto Especial de Combate</h4>
+              <p class="effect-box-content">
+                {{ card.effect }}
+              </p>
+            </div>
+          }
+
+          <!-- Official Rulings if present -->
+          @if (cardRulings.length > 0) {
+            <div class="rulings-modal-box">
+              <h4 class="rulings-modal-heading">📜 Aclaración Oficial de Reglas (Ruling)</h4>
+              @for (r of cardRulings; track r.id) {
+                <p class="ruling-modal-text">{{ r.rulingText }}</p>
+              }
+            </div>
+          }
+
           <!-- Description Box -->
           <div class="rule-box">
             <h4 class="rule-box-heading">Texto de la Carta</h4>
@@ -73,30 +98,32 @@
             </p>
           </div>
 
-          <!-- Deck Management Controls -->
-          <div class="deck-controls-row">
-            <div class="deck-state-text">
-              <span>Copias en tu mazo:</span>
-              <strong class="deck-current-count">{{ deckCount }} / 3</strong>
-            </div>
+          <!-- Deck Management Controls (Solo para usuarios autenticados) -->
+          @if (supabase.isAuthenticated()) {
+            <div class="deck-controls-row">
+              <div class="deck-state-text">
+                <span>Copias en tu mazo:</span>
+                <strong class="deck-current-count">{{ deckCount }} / 3</strong>
+              </div>
 
-            <div class="deck-btn-duo">
-              <button 
-                type="button" 
-                class="btn btn-outline btn-sm"
-                [disabled]="deckCount === 0"
-                (click)="removeFromDeck()">
-                - Quitar
-              </button>
-              <button 
-                type="button" 
-                class="btn btn-primary btn-sm"
-                [disabled]="deckCount >= 3"
-                (click)="addToDeck()">
-                + Añadir
-              </button>
+              <div class="deck-btn-duo">
+                <button 
+                  type="button" 
+                  class="btn btn-outline btn-sm"
+                  [disabled]="deckCount === 0"
+                  (click)="removeFromDeck()">
+                  - Quitar
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-primary btn-sm"
+                  [disabled]="deckCount >= 3"
+                  (click)="addToDeck()">
+                  + Añadir
+                </button>
+              </div>
             </div>
-          </div>
+          }
 
           <!-- Social Outbound -->
           <div class="modal-footer-nav">

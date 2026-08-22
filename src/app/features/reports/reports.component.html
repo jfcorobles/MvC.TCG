@@ -1,0 +1,337 @@
+<div class="reports-page">
+  <div class="container">
+    
+    <!-- Top Toast Notification -->
+    @if (successToast()) {
+      <div class="toast-notification" role="status">
+        <svg class="toast-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span>{{ successToast() }}</span>
+      </div>
+    }
+
+    <!-- Header & User Welcome -->
+    <header class="reports-header clean-panel">
+      <div class="header-main">
+        <div>
+          <div class="user-pill">
+            <span class="user-status-dot"></span>
+            <span class="user-email-text">{{ supabase.userEmail() }}</span>
+            <span class="user-role-badge">Luchador Registrado</span>
+          </div>
+          <h1 class="page-title">Módulo de Reportes & Erratas</h1>
+          <p class="page-lead">
+            Envía aclaraciones de reglas, errores de aplicación o incidencias en tus partidas de <em>Máscaras vs Cabelleras</em>. Tus reportes están protegidos con Row Level Security (RLS) en Supabase.
+          </p>
+        </div>
+        
+        <div class="header-cta">
+          <button type="button" class="btn btn-primary" (click)="openNewReportModal()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span>Nuevo Reporte</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Metrics Bar -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-num">{{ reportsService.metrics().total }}</span>
+          <span class="metric-label">Total Reportes</span>
+        </div>
+        <div class="metric-card warning-accent">
+          <span class="metric-num">{{ reportsService.metrics().pendientes }}</span>
+          <span class="metric-label">Pendientes</span>
+        </div>
+        <div class="metric-card info-accent">
+          <span class="metric-num">{{ reportsService.metrics().enRevision }}</span>
+          <span class="metric-label">En Revisión</span>
+        </div>
+        <div class="metric-card success-accent">
+          <span class="metric-num">{{ reportsService.metrics().resueltos }}</span>
+          <span class="metric-label">Resueltos</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-section clean-panel">
+      <div class="controls-row">
+        
+        <!-- Search -->
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input 
+            type="text" 
+            [ngModel]="reportsService.searchQuery()" 
+            (ngModelChange)="reportsService.setSearchQuery($event)"
+            placeholder="Buscar por título, contenido o carta relacionada..." 
+            class="search-input"
+          />
+          @if (reportsService.searchQuery()) {
+            <button type="button" class="clear-btn" (click)="reportsService.setSearchQuery('')">✕</button>
+          }
+        </div>
+
+        <!-- Status Filter -->
+        <div class="filter-group">
+          <label class="filter-label">Estado:</label>
+          <select 
+            [ngModel]="reportsService.selectedStatus()" 
+            (ngModelChange)="reportsService.setStatusFilter($event)" 
+            class="filter-select">
+            <option value="todos">Todos los estados</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en_revision">En Revisión</option>
+            <option value="resuelto">Resuelto</option>
+            <option value="descartado">Descartado</option>
+          </select>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <label class="filter-label">Categoría:</label>
+          <select 
+            [ngModel]="reportsService.selectedCategory()" 
+            (ngModelChange)="reportsService.setCategoryFilter($event)" 
+            class="filter-select">
+            <option value="todas">Todas las categorías</option>
+            @for (cat of categories; track cat.value) {
+              <option [value]="cat.value">{{ cat.label }}</option>
+            }
+          </select>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Reports List / Content Area -->
+    <main class="reports-content">
+      
+      <!-- Loading State -->
+      @if (reportsService.isLoading()) {
+        <div class="loading-state clean-panel">
+          <div class="spinner-large"></div>
+          <p>Consultando registros en Supabase con RLS...</p>
+        </div>
+      }
+
+      <!-- Error State -->
+      @else if (reportsService.error()) {
+        <div class="error-panel clean-panel">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#ef4444" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <h3 class="error-title">Error al consultar Supabase</h3>
+          <p class="error-message">{{ reportsService.error() }}</p>
+          <p class="error-tip">
+            Verifica que ejecutaste el script SQL en Supabase para crear la tabla <code>reports</code> y habilitar las políticas RLS.
+          </p>
+          <button type="button" class="btn btn-secondary" (click)="reportsService.loadReports()">
+            Reintentar consulta
+          </button>
+        </div>
+      }
+
+      <!-- Empty State -->
+      @else if (reportsService.filteredReports().length === 0) {
+        <div class="empty-state clean-panel">
+          <div class="empty-icon-wrap">🤼</div>
+          <h3 class="empty-title">Sin reportes registrados</h3>
+          <p class="empty-desc">
+            @if (reportsService.reports().length > 0) {
+              No hay reportes que coincidan con los filtros seleccionados.
+            } @else {
+              Aún no has registrado ningún reporte o consulta. ¡Crea el primero usando el botón de abajo!
+            }
+          </p>
+          @if (reportsService.reports().length > 0) {
+            <button type="button" class="btn btn-secondary" (click)="reportsService.resetFilters()">
+              Limpiar filtros
+            </button>
+          } @else {
+            <button type="button" class="btn btn-primary" (click)="openNewReportModal()">
+              Crear mi primer reporte
+            </button>
+          }
+        </div>
+      }
+
+      <!-- Reports Grid -->
+      @else {
+        <div class="reports-grid">
+          @for (report of reportsService.filteredReports(); track report.id) {
+            <article class="report-card clean-panel">
+              
+              <!-- Card Header -->
+              <div class="card-top-bar">
+                <div class="badges-row">
+                  <span class="badge" [ngClass]="getStatusBadgeClass(report.status)">
+                    {{ getStatusLabel(report.status) }}
+                  </span>
+                  <span class="category-tag">
+                    {{ getCategoryLabel(report.category) }}
+                  </span>
+                </div>
+                
+                <span class="severity-pill" [attr.data-severity]="report.severity">
+                  Severidad: {{ report.severity }}
+                </span>
+              </div>
+
+              <!-- Card Content -->
+              <h2 class="card-title">{{ report.title }}</h2>
+              <p class="card-description">{{ report.description }}</p>
+
+              @if (report.card_related) {
+                <div class="card-meta-related">
+                  <span class="meta-icon">🃏</span>
+                  <span class="meta-text">Carta relacionada: <strong>{{ report.card_related }}</strong></span>
+                </div>
+              }
+
+              <!-- Card Footer -->
+              <div class="card-footer">
+                <time class="report-date" [attr.datetime]="report.created_at">
+                  {{ report.created_at | date:'d MMM yyyy, h:mm a' }}
+                </time>
+
+                <div class="card-actions">
+                  <button 
+                    type="button" 
+                    class="btn-icon-danger" 
+                    title="Eliminar reporte"
+                    (click)="deleteReport(report)">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"/>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+            </article>
+          }
+        </div>
+      }
+
+    </main>
+
+  </div>
+</div>
+
+<!-- Modal para Crear Nuevo Reporte -->
+@if (isModalOpen()) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-dialog clean-panel" (click)="$event.stopPropagation()" role="dialog" aria-labelledby="modal-title">
+      
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow">Supabase + RLS</span>
+          <h2 id="modal-title" class="modal-title">Crear Nuevo Reporte</h2>
+        </div>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Cerrar modal">✕</button>
+      </div>
+
+      <form [formGroup]="reportForm" (ngSubmit)="submitReport()" class="modal-form" novalidate>
+        
+        <!-- Título -->
+        <div class="form-group">
+          <label for="rep-title" class="form-label">Título del Reporte *</label>
+          <input 
+            id="rep-title" 
+            type="text" 
+            formControlName="title" 
+            class="form-input"
+            [class.input-error]="isFieldInvalid('title')"
+            placeholder="Ej: Inconsistencia en la resolución de llave contra Charro Negro"
+          />
+          @if (isFieldInvalid('title')) {
+            <span class="field-error">El título debe tener entre 5 y 100 caracteres.</span>
+          }
+        </div>
+
+        <!-- Categoría y Severidad -->
+        <div class="form-row-2">
+          
+          <div class="form-group">
+            <label for="rep-cat" class="form-label">Categoría *</label>
+            <select id="rep-cat" formControlName="category" class="form-input select-input">
+              @for (cat of categories; track cat.value) {
+                <option [value]="cat.value">{{ cat.label }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="rep-sev" class="form-label">Severidad *</label>
+            <select id="rep-sev" formControlName="severity" class="form-input select-input">
+              @for (sev of severities; track sev.value) {
+                <option [value]="sev.value">{{ sev.label }}</option>
+              }
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Carta Relacionada -->
+        <div class="form-group">
+          <label for="rep-card" class="form-label">Carta Relacionada (Opcional)</label>
+          <input 
+            id="rep-card" 
+            type="text" 
+            formControlName="card_related" 
+            class="form-input"
+            placeholder="Ej: #004 Charro Negro / #025 Don Linkin Park"
+          />
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group">
+          <label for="rep-desc" class="form-label">Descripción Detallada *</label>
+          <textarea 
+            id="rep-desc" 
+            rows="4" 
+            formControlName="description" 
+            class="form-input textarea-input"
+            [class.input-error]="isFieldInvalid('description')"
+            placeholder="Explica detalladamente la situación, el estado del cuadrilátero o el comportamiento inesperado..."
+          ></textarea>
+          @if (isFieldInvalid('description')) {
+            <span class="field-error">La descripción debe tener al menos 15 caracteres.</span>
+          }
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">
+            Cancelar
+          </button>
+          <button 
+            type="submit" 
+            class="btn btn-primary" 
+            [disabled]="reportsService.isSubmitting() || reportForm.invalid">
+            @if (reportsService.isSubmitting()) {
+              <span class="spinner"></span>
+              <span>Guardando en Supabase...</span>
+            } @else {
+              <span>Enviar Reporte</span>
+              <span class="btn-arrow">→</span>
+            }
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+}

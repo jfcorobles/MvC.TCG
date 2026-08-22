@@ -1,0 +1,1 @@
+import{Q as r,oa as t}from"./chunk-JVX5GDID.js";var s=class e{isOpen=t(!1);selectedCard=t(null);open(o){this.selectedCard.set(o),this.isOpen.set(!0)}close(){this.isOpen.set(!1),this.selectedCard.set(null)}static \u0275fac=function(a){return new(a||e)};static \u0275prov=r({token:e,factory:e.\u0275fac,providedIn:"root"})};export{s as a};

@@ -564,7 +564,9 @@ export class DeckService {
     // Author & Stats Subtitle
     ctx.fillStyle = '#94a3b8';
     ctx.font = '22px system-ui, -apple-system, sans-serif';
-    const authorStr = authorName ? `Luchador: ${authorName} ${authorState ? '(' + authorState + ')' : ''}` : 'Mazo Oficial';
+    const cleanAuthor = (authorName || 'Luchador').substring(0, 25);
+    const cleanState = authorState ? ` (${authorState.substring(0, 18)})` : '';
+    const authorStr = `${cleanAuthor}${cleanState}`;
     ctx.fillText(`${authorStr} • 50 Cartas`, 60, 180);
 
     // Divider Line

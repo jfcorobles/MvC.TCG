@@ -9,7 +9,18 @@
   <meta name="keywords" content="Máscaras vs Cabelleras, MvC, TCG, Lucha Libre Mexicana, James Darko, Cartas de Lucha Libre">
   <meta name="author" content="Máscaras vs Cabelleras TCG">
 
-  <!-- Open Graph -->
+  <!-- Security: Content Security Policy (CSP) -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: blob: https://*.supabase.co https://raw.githubusercontent.com;
+    connect-src 'self' https://*.supabase.co wss://*.supabase.co;
+    frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com;
+    object-src 'none';
+    base-uri 'self';
+  ">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Máscaras vs Cabelleras TCG">
   <meta property="og:description" content="Catálogo con 143 cartas de lucha libre mexicana, manual de juego y creador de mazos.">

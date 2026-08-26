@@ -137,12 +137,47 @@ CREATE TABLE IF NOT EXISTS public.decks (
     is_public BOOLEAN NOT NULL DEFAULT false,
     likes_count INT NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    CONSTRAINT chk_deck_cards_limit CHECK (jsonb_typeof(cards) = 'array' AND jsonb_array_length(cards) <= 60)
 );
 
 CREATE INDEX IF NOT EXISTS idx_decks_user_id ON public.decks(user_id);
 CREATE INDEX IF NOT EXISTS idx_decks_is_public ON public.decks(is_public);
 CREATE INDEX IF NOT EXISTS idx_decks_likes_count ON public.decks(likes_count DESC);
+
+-- Trigger de seguridad: Protege 'likes_count' para que solo el trigger oficial o admin lo modifique
+CREATE OR REPLACE FUNCTION public.protect_deck_likes_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF OLD.likes_count IS DISTINCT FROM NEW.likes_count AND NOT public.is_admin() THEN
+        NEW.likes_count := OLD.likes_count;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS tr_protect_deck_likes ON public.decks;
+CREATE TRIGGER tr_protect_deck_likes
+    BEFORE UPDATE ON public.decks
+    FOR EACH ROW EXECUTE FUNCTION public.protect_deck_likes_column();
+
+-- Trigger de seguridad Anti-Spam: Límite de 5 reportes por hora por usuario
+CREATE OR REPLACE FUNCTION public.check_report_flood()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF (SELECT COUNT(*) FROM public.reports 
+        WHERE user_id = NEW.user_id 
+          AND created_at > now() - INTERVAL '1 hour') >= 5 THEN
+        RAISE EXCEPTION 'Has alcanzado el límite de 5 reportes por hora. Por favor espera antes de enviar más reportes.';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS tr_check_report_flood ON public.reports;
+CREATE TRIGGER tr_check_report_flood
+    BEFORE INSERT ON public.reports
+    FOR EACH ROW EXECUTE FUNCTION public.check_report_flood();
 
 -- Tabla de Likes para Mazos
 CREATE TABLE IF NOT EXISTS public.deck_likes (
@@ -224,6 +259,13 @@ CREATE TABLE IF NOT EXISTS public.poll_votes (
 );
 
 CREATE INDEX IF NOT EXISTS idx_poll_votes_poll_id ON public.poll_votes(poll_id);
+
+-- Vista pública segura de perfiles (solo expone nombre y estado, protege emails)
+CREATE OR REPLACE VIEW public.public_profiles AS
+SELECT id, full_name, state_location, created_at
+FROM public.profiles;
+
+GRANT SELECT ON public.public_profiles TO anon, authenticated;
 
 -- =========================================================
 -- 9. Habilitar RLS en TODAS las tablas
@@ -374,9 +416,18 @@ CREATE POLICY "Ver votos de encuestas" ON public.poll_votes FOR SELECT
     USING (true);
 
 DROP POLICY IF EXISTS "Votar una vez" ON public.poll_votes;
-CREATE POLICY "Votar una vez" ON public.poll_votes FOR INSERT
+DROP POLICY IF EXISTS "Votar en encuesta activa" ON public.poll_votes;
+CREATE POLICY "Votar en encuesta activa" ON public.poll_votes FOR INSERT
     TO authenticated
-    WITH CHECK (auth.uid() = user_id);
+    WITH CHECK (
+        auth.uid() = user_id AND
+        EXISTS (
+            SELECT 1 FROM public.polls 
+            WHERE id = poll_votes.poll_id 
+              AND is_active = true 
+              AND (expires_at IS NULL OR expires_at > now())
+        )
+    );
 
 -- =========================================================
 -- POBLACIÓN INICIAL DE CARTAS (143 CARTAS)

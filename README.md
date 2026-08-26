@@ -38,7 +38,7 @@ Esta plataforma web es el hub central para jugadores, coleccionistas y organizad
 * **Edición visual en vivo (Admin):** Los administradores pueden corregir nombres, atributos y efectos directamente desde la interfaz.
 
 ### 2. 🎴 Armador de Barajas en la Nube (Cloud Deck Builder)
-* **Reglamento oficial:** Control estricto de 50 cartas por mazo y máximo 3 copias por carta.
+* **Reglamento oficial:** Control estricto de 50 cartas por mazo, límite de 3 copias estándar, más de 3 copias para cartas **Legado / Contratos** e límite único de 1 copia para cartas **Ídolo**.
 * **Multi-Deck en la Nube:** Guarda, renombra y cambia entre múltiples barajas sincronizadas con tu cuenta en Supabase.
 * **Deck Hub Comunitario:** Explora mazos públicos compartidos por otros luchadores, dales "Me gusta" o clónalos con 1 clic.
 * **Simulador de Mano Inicial (Playtest):** Barajado aleatorio de 50 cartas, reparto de mano de 6 cartas, simulación de robos por turno (T1-T3), Mulligan y cálculo de probabilidades de Contratos y Luchadores de bajo coste.

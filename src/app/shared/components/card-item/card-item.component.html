@@ -65,7 +65,7 @@
           [class.added]="deckCount > 0"
           (click)="toggleDeck()">
           @if (deckCount > 0) {
-            <span>En mazo ({{ deckCount }}/3)</span>
+            <span>En mazo ({{ deckCount }}/{{ maxCopiesLabel }})</span>
           } @else {
             <span>+ Añadir al mazo</span>
           }

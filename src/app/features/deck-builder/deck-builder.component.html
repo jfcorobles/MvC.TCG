@@ -143,9 +143,9 @@
                   <button 
                     type="button" 
                     class="step-btn" 
-                    [disabled]="item.quantity >= 3"
+                    [disabled]="item.quantity >= deckService.getMaxCopies(item.card)"
                     (click)="deckService.addCard(item.card)"
-                    title="Agregar copia (Máx 3)">
+                    [title]="'Agregar copia (Máx ' + (deckService.getMaxCopies(item.card) === 50 ? 'Ilimitado' : deckService.getMaxCopies(item.card)) + ')'">
                     +
                   </button>
                 </div>
@@ -182,7 +182,9 @@
               <div class="picker-img-frame" (click)="modalService.open(card)">
                 <img [src]="card.image" [alt]="card.name" class="picker-card-img" />
                 @if (deckService.getCardQuantity(card.id) > 0) {
-                  <span class="picker-badge-count">{{ deckService.getCardQuantity(card.id) }}/3</span>
+                  <span class="picker-badge-count">
+                    {{ deckService.getCardQuantity(card.id) }}/{{ deckService.getMaxCopies(card) === 50 ? '∞' : deckService.getMaxCopies(card) }}
+                  </span>
                 }
               </div>
 
@@ -195,7 +197,7 @@
                 <button 
                   type="button" 
                   class="picker-add-btn" 
-                  [disabled]="deckService.getCardQuantity(card.id) >= 3"
+                  [disabled]="deckService.getCardQuantity(card.id) >= deckService.getMaxCopies(card)"
                   (click)="deckService.addCard(card)"
                   title="Añadir al mazo">
                   +

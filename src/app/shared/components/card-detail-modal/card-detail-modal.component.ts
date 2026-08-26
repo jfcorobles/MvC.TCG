@@ -43,6 +43,15 @@ export class CardDetailModalComponent {
     return this.card ? this.deckService.getCardQuantity(this.card.id) : 0;
   }
 
+  get maxCopies(): number {
+    return this.card ? this.deckService.getMaxCopies(this.card) : 3;
+  }
+
+  get maxCopiesLabel(): string {
+    const max = this.maxCopies;
+    return max === 50 ? 'Ilimitado' : `${max}`;
+  }
+
   close(): void {
     this.modalService.close();
   }

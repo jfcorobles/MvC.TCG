@@ -26,6 +26,15 @@ export class CardItemComponent {
     return this.deckService.getCardQuantity(this.card.id);
   }
 
+  get maxCopies(): number {
+    return this.deckService.getMaxCopies(this.card);
+  }
+
+  get maxCopiesLabel(): string {
+    const max = this.maxCopies;
+    return max === 50 ? '∞' : max.toString();
+  }
+
   openEdit(event: Event): void {
     event.stopPropagation();
     this.cardEditService.open(this.card);
@@ -36,7 +45,7 @@ export class CardItemComponent {
   }
 
   toggleDeck(): void {
-    if (this.deckCount >= 3) {
+    if (this.deckCount >= this.maxCopies) {
       this.deckService.removeCard(this.card.id);
     } else {
       this.deckService.addCard(this.card);

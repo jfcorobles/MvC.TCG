@@ -131,15 +131,50 @@ export class DeckService {
     this.loadDeckFromStorage();
   }
 
+  /**
+   * Determina el número máximo de copias permitidas para una carta según el reglamento oficial:
+   * - Cartas con 'Ídolo' / 'Idolo': Máximo 1 copia por baraja.
+   * - Cartas con 'Legado' o llamadas 'Contrato' (o tipo Contrato): Ilimitadas (más de 3, hasta 50).
+   * - Cualquier otra carta: Máximo 3 copias.
+   */
+  getMaxCopies(card: Card): number {
+    if (!card) return 3;
+    const name = (card.name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const effect = (card.effect || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const style = (card.style || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const type = (card.type || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const raw = (card.rawDescription || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    // 1. Ídolo -> Máx 1 copia
+    const isIdolo = effect.includes('idolo') || style.includes('idolo') || raw.includes('-idolo-') || name.includes('idolo');
+    if (isIdolo) {
+      return 1;
+    }
+
+    // 2. Legado o Contrato -> Ilimitadas (hasta el total del mazo: 50)
+    const isLegado = effect.includes('legado') || style.includes('legado') || raw.includes('-legado-');
+    const isContrato = name.includes('contrato') || type === 'contrato';
+    if (isLegado || isContrato) {
+      return 50;
+    }
+
+    // 3. Regla estándar -> Máx 3 copias
+    return 3;
+  }
+
+  isCardAtMax(card: Card): boolean {
+    return this.getCardQuantity(card.id) >= this.getMaxCopies(card);
+  }
+
   // --- Deck Item Editing ---
 
   addCard(card: Card): boolean {
     const current = this.deckItems();
     const existingIndex = current.findIndex(i => i.card.id === card.id);
+    const maxAllowed = this.getMaxCopies(card);
 
-    // Limit to max 3 copies of any card in deck
     if (existingIndex > -1) {
-      if (current[existingIndex].quantity >= 3) {
+      if (current[existingIndex].quantity >= maxAllowed) {
         return false;
       }
       const updated = [...current];

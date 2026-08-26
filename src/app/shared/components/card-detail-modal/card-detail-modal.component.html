@@ -103,7 +103,7 @@
             <div class="deck-controls-row">
               <div class="deck-state-text">
                 <span>Copias en tu mazo:</span>
-                <strong class="deck-current-count">{{ deckCount }} / 3</strong>
+                <strong class="deck-current-count">{{ deckCount }} / {{ maxCopiesLabel }}</strong>
               </div>
 
               <div class="deck-btn-duo">
@@ -117,7 +117,7 @@
                 <button 
                   type="button" 
                   class="btn btn-primary btn-sm"
-                  [disabled]="deckCount >= 3"
+                  [disabled]="deckCount >= maxCopies"
                   (click)="addToDeck()">
                   + Añadir
                 </button>
